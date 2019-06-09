@@ -37,7 +37,7 @@ const computerPrice = comp => {
     comp.map(function(e){
         price = price + e
     })
-    console.log(price)
+    //console.log(price)
 }
 
 computerPrice(components)
@@ -57,7 +57,19 @@ const counterSoldComponent = comp => {
             }
         })
     })
-    console.log(counter)
+    //console.log(counter)
 }
 
 counterSoldComponent(local.precios[2].componente)
+
+const onload = () =>{
+    const componentsMenu = document.getElementById('componentsMenu')
+    local.precios.map(function(e, index){
+        let componentItem = document.createElement('option')
+        componentItem.innerText = e.componente
+        componentItem.id = index
+        componentsMenu.appendChild(componentItem)
+        componentItem.onclick = function(){}
+        
+    })
+}
