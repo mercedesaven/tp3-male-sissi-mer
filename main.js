@@ -27,12 +27,29 @@ var local = {
 let components = []
 let componentsMenu, componentItem
 
-//precioMaquina(componentes): recibe un array de componentes
-//y devuelve el precio de la máquina que se puede armar
-//con esos componentes, que es la suma de los precios
-//de cada componente incluido.
-//console.log( precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]) )
+//Genera el menu de componentes
+const onload = () =>{
+    componentsMenu = document.getElementById('componentsMenu')
+    local.precios.map(function(e, index){
+        componentItem = document.createElement('option')
+        componentItem.innerText = e.componente
+        componentItem.value = index
+        componentsMenu.appendChild(componentItem)
+    })
+}
 
+//Genera el array de precios de los componentes elegidos
+const addToOrder = () =>{
+    let chosenComponent = document.createElement('li')
+    chosenComponent.innerText = local.precios[componentsMenu.value].precio
+    let componentsList = document.getElementById('componentsList')
+    componentsList.appendChild(chosenComponent)
+    components.push(local.precios[componentsMenu.value].precio)
+    console.log(chosenComponent)
+}
+
+//PRIMERA FUNCION PEDIDA POR EL TP
+//Muestra el precio de la maquina que se puede armar con los componentes elegidos
 const showPrice = () => {
     let price = 0
     components.map(function(e){
@@ -43,7 +60,6 @@ const showPrice = () => {
     let totalPrice = document.createElement('p')
     totalPrice.innerText = price
     priceContainer.appendChild(totalPrice)
-
 }
 
 //computerPrice(components)
@@ -66,24 +82,6 @@ const counterSoldComponent = comp => {
     //console.log(counter)
 }
 
-counterSoldComponent(local.precios[2].componente)
+//counterSoldComponent(local.precios[2].componente)
 
-const onload = () =>{
-    componentsMenu = document.getElementById('componentsMenu')
-    local.precios.map(function(e, index){
-        componentItem = document.createElement('option')
-        componentItem.innerText = e.componente
-        componentItem.value = index
-        componentsMenu.appendChild(componentItem)
-    })
-    console.log(componentsMenu)
-}
 
-const addToOrder = () =>{
-    let chosenComponent = document.createElement('li')
-    chosenComponent.innerText = local.precios[componentsMenu.value].precio
-    let componentsList = document.getElementById('componentsList')
-    componentsList.appendChild(chosenComponent)
-    components.push(local.precios[componentsMenu.value].precio)
-    console.log(chosenComponent)
-}
