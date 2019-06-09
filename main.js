@@ -11,17 +11,21 @@ var local = {
     ],
   
     precios: [
-      { componente: "Monitor GPRS 3000", type: 'monitor', precio: 200 },
-      { componente: "Motherboard ASUS 1500", type: 'mother', precio: 120 },
-      { componente: "Monitor ASC 543", type: 'monitor', precio: 250 },
-      { componente: "Motherboard ASUS 1200", type: 'mother', precio: 100 },
-      { componente: "Motherboard MZI", type: 'mother', precio: 30 },
-      { componente: "HDD Toyiva", type: 'HDD', precio: 90 },
-      { componente: "HDD Wezter Dishital", type: 'HDD', precio: 75 },
-      { componente: "RAM Quinston", type: 'RAM', precio: 110 },
-      { componente: "RAM Quinston Fury", type: 'RAM', precio: 230 }
+      { componente: "Monitor GPRS 3000", precio: 200 },
+      { componente: "Motherboard ASUS 1500", precio: 120 },
+      { componente: "Monitor ASC 543", precio: 250 },
+      { componente: "Motherboard ASUS 1200", precio: 100 },
+      { componente: "Motherboard MZI", precio: 30 },
+      { componente: "HDD Toyiva", precio: 90 },
+      { componente: "HDD Wezter Dishital", precio: 75 },
+      { componente: "RAM Quinston", precio: 110 },
+      { componente: "RAM Quinston Fury", precio: 230 }
     ]
 }
+
+
+let components = []
+let componentsMenu, componentItem
 
 //precioMaquina(componentes): recibe un array de componentes
 //y devuelve el precio de la máquina que se puede armar
@@ -29,18 +33,20 @@ var local = {
 //de cada componente incluido.
 //console.log( precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]) )
 
-let components = [local.precios[0].precio, local.precios[1].precio, local.precios[3].precio]
-console.log(components)
-
-const computerPrice = comp => {
+const showPrice = () => {
     let price = 0
-    comp.map(function(e){
+    components.map(function(e){
         price = price + e
     })
-    //console.log(price)
+    let priceContainer = document.getElementById('price')
+    priceContainer.innerHTML = ''
+    let totalPrice = document.createElement('p')
+    totalPrice.innerText = price
+    priceContainer.appendChild(totalPrice)
+
 }
 
-computerPrice(components)
+//computerPrice(components)
 
 //cantidadVentasComponente(componente): recibe un componente 
 //y devuelve la cantidad de veces que fue vendido, o sea
@@ -63,13 +69,21 @@ const counterSoldComponent = comp => {
 counterSoldComponent(local.precios[2].componente)
 
 const onload = () =>{
-    const componentsMenu = document.getElementById('componentsMenu')
+    componentsMenu = document.getElementById('componentsMenu')
     local.precios.map(function(e, index){
-        let componentItem = document.createElement('option')
+        componentItem = document.createElement('option')
         componentItem.innerText = e.componente
-        componentItem.id = index
+        componentItem.value = index
         componentsMenu.appendChild(componentItem)
-        componentItem.onclick = function(){}
-        
     })
+    console.log(componentsMenu)
+}
+
+const addToOrder = () =>{
+    let chosenComponent = document.createElement('li')
+    chosenComponent.innerText = local.precios[componentsMenu.value].precio
+    let componentsList = document.getElementById('componentsList')
+    componentsList.appendChild(chosenComponent)
+    components.push(local.precios[componentsMenu.value].precio)
+    console.log(chosenComponent)
 }
