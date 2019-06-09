@@ -23,7 +23,6 @@ var local = {
     ]
 }
 
-
 let components = []
 let componentsMenu, componentItem
 
@@ -45,7 +44,6 @@ const addToOrder = () =>{
     let componentsList = document.getElementById('componentsList')
     componentsList.appendChild(chosenComponent)
     components.push(local.precios[componentsMenu.value].precio)
-    console.log(chosenComponent)
 }
 
 //PRIMERA FUNCION PEDIDA POR EL TP
@@ -55,33 +53,44 @@ const showPrice = () => {
     components.map(function(e){
         price = price + e
     })
-    let priceContainer = document.getElementById('price')
-    priceContainer.innerHTML = ''
-    let totalPrice = document.createElement('p')
-    totalPrice.innerText = price
-    priceContainer.appendChild(totalPrice)
+    createElementSimple('price', price)
 }
 
-//computerPrice(components)
+//SEGUNDA FUNCION PEDIDA POR EL TP
+//Muestra la cantidad de veces que se vendio un componente
 
-//cantidadVentasComponente(componente): recibe un componente 
-//y devuelve la cantidad de veces que fue vendido, o sea
-//que formó parte de una máquina que se vendió. La lista de ventas 
-//no se pasa por parámetro, se asume que está identificada
-//por la variable ventas.
-
-const counterSoldComponent = comp => {
+const soldItems = () => {
     let counter = 0
+    let soldItem = local.precios[componentsMenu.value].componente
     local.ventas.map(function(e){
         e.componentes.map(function(item){
-            if(comp === item){
+            if(soldItem === item){
                 counter = ++counter
             }
         })
     })
-    //console.log(counter)
+    createElementComplex('soldItems',soldItem, counter)
 }
 
-//counterSoldComponent(local.precios[2].componente)
+//Crea un solo elemento
+const createElementSimple = (containerId, data) =>{
+    let container = document.getElementById(containerId)
+    container.innerHTML = ''
+    let secondChild = document.createElement('p')
+    secondChild.innerText = data
+    container.appendChild(secondChild)
+}
+
+//Crea dos elementos
+const createElementComplex = (containerId, item, data) =>{
+    let container = document.getElementById(containerId)
+    container.innerHTML = ''
+    let firstChild = document.createElement('p')
+    firstChild.innerText = item
+    container.appendChild(firstChild)
+    let secondChild = document.createElement('p')
+    secondChild.innerText = data
+    container.appendChild(secondChild)
+}
 
 
