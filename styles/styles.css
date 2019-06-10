@@ -1,0 +1,24 @@
+a {
+  text-decoration: none;
+  color: white; }
+
+ul {
+  list-style: none; }
+
+body {
+  background-color: #00136b;
+  color: white;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  font-family: "Nanum Gothic", sans-serif; }
+  body h1 {
+    grid-column: 1 / -1;
+    font-family: "Oxygen", sans-serif; }
+  body .orderList {
+    grid-column: span 2; }
+  body .totalPrice {
+    grid-column: 2 / span 2; }
+  body .soldItems {
+    grid-column: 2 / span 2; }
+
+/*# sourceMappingURL=styles.css.map */

@@ -7,23 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="main.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Oxygen&display=swap" rel="stylesheet">
 </head>
 <body onload="onload()">
-    <form>
+    <h1>Local de PCs</h1>
+    <div class="componentsMenu">
         <label>Componentes</label>
         <select id=componentsMenu>
-
-        </select>
-        <div>
-            <button type="button" onclick="addToOrder()">Agregar a la lista</button>
-        </div>
-        <ul id="componentsList">
-
-        </ul>
-        <button type="button" onclick="showPrice()">Confirmar</button>
+        </select> 
+    </div>
+    <div class="orderList">
+        <a href="#" onclick="addToOrder()">Agregar a la lista</a>
+        <ul id="componentsList"></ul>
+    </div>
+    <div class="totalPrice">
+        <a href="#" onclick="showPrice()">Confirmar</a>
         <div id="price"></div>
-        <button type="button" onclick="soldItems()">Cantidad de ventas</button>
-        <div id="soldItems"></div>
-        
-    </form>
+    </div>
+    <div class="soldItems">
+        <a href="#" onclick="soldItems()">Cantidad de ventas</a>
+        <div id="soldItems"></div> 
+    </div>
 </body>

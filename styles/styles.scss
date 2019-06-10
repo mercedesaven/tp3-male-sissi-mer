@@ -1,0 +1,35 @@
+$main-color: #00136b;
+$main-text-color: #c9ae5c;
+$alt-text-color: white;
+$title-font: 'Oxygen', sans-serif;
+$text-font: 'Nanum Gothic', sans-serif;
+
+a{
+    text-decoration: none;
+    color: $alt-text-color;
+}
+ul{
+    list-style: none;
+}
+
+body{
+    background-color: $main-color;
+    color: $alt-text-color;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    font-family: $text-font;
+    h1{
+        grid-column: 1 / -1;
+        font-family: $title-font;
+    }
+    //.componentsMenu{}
+    .orderList{
+        grid-column: span 2;
+    }
+    .totalPrice{
+        grid-column: 2 / span 2;
+    }
+    .soldItems{
+        grid-column: 2 / span 2;
+    }
+}
