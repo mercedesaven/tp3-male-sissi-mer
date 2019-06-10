@@ -1,9 +1,16 @@
 a {
   text-decoration: none;
-  color: white; }
+  color: white;
+  background-color: #c9ae5c;
+  padding: 10px 10px;
+  margin: 10px;
+  color: black;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px; }
 
 ul {
-  list-style: none; }
+  list-style: none;
+  padding: 0; }
 
 body {
   background-color: #00136b;

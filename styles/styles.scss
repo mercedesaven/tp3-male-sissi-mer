@@ -3,13 +3,23 @@ $main-text-color: #c9ae5c;
 $alt-text-color: white;
 $title-font: 'Oxygen', sans-serif;
 $text-font: 'Nanum Gothic', sans-serif;
+@mixin button{
+    background-color: $main-text-color;
+    padding: 10px 10px;
+    margin: 10px;
+    color: black;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
 
 a{
     text-decoration: none;
     color: $alt-text-color;
+    @include button;
 }
 ul{
     list-style: none;
+    padding: 0;
 }
 
 body{
