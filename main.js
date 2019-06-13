@@ -1,96 +1,84 @@
-var local = {
-    vendedoras: ["Ada", "Grace", "Hedy", "Sheryl"],
+var shop = {
+    sellers: ["Ada", "Grace", "Hedy", "Sheryl"],
   
-    ventas: [
+    soldItems: [
       // tener en cuenta que Date guarda los meses del 0 (enero) al 11 (diciembre)
-      { fecha: new Date(2019, 1, 4), nombreVendedora: "Grace", componentes: ["Monitor GPRS 3000", "Motherboard ASUS 1500"] },
-      { fecha: new Date(2019, 0, 1), nombreVendedora: "Ada", componentes: ["Monitor GPRS 3000", "Motherboard ASUS 1500"] },
-      { fecha: new Date(2019, 0, 2), nombreVendedora: "Grace", componentes: ["Monitor ASC 543", "Motherboard MZI"] },
-      { fecha: new Date(2019, 0, 10), nombreVendedora: "Ada", componentes: ["Monitor ASC 543", "Motherboard ASUS 1200"] },
-      { fecha: new Date(2019, 0, 12), nombreVendedora: "Grace", componentes: ["Monitor GPRS 3000", "Motherboard ASUS 1200"] }
+      { date: new Date(2019, 1, 4), nameSeller: "Grace", components: ["Monitor GPRS 3000", "Motherboard ASUS 1500"] },
+      { date: new Date(2019, 0, 1), nameSeller: "Ada", components: ["Monitor GPRS 3000", "Motherboard ASUS 1500"] },
+      { date: new Date(2019, 0, 2), nameSeller: "Grace", components: ["Monitor ASC 543", "Motherboard MZI"] },
+      { date: new Date(2019, 0, 10), nameSeller: "Ada", components: ["Monitor ASC 543", "Motherboard ASUS 1200"] },
+      { date: new Date(2019, 0, 12), nameSeller: "Grace", components: ["Monitor GPRS 3000", "Motherboard ASUS 1200"] }
     ],
   
-    precios: [
-      { componente: "Monitor GPRS 3000", precio: 200 },
-      { componente: "Motherboard ASUS 1500", precio: 120 },
-      { componente: "Monitor ASC 543", precio: 250 },
-      { componente: "Motherboard ASUS 1200", precio: 100 },
-      { componente: "Motherboard MZI", precio: 30 },
-      { componente: "HDD Toyiva", precio: 90 },
-      { componente: "HDD Wezter Dishital", precio: 75 },
-      { componente: "RAM Quinston", precio: 110 },
-      { componente: "RAM Quinston Fury", precio: 230 }
+    prices: [
+      { component: "Monitor GPRS 3000", price: 200 },
+      { component: "Motherboard ASUS 1500", price: 120 },
+      { component: "Monitor ASC 543", price: 250 },
+      { component: "Motherboard ASUS 1200", price: 100 },
+      { component: "Motherboard MZI", price: 30 },
+      { component: "HDD Toyiva", price: 90 },
+      { component: "HDD Wezter Dishital", price: 75 },
+      { component: "RAM Quinston", price: 110 },
+      { component: "RAM Quinston Fury", price: 230 }
     ]
 }
 
-let components = []
-let componentsMenu, componentItem
+let priceArray = []
 
-//Genera el menu de componentes
-const onload = () =>{
-    componentsMenu = document.getElementById('componentsMenu')
-    local.precios.map(function(e, index){
-        componentItem = document.createElement('option')
-        componentItem.innerText = e.componente
-        componentItem.value = index
-        componentsMenu.appendChild(componentItem)
+const onloadFunction = () =>{
+  let table = document.getElementById('table')
+  createTable(table)
+
+}
+
+const createTable = (container) =>{
+  shop.soldItems.map(function(e){
+    let row = document.createElement('tr')
+    let tableDate = document.createElement('td')
+    tableDate.innerText = `${e.date.getMonth() + 1}/${e.date.getFullYear()}`
+    row.appendChild(tableDate)
+    let tableSeller = document.createElement('td')
+    tableSeller.innerText = e.nameSeller
+    row.appendChild(tableSeller)
+    let tableComponents = document.createElement('td')
+    let tableComponentsUl = document.createElement('ul')
+    e.components.map(function(item){
+    let tableComponentsLi = document.createElement('li')
+    tableComponentsLi.innerText = item
+    tableComponentsUl.appendChild(tableComponentsLi)
     })
+    tableComponents.appendChild(tableComponentsUl)
+    row.appendChild(tableComponents)
+    componentsPrices(e)
+    let tablePrice = document.createElement('td')
+    tablePrice.innerText = totalPrice(priceArray)
+    row.appendChild(tablePrice)
+
+    container.appendChild(row)
+  })
+  
 }
 
-//Genera el array de precios de los componentes elegidos
-const addToOrder = () =>{
-    let chosenComponent = document.createElement('li')
-    chosenComponent.innerText = local.precios[componentsMenu.value].precio
-    let componentsList = document.getElementById('componentsList')
-    componentsList.appendChild(chosenComponent)
-    components.push(local.precios[componentsMenu.value].precio)
-}
-
-//PRIMERA FUNCION PEDIDA POR EL TP
-//Muestra el precio de la maquina que se puede armar con los componentes elegidos
-const showPrice = () => {
-    let price = 0
-    components.map(function(e){
-        price = price + e
+//toma una venta y pone los precios de los componentes en un array
+const componentsPrices = (soldPC) => {
+  priceArray = []
+  soldPC.components.map(function(item){
+    shop.prices.map(function(e){
+      if(e.component === item){
+        priceArray.push(e.price)
+      }
     })
-    createElementSimple('price', price)
+  })
+  return priceArray
 }
 
-//SEGUNDA FUNCION PEDIDA POR EL TP
-//Muestra la cantidad de veces que se vendio un componente
-
-const soldItems = () => {
-    let counter = 0
-    let soldItem = local.precios[componentsMenu.value].componente
-    local.ventas.map(function(e){
-        e.componentes.map(function(item){
-            if(soldItem === item){
-                counter = ++counter
-            }
-        })
-    })
-    createElementComplex('soldItems',soldItem, counter)
-}
-
-//Crea un solo elemento
-const createElementSimple = (containerId, data) =>{
-    let container = document.getElementById(containerId)
-    container.innerHTML = ''
-    let secondChild = document.createElement('p')
-    secondChild.innerText = data
-    container.appendChild(secondChild)
-}
-
-//Crea dos elementos
-const createElementComplex = (containerId, item, data) =>{
-    let container = document.getElementById(containerId)
-    container.innerHTML = ''
-    let firstChild = document.createElement('p')
-    firstChild.innerText = item
-    container.appendChild(firstChild)
-    let secondChild = document.createElement('p')
-    secondChild.innerText = data
-    container.appendChild(secondChild)
-}
+//toma un array de precios y calcula la suma total
+const totalPrice = (array) =>{
+  let sumPrice = 0
+  array.map(function(e){
+    sumPrice = sumPrice + e
+  })
+  return sumPrice
+} 
 
 
