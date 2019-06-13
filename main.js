@@ -51,9 +51,8 @@ const createTable = (container) =>{
     row.appendChild(tableComponents)
     componentsPrices(e)
     let tablePrice = document.createElement('td')
-    tablePrice.innerText = totalPrice(priceArray)
+    tablePrice.innerText = `$${totalPrice(priceArray)}`
     row.appendChild(tablePrice)
-
     container.appendChild(row)
   })
   
@@ -80,5 +79,6 @@ const totalPrice = (array) =>{
   })
   return sumPrice
 } 
+
 
 
