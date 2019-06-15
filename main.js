@@ -28,7 +28,7 @@ let priceArray = []
 const onloadFunction = () =>{
   let table = document.getElementById('table')
   createTable(table)
-
+  //moreInfo()
 }
 
 const createTable = (container) =>{
@@ -55,7 +55,13 @@ const createTable = (container) =>{
     row.appendChild(tablePrice)
     container.appendChild(row)
   })
-  
+}
+
+//pone los nodos adentro de "Mas Info"
+const moreInfo = (child) =>{
+  let adminInfo = document.getElementById('adminInfo')
+  console.log(adminInfo)
+  adminInfo.appendChild(child)
 }
 
 //toma una venta y pone los precios de los componentes en un array
@@ -79,6 +85,21 @@ const totalPrice = (array) =>{
   })
   return sumPrice
 } 
+
+//devuelve la cantidad de veces que se vendio un componente
+const quantitySoldItems = (comp) =>{
+  counter = 0
+  shop.soldItems.map(function(e){
+    e.components.map(function(item){
+      if(item === comp){
+        counter = counter + 1
+      }
+    })
+  })
+  return counter
+}
+
+
 
 
 
