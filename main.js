@@ -29,6 +29,7 @@ const onloadFunction = () =>{
   let table = document.getElementById('table')
   createTable(table)
   //moreInfo()
+  setSelects()
 }
 
 const createTable = (container) =>{
@@ -86,6 +87,37 @@ const totalPrice = (array) =>{
   return sumPrice
 } 
 
+//select de componentes
+const setSelects = () =>{
+  let componentsSelect = document.getElementById('componentsSelect')
+  componentsSelect.innerHTML = ''
+  let firstOption = document.createElement('option')
+  firstOption.innerText = 'Elija un componente'
+  componentsSelect.appendChild(firstOption)
+  shop.prices.map(function(e){
+    let componentsOption = document.createElement('option')
+    componentsOption.innerText = e.component
+    componentsSelect.appendChild(componentsOption)
+  })
+}
+
+//boton que confirma el componente seleccionado
+const componentsSelectBtn = () =>{
+  print('componentsName', componentsSelect.value)
+  print('soldQuantity', quantitySoldItems(componentsSelect.value))
+  setSelects()
+}
+
+//imprime en pantalla
+//parametros: el id del contenedor y el texto que se quiere imprimir
+const print = (id, text) =>{
+  let container = document.getElementById(id)
+  container.innerHTML = ''
+  let child = document.createElement('span')
+  child.innerText = text
+  container.appendChild(child)
+}
+
 //devuelve la cantidad de veces que se vendio un componente
 const quantitySoldItems = (comp) =>{
   counter = 0
@@ -98,7 +130,6 @@ const quantitySoldItems = (comp) =>{
   })
   return counter
 }
-
 
 
 
