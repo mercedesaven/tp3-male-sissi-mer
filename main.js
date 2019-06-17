@@ -23,26 +23,26 @@ var local = {
    
   };
 
+console.log(local.vendedoras[1])
+
+console.log(local.precios[0].precio) // con este selector puedo llegar al precio del array y objeto. 
 
 
-const listaPrecios = (p) => {local.precios.forEach ( e => {
-  let select = document.getElementById('monitor')
-  let option = document.createElement('option')
-  option.innerText = e.componente
-  option.value = e.type
-  select.appendChild(option)
-})
-}
+/* const listaPrecios = local.precios.forEach(function(p, e){
+  p === e.name 
+})  
+ */
 
 
 
-const boton = (b) => {local.precios.forEach (e => {
-  let valorTotal = document.getElementById("valor")
-  valorTotal.InnerText = e.precio
-  
-})
-listaPrecios ()
-}
 
 
-// punto dos: cantidad de ventas por com
+let date = new Date()
+console.log(date)
+
+
+// date es un tipo de dato de JS (es una clase tipada) 
+// la variable date es una instancia 
+// metodo: date.getDate = 11
+// metodo date.getYear 
+// metodo: date.getHour()
