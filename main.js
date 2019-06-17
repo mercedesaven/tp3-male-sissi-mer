@@ -9,31 +9,43 @@ var local = {
       { fecha: new Date(2019, 0, 10), nombreVendedora: "Ada", componentes: ["Monitor ASC 543", "Motherboard ASUS 1200"] },
       { fecha: new Date(2019, 0, 12), nombreVendedora: "Grace", componentes: ["Monitor GPRS 3000", "Motherboard ASUS 1200"] }
     ],
-    precios: [
-      { componente: "Monitor GPRS 3000", precio: 200, type: 'monitor' },
-      { componente: "Monitor ASC 543", precio: 250, type: 'monitor' },
-      { componente: "Motherboard ASUS 1500", precio: 120, type:'mother'},
-      { componente: "Motherboard ASUS 1200", precio: 100, type:'mother' },
-      { componente: "Motherboard MZI", precio: 30, type:'mother' },
-      { componente: "HDD Toyiva", precio: 90, type:'hdd' },
-      { componente: "HDD Wezter Dishital", precio: 75, type:'hdd' },
-      { componente: "RAM Quinston", precio: 110, type:'ram' },
-      { componente: "RAM Quinston Fury", precio: 230, type:'ram' }
-    ]
+   /*  precios: [
+      { componente: "Monitor GPRS 3000", precio: 200},
+      { componente: "Monitor ASC 543", precio: 250 },
+      { componente: "Motherboard ASUS 1500", precio: 120},
+      { componente: "Motherboard ASUS 1200", precio: 100},
+      { componente: "Motherboard MZI", precio: 30},
+      { componente: "HDD Toyiva", precio: 90},
+      { componente: "HDD Wezter Dishital", precio: 75},
+      { componente: "RAM Quinston", precio: 110},
+      { componente: "RAM Quinston Fury", precio: 230}
+    ] */
    
   };
 
-console.log(local.vendedoras[1])
+ var  price= [
+    { componente: "Monitor GPRS 3000", precio: 200},
+    { componente: "Monitor ASC 543", precio: 250 },
+    { componente: "Motherboard ASUS 1500", precio: 120},
+    { componente: "Motherboard ASUS 1200", precio: 100},
+    { componente: "Motherboard MZI", precio: 30},
+    { componente: "HDD Toyiva", precio: 90},
+    { componente: "HDD Wezter Dishital", precio: 75},
+    { componente: "RAM Quinston", precio: 110},
+    { componente: "RAM Quinston Fury", precio: 230}
+  ]
 
-console.log(local.precios[0].precio) // con este selector puedo llegar al precio del array y objeto. 
 
+  console.log(price[0].precio)
 
-/* const listaPrecios = local.precios.forEach(function(p, e){
-  p === e.name 
-})  
- */
+  let newList = []
+  const preciosObj = price.map(function(p){
+    let precios = p.componente.map(function(c){
+      precios = c.precio
+    })
+  })
 
-
+  console.log(preciosObj)
 
 
 
