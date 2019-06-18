@@ -23,12 +23,30 @@
     </table>
     <div class="adminInfo" id="adminInfo">
         <h2>Mas info</h2>
-        <div>
-            <select id="componentsSelect"></select>
-            <a href="#" id="componentsSelectBtn" onclick="componentsSelectBtn()">Confirmar</a>
-            <div id="componentsInfo">
-                <div id="componentsName"></div>
-                <div id="soldQuantity"></div>
+        <div class="infoContainer">
+            <div class="infoComponents">
+                <h3>Datos de los componentes:</h3>
+                <select id="componentsSelect"></select>
+                <a href="#" id="componentsSelectBtn" onclick="componentsSelectBtn()">Confirmar</a>
+                <div class="dataContainer" id="componentsInfo">
+                    
+                </div>
+            </div>
+            <div class="infoSellers">
+                <h3>Datos de las vendedoras:</h3>
+                <div class="dataContainer">
+                    <p>Vendedora del mes: <span id="bestSellerMonth"></span></p> 
+                    <p>Cantidad vendida: $<span id="bestSellerMoney"></span></p> 
+                </div>
+            </div> 
+            <div class="infoMonth">
+                <h3>Ventas del mes:</h3>
+                <select id="monthSelect"></select>
+                <select id="yearSelect"></select>
+                <a href="#" id="monthSelectBtn" onclick="incomeMonth()">Confirmar</a>
+                <div id="infoMonthContainer">
+
+                </div>
             </div>
         </div>
     </div>

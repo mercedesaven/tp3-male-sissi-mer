@@ -30,6 +30,9 @@ const onloadFunction = () =>{
   createTable(table)
   //moreInfo()
   setSelects()
+  bestSellerMonth(1, 2019)
+  setSelectsFunction ('monthSelect', 'un mes', [1,2,3,4,5,6,7,8,9,10,11,12])
+  setSelectsFunction ('yearSelect', 'un año', [2018, 2019])
 }
 
 const createTable = (container) =>{
@@ -44,9 +47,9 @@ const createTable = (container) =>{
     let tableComponents = document.createElement('td')
     let tableComponentsUl = document.createElement('ul')
     e.components.map(function(item){
-    let tableComponentsLi = document.createElement('li')
-    tableComponentsLi.innerText = item
-    tableComponentsUl.appendChild(tableComponentsLi)
+      let tableComponentsLi = document.createElement('li')
+      tableComponentsLi.innerText = item
+      tableComponentsUl.appendChild(tableComponentsLi)
     })
     tableComponents.appendChild(tableComponentsUl)
     row.appendChild(tableComponents)
@@ -102,22 +105,42 @@ const setSelects = () =>{
 }
 
 //boton que confirma el componente seleccionado
+//imprime en pantalla la informacion de esos componentes
 const componentsSelectBtn = () =>{
-  print('componentsName', componentsSelect.value)
-  print('soldQuantity', quantitySoldItems(componentsSelect.value))
+  let componentsInfo = document.getElementById('componentsInfo')
+  componentsInfo.innerHTML = ''
+  print('componentsInfo', 'Componente', componentsSelect.value)
+  let quantity = quantitySoldItems(componentsSelect.value)
+  let printQuantity
+  if( quantity === 1){
+    printQuantity = `${quantity} unidad`
+  }
+  else{
+    printQuantity = `${quantity} unidades`
+  }
+  print('componentsInfo', 'Cantidad vendida', printQuantity)
   setSelects()
 }
 
 //imprime en pantalla
-//parametros: el id del contenedor y el texto que se quiere imprimir
-const print = (id, text) =>{
-  let container = document.getElementById(id)
-  container.innerHTML = ''
+//parametros: id del padre y texto que se quiere imprimir como dos variables distintas
+const print = (container, title, data) =>{
+  let father = document.getElementById(container)
+  let child = document.createElement('div')
+  child.innerText = `${title}: ${data}`
+  father.appendChild(child)
+}
+
+//imprime en pantalla
+//parametros: nodo del padre y un unico texto del hijo
+const printSimple = (idContainer, text) =>{
+  let container = document.getElementById(idContainer)
   let child = document.createElement('span')
   child.innerText = text
   container.appendChild(child)
 }
 
+//SEGUNDA FUNCION (cantidadVentasComponente)
 //devuelve la cantidad de veces que se vendio un componente
 const quantitySoldItems = (comp) =>{
   counter = 0
@@ -130,6 +153,76 @@ const quantitySoldItems = (comp) =>{
   })
   return counter
 }
+
+//TERCERA FUNCION (VendedoraDelMes(mes,anio))
+const bestSellerMonth = (month, year) =>{
+  let totalSold = 0 //acumulador
+  let maxTotalSold = 0 //mayor de los acumuladores
+  let maxSeller = ''
+  shop.sellers.map(function(employee){
+    totalSold = 0
+    shop.soldItems.map(function(e){
+      if(e.date.getMonth() === month-1 && e.date.getFullYear() === year && e.nameSeller === employee){
+        totalSold = totalSold + totalPrice(componentsPrices(e))
+      }
+    })
+    if(totalSold > maxTotalSold){
+      maxTotalSold = totalSold
+      maxSeller = employee
+    }
+  })
+  printSimple('bestSellerMonth', maxSeller)
+  printSimple('bestSellerMoney', maxTotalSold)
+}
+
+//funcion que genera selects de un array
+const setSelectsFunction = (idSelect, type, array) =>{
+  let select = document.getElementById(idSelect)
+  select.innerHTML = ''
+  let firstOption = document.createElement('option')
+  firstOption.innerText = `Elija ${type}`
+  select.appendChild(firstOption)
+  array.map(function(e){
+    let componentsOption = document.createElement('option')
+    componentsOption.innerText = e
+    select.appendChild(componentsOption)
+  })
+}
+
+//CUARTA FUNCION (ventasMes(mes, anio))
+//los parametros los toma de los selects en pantalla
+const incomeMonth = () =>{
+  let infoMonthContainer = document.getElementById('infoMonthContainer')
+  infoMonthContainer.innerHTML = ''
+  let monthSelect = document.getElementById('monthSelect')
+  let yearSelect = document.getElementById('yearSelect')
+  let totalIncome = 0
+  shop.soldItems.map(function(e){
+      if(e.date.getFullYear() == yearSelect.value && e.date.getMonth() == monthSelect.value-1){
+        totalIncome = totalIncome + totalPrice(componentsPrices(e))
+      }
+  })
+  let printIncome = `$${totalIncome}`
+  print('infoMonthContainer', 'Mes', monthSelect.value)
+  print('infoMonthContainer', 'Año', yearSelect.value)
+  printSimple('infoMonthContainer', isIncomeNull(totalIncome))
+  if(totalIncome !==0){
+    print('infoMonthContainer', 'Total ventas', printIncome)
+  }
+}
+
+//QUINTA FUNCION (huboVentas(mes,anio))
+//los parametros los toma del select
+const isIncomeNull = (income) =>{
+  let text
+  if(income === 0){
+    text = 'No hubo ventas en el mes'
+  }else{
+    text = 'Hubo ventas en el mes'
+  }
+  return text
+}
+
 
 
 

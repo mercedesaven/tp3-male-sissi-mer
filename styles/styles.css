@@ -8,6 +8,9 @@ ul {
   list-style: none;
   padding: 0px; }
 
+p {
+  margin: 0px; }
+
 body {
   margin: 20px;
   display: grid;
@@ -34,7 +37,14 @@ body {
   body .adminInfo {
     grid-row: 4;
     grid-column: 1 / span 3;
-    justify-self: center;
-    background-color: grey; }
+    justify-self: center; }
+    body .adminInfo .infoContainer .infoComponents, body .adminInfo .infoContainer .infoSellers, body .adminInfo .infoContainer .infoMonth {
+      margin: 10px; }
+    body .adminInfo a {
+      background-color: #51ffd0;
+      color: black;
+      padding: 10px; }
+    body .adminInfo .dataContainer {
+      margin: 20px 0px; }
 
 /*# sourceMappingURL=styles.css.map */

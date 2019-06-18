@@ -3,21 +3,25 @@ $alt-color: #51ffd0;
 $text-color: black;
 $alt-text-color: #ededed;
 
-@mixin button{
+@mixin button($var){
     background-color: $alt-color;
     color: $text-color;
-    padding: 20px;
+    padding: $var;
 
 }
 
 a{
     text-decoration: none;
-    @include button
+    @include button(20px)
 }
 
 ul{
     list-style: none;
     padding: 0px;
+}
+
+p{
+    margin: 0px;
 }
 
 body{
@@ -50,9 +54,19 @@ body{
         }
     }
     .adminInfo{
+        .infoContainer{
+            .infoComponents, .infoSellers, .infoMonth{
+                margin: 10px;
+            }
+        }
+        a{
+            @include button(10px)
+        }
         grid-row: 4;
         grid-column: 1 / span 3;
         justify-self: center;
-        background-color: grey;
+        .dataContainer{
+            margin: 20px 0px;
+        }
     }
 }
