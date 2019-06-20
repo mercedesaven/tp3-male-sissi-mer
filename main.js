@@ -1,13 +1,15 @@
 var shop = {
+    branches: ["Centro", "Caballito"],
+
     sellers: ["Ada", "Grace", "Hedy", "Sheryl"],
   
     soldItems: [
       // tener en cuenta que Date guarda los meses del 0 (enero) al 11 (diciembre)
-      { date: new Date(2019, 1, 4), nameSeller: "Grace", components: ["Monitor GPRS 3000", "Motherboard ASUS 1500"] },
-      { date: new Date(2019, 0, 1), nameSeller: "Ada", components: ["Monitor GPRS 3000", "Motherboard ASUS 1500"] },
-      { date: new Date(2019, 0, 2), nameSeller: "Grace", components: ["Monitor ASC 543", "Motherboard MZI"] },
-      { date: new Date(2019, 0, 10), nameSeller: "Ada", components: ["Monitor ASC 543", "Motherboard ASUS 1200"] },
-      { date: new Date(2019, 0, 12), nameSeller: "Grace", components: ["Monitor GPRS 3000", "Motherboard ASUS 1200"] }
+      { date: new Date(2019, 1, 4), nameSeller: "Grace", components: ["Monitor GPRS 3000", "Motherboard ASUS 1500"], branch: 'Centro' },
+      { date: new Date(2019, 0, 1), nameSeller: "Ada", components: ["Monitor GPRS 3000", "Motherboard ASUS 1500"], branch: 'Centro'},
+      { date: new Date(2019, 0, 2), nameSeller: "Grace", components: ["Monitor ASC 543", "Motherboard MZI"], branch: 'Centro'},
+      { date: new Date(2019, 0, 10), nameSeller: "Ada", components: ["Monitor ASC 543", "Motherboard ASUS 1200"], branch: 'Centro'},
+      { date: new Date(2019, 0, 12), nameSeller: "Grace", components: ["Monitor GPRS 3000", "Motherboard ASUS 1200"], branch: 'Centro'}
     ],
   
     prices: [
@@ -24,15 +26,19 @@ var shop = {
 }
 
 let priceArray = []
+let newComponentsArray = []
 
 const onloadFunction = () =>{
   let table = document.getElementById('table')
   createTable(table)
   //moreInfo()
-  setSelects()
+  setComponentsSelect('componentsSelect')
   bestSellerMonth(1, 2019)
   setSelectsFunction ('monthSelect', 'un mes', [1,2,3,4,5,6,7,8,9,10,11,12])
   setSelectsFunction ('yearSelect', 'un año', [2018, 2019])
+  setSelectsFunction ('sellersSelect', 'una vendedora', shop.sellers)
+  bestSellingComponent()
+  newSale()
 }
 
 const createTable = (container) =>{
@@ -90,9 +96,9 @@ const totalPrice = (array) =>{
   return sumPrice
 } 
 
-//select de componentes
-const setSelects = () =>{
-  let componentsSelect = document.getElementById('componentsSelect')
+//SELECT DE COMPONENTES PARA CUALQUIER SELECT
+const setComponentsSelect = (idSelect) =>{
+  let componentsSelect = document.getElementById(idSelect)
   componentsSelect.innerHTML = ''
   let firstOption = document.createElement('option')
   firstOption.innerText = 'Elija un componente'
@@ -119,7 +125,7 @@ const componentsSelectBtn = () =>{
     printQuantity = `${quantity} unidades`
   }
   print('componentsInfo', 'Cantidad vendida', printQuantity)
-  setSelects()
+  setComponentsSelect('componentsSelect')
 }
 
 //imprime en pantalla
@@ -211,7 +217,40 @@ const incomeMonth = () =>{
   }
 }
 
-//QUINTA FUNCION (huboVentas(mes,anio))
+//QUINTA FUNCION (ventasVendedora(nombre))
+//el parametro nombre lo toma del select de vendedoras
+const salesPerSeller = () =>{
+  let salesPerSellerData = document.getElementById('salesPerSellerData')
+  salesPerSellerData.innerHTML = ''
+  let sellersSelect = document.getElementById('sellersSelect')
+  let totalSales = 0
+  shop.soldItems.map(function(e){
+    if(e.nameSeller === sellersSelect.value){
+      totalSales = totalSales + totalPrice(componentsPrices(e))
+    }
+  })
+  let printTotalSales = `$${totalSales}`
+  print('salesPerSellerData', 'Vendedora seleccionada', sellersSelect.value)
+  print('salesPerSellerData', 'Ventas totales', printTotalSales)
+}
+
+//SEXTA FUNCION (componenteMasVendido())
+const bestSellingComponent = () =>{
+  let totalSales = 0
+  let maxSales = 0
+  let maxComponent
+  shop.prices.map(function(e){
+    totalSales = quantitySoldItems(e.component)
+    if(totalSales>maxSales){
+      maxSales = totalSales
+      maxComponent = e.component
+    }
+  })
+  print('bestSellingContainer', 'Componente más vendido', maxComponent)
+  print('bestSellingContainer', 'Cantidad', maxSales)
+}
+
+//SEPTIMA FUNCION (huboVentas(mes,anio))
 //los parametros los toma del select
 const isIncomeNull = (income) =>{
   let text
@@ -223,7 +262,41 @@ const isIncomeNull = (income) =>{
   return text
 }
 
+//NUEVA VENTA
+const newSale = () =>{
+  setSelectsFunction('newSeller', 'una vendedora', shop.sellers)
+  setSelectsFunction('newBranch', 'una sucursal', shop.branches)
+  setComponentsSelect('newComponent')
+}
 
+const shopDataConfirm = () =>{
+  let newSeller = document.getElementById('newSeller')
+  let showNewSeller = document.getElementById('showNewSeller')
+  showNewSeller.innerHTML = ''
+  print('showNewSeller', 'Vendedora', newSeller.value)
+  let newBranch = document.getElementById('newBranch')
+  let showNewBranch = document.getElementById('showNewBranch')
+  showNewBranch.innerHTML = ''
+  print('showNewBranch', 'Sucursal', newBranch.value)
+}
+
+const componentsDataConfirm = () =>{
+  let newComponent = document.getElementById('newComponent')
+  newComponentsArray.push(newComponent.value)
+  printSimple('showNewComponent', newComponent.value)
+}
+
+const confirmSale = () =>{
+  let newSeller = document.getElementById('newSeller')
+  let newBranch = document.getElementById('newBranch')
+  let newSoldItem = {
+    date: '',
+    nameSeller: newSeller.value,
+    components: newComponentsArray,
+    branch: newBranch.value
+  }
+  shop.soldItems.push(newSoldItem)
+}
 
 
 

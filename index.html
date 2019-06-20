@@ -11,6 +11,21 @@
 <body onload="onloadFunction()">
     <h1>Local de venta de PCs</h1>
     <a class="newSoldItem" href="#">Nueva venta</a>
+    <div class="createNewSoldItem" id="createNewSoldItem">
+        <div>
+            <select id="newSeller"> </select>
+            <select id="newBranch"></select>
+            <a href="#" id="shopDataConfirm" onclick="shopDataConfirm()">Confirmar</a>
+            <p id="showNewSeller"></p>
+            <p id="showNewBranch"></p>
+        </div>
+        <div>
+           <select id="newComponent"></select> 
+           <a href="#" id="componentsDataConfirm" onclick="componentsDataConfirm()">Confirmar</a>
+           <p id="showNewComponent"></p>
+        </div>
+        <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
+    </div>
     <table id="table">
         <thead>
             <tr>
@@ -31,12 +46,20 @@
                 <div class="dataContainer" id="componentsInfo">
                     
                 </div>
+                <div id="bestSellingContainer">
+
+                </div>
             </div>
             <div class="infoSellers">
                 <h3>Datos de las vendedoras:</h3>
                 <div class="dataContainer">
                     <p>Vendedora del mes: <span id="bestSellerMonth"></span></p> 
                     <p>Cantidad vendida: $<span id="bestSellerMoney"></span></p> 
+                    <select class="sellersSelect" id="sellersSelect"></select>
+                    <a href="#" id="sellersSelectBtn()" onclick="salesPerSeller()">Confirmar</a>
+                    <div id="salesPerSellerData">
+
+                    </div>
                 </div>
             </div> 
             <div class="infoMonth">
