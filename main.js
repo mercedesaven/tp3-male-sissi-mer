@@ -26,11 +26,11 @@ var shop = {
 
 
 
-  const listaPrecios = (p) => {local.precios.forEach ( e => {
+  const listaPrecios = (p) => {shop.prices.forEach ( e => {
     let select = document.getElementById('products')
     let option = document.createElement('option')
-    option.innerText = e.componente
-    option.value = e.precio
+    option.innerText = e.component
+    option.value = e.prices
     select.appendChild(option)
     })
   }
@@ -43,7 +43,7 @@ var shop = {
   var boton = function(){
       let listUl =  document.getElementById('valor')
       let listValue = function(){
-          listUl === componente
+          listUl === component
       } 
       containPrice.push(listValue)
   
