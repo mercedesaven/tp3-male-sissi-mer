@@ -42,6 +42,7 @@ const onloadFunction = () =>{
 }
 
 const createTable = (container) =>{
+  container.innerHTML = ''
   shop.soldItems.map(function(e){
     let row = document.createElement('tr')
     let tableDate = document.createElement('td')
@@ -213,7 +214,7 @@ const incomeMonth = () =>{
   print('infoMonthContainer', 'Año', yearSelect.value)
   printSimple('infoMonthContainer', isIncomeNull(totalIncome))
   if(totalIncome !==0){
-    print('infoMonthContainer', 'Total ventas', printIncome)
+    print('infoMonthContainer', 'Monto total', printIncome)
   }
 }
 
@@ -236,6 +237,8 @@ const salesPerSeller = () =>{
 
 //SEXTA FUNCION (componenteMasVendido())
 const bestSellingComponent = () =>{
+  let bestSellingContainer = document.getElementById('bestSellingContainer')
+  bestSellingContainer.innerHTML = ''
   let totalSales = 0
   let maxSales = 0
   let maxComponent
@@ -289,13 +292,29 @@ const componentsDataConfirm = () =>{
 const confirmSale = () =>{
   let newSeller = document.getElementById('newSeller')
   let newBranch = document.getElementById('newBranch')
+  let date = new Date()
   let newSoldItem = {
-    date: '',
+    date: date,
     nameSeller: newSeller.value,
     components: newComponentsArray,
     branch: newBranch.value
   }
-  shop.soldItems.push(newSoldItem)
+  shop.soldItems.unshift(newSoldItem)
+  createTable(table)
+  hideElement('createNewSoldItem')
+  bestSellingComponent()
+}
+
+//Muestra elementos cambiando la clase .hide por .show
+const showElement = () =>{
+  let createNewSoldItem = document.getElementById('createNewSoldItem')
+  createNewSoldItem.classList.replace('hide','show')
+}
+
+//Esconde elementos cambiando .show por .hide
+const hideElement = (elementId) =>{
+  let element = document.getElementById(elementId)
+  element.classList.replace('show','hide')
 }
 
 

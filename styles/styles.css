@@ -35,6 +35,10 @@ body {
       padding: 10px; }
     body .createNewSoldItem span {
       display: block; }
+  body .hide {
+    display: none; }
+  body .show {
+    display: block; }
   body table {
     grid-row: 4;
     grid-column: 2;
