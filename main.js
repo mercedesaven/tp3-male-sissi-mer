@@ -26,22 +26,39 @@ var local = {
 
 
 const listaPrecios = (p) => {local.precios.forEach ( e => {
-  let select = document.getElementById('monitor')
+  let select = document.getElementById('products')
   let option = document.createElement('option')
   option.innerText = e.componente
-  option.value = e.type
+  option.value = e.precio
   select.appendChild(option)
-})
+  })
 }
 
 
 
-const boton = (b) => {local.precios.forEach (e => {
-  let valorTotal = document.getElementById("valor")
-  valorTotal.InnerText = e.precio
-  
-})
-listaPrecios ()
+
+let containPrice = []
+
+var boton = function(){
+    let listUl =  document.getElementById('valor')
+    let listValue = function(){
+        listUl === componente
+    } 
+    containPrice.push(listValue)
+
+        listUl.innerHTML = ''
+    
+        printOrder();
+        console.log(listValue)
+}
+
+
+var printOrder = function(){
+    listaPrecios.map(function(item){
+        var li = document.createElement('li')
+        li.innerText = item.valor
+        listUl.appendChild(li)
+    })
 }
 
 
