@@ -32,6 +32,10 @@ var shop = {
     option.innerText = e.component
     select.appendChild(option)
     })
+
+    
+
+
   }
    
   let salesList = []
@@ -49,8 +53,32 @@ var shop = {
        }       
       
       })
-      console.log(salesList)
+      sumList()
+      
+      
 }
+
+
+countList = [1, 2, 3, 4]
+const sumList = () => {
+  count = 0 
+  salesList.forEach(e => {
+    count = count + e
+  }) 
+  return count
+}
+
+
+const confirm = function (){
+  let finalPrice = document.getElementById('totalPrice')
+   finalPrice.innerText = sumList() 
+
+  console.log(finalPrice)
+
+
+} 
+
+// sumarle un boton mas para que me de el resultado total de la suma de los elementos dentro del array.   
 
 
   
