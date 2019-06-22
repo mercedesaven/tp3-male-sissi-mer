@@ -26,37 +26,32 @@ var shop = {
 
 
 
-  const listaPrecios = (p) => {shop.prices.forEach ( e => {
+  const listPrices = () => {shop.prices.forEach ( e => {
     let select = document.getElementById('products')
     let option = document.createElement('option')
     option.innerText = e.component
-    option.value = e.prices
     select.appendChild(option)
     })
   }
-  
-  
-  
-  
-  let containPrice = []
-  
-  var boton = function(){
+   
+  let salesList = []
+  const button = function(){
+    let select = document.getElementById('products')
       let listUl =  document.getElementById('valor')
-      let listValue = function(){
-          listUl === component
-      } 
-      containPrice.push(listValue)
-  
-          listUl.innerHTML = ''
+      let li = document.createElement('li')
       
-          printOrder();
-          console.log(listValue)
-  }
-  
-  
-  var printOrder = function(){
-      listaPrecios.map(function(item){
-          var li = document.createElement('li')
-          li.innerText = item.valor
-          listUl.appendChild(li)
+      shop.prices.map(function(e){
+       if (select.value === e.component) {
+        li.innerText = e.price
+        listUl.appendChild(li)
+        salesList.push(e.price)
+        
+       }       
+      
       })
+      console.log(salesList)
+}
+
+
+  
+ 
