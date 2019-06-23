@@ -24,8 +24,7 @@ var shop = {
       { date: new Date(2019, 0, 1), nameSeller: "Ada", components: ["Monitor GPRS 3000", "Motherboard ASUS 1500"], branch: 'Centro'},
       { date: new Date(2019, 0, 2), nameSeller: "Grace", components: ["Monitor ASC 543", "Motherboard MZI"], branch: 'Centro'},
       { date: new Date(2019, 0, 10), nameSeller: "Ada", components: ["Monitor ASC 543", "Motherboard ASUS 1200"], branch: 'Centro'},
-      { date: new Date(2019, 0, 12), nameSeller: "Grace", components: ["Monitor GPRS 3000", "Motherboard ASUS 1200"], branch: 'Centro'},
-      
+      { date: new Date(2019, 0, 12), nameSeller: "Grace", components: ["Monitor GPRS 3000", "Motherboard ASUS 1200"], branch: 'Centro'}
     ],
   
     prices: [
@@ -55,6 +54,7 @@ const onloadFunction = () =>{
   setSelectsFunction ('sellersSelect', 'una vendedora', shop.sellers)
   bestSellingComponent()
   newSale()
+  setSelectsFunction('branchSelect', 'una sucursal', shop.branches)
 }
 
 const createTable = (container) =>{
@@ -331,6 +331,21 @@ const showElement = () =>{
 const hideElement = (elementId) =>{
   let element = document.getElementById(elementId)
   element.classList.replace('show','hide')
+}
+
+//ventasSucursal(sucursal)
+const totalSalesBranch = () =>{
+  let branchSelect = document.getElementById('branchSelect')
+  let infoBranchContainer = document.getElementById('infoBranchContainer')
+  infoBranchContainer.innerHTML = ''
+  let totalSales = 0
+  shop.soldItems.map(function(e){
+    if(branchSelect.value === e.branch){
+      totalSales = totalSales + totalPrice(componentsPrices(e))
+    }
+  })
+  print('infoBranchContainer', 'Sucursal', branchSelect.value)
+  print('infoBranchContainer', 'Ventas totales', `$${totalSales}`)
 }
 
 
