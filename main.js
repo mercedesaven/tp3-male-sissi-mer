@@ -55,6 +55,8 @@ const onloadFunction = () =>{
   bestSellingComponent()
   newSale()
   setSelectsFunction('branchSelect', 'una sucursal', shop.branches)
+  setSelectsFunction ('monthSelectBranch', 'un mes', [1,2,3,4,5,6,7,8,9,10,11,12])
+  setSelectsFunction ('yearSelectBranch', 'un año', [2018, 2019])
 }
 
 const createTable = (container) =>{
@@ -334,6 +336,7 @@ const hideElement = (elementId) =>{
 }
 
 //ventasSucursal(sucursal)
+//FALTA QUE ESTA FUNCION Y LA DE VENTAS POR VENDEDORA COMPARTAN FUNCION
 const totalSalesBranch = () =>{
   let branchSelect = document.getElementById('branchSelect')
   let infoBranchContainer = document.getElementById('infoBranchContainer')
@@ -347,6 +350,35 @@ const totalSalesBranch = () =>{
   print('infoBranchContainer', 'Sucursal', branchSelect.value)
   print('infoBranchContainer', 'Ventas totales', `$${totalSales}`)
 }
+
+//SucursalDelMes(mes, anio)
+//los parametros los toma de los selects
+const bestSellingBranch = () =>{
+  let monthSelect = document.getElementById('monthSelectBranch')
+  let yearSelect = document.getElementById('yearSelectBranch')
+  let totalSold = 0 //acumulador
+  let maxTotalSold = 0 //mayor de los acumuladores
+  let maxBranch = ''
+  shop.branches.map(function(branch){
+    totalSold = 0
+    shop.soldItems.map(function(e){
+      if(e.date.getMonth() == monthSelect.value -1 && e.date.getFullYear() == yearSelect.value && e.branch === branch){
+        totalSold = totalSold + totalPrice(componentsPrices(e))
+      }
+    })
+    if(totalSold > maxTotalSold){
+      maxTotalSold = totalSold
+      maxBranch = branch
+    }
+  })
+  let bestBranchContainer = document.getElementById('bestBranchContainer')
+  bestBranchContainer.innerHTML = ''
+  print('bestBranchContainer', 'Sucursal', maxBranch)
+  print('bestBranchContainer', 'Ventas totales', `$${maxTotalSold}`)
+}
+
+
+
 
 
 
