@@ -57,6 +57,7 @@ const onloadFunction = () =>{
   setSelectsFunction('branchSelect', 'una sucursal', shop.branches)
   setSelectsFunction ('monthSelectBranch', 'un mes', [1,2,3,4,5,6,7,8,9,10,11,12])
   setSelectsFunction ('yearSelectBranch', 'un año', [2018, 2019])
+  renderPerMonth()
 }
 
 const createTable = (container) =>{
@@ -132,6 +133,7 @@ const setComponentsSelect = (idSelect) =>{
 //boton que confirma el componente seleccionado
 //imprime en pantalla la informacion de esos componentes
 const componentsSelectBtn = () =>{
+  event.preventDefault()
   let componentsInfo = document.getElementById('componentsInfo')
   componentsInfo.innerHTML = ''
   print('componentsInfo', 'Componente', componentsSelect.value)
@@ -217,6 +219,7 @@ const setSelectsFunction = (idSelect, type, array) =>{
 //CUARTA FUNCION (ventasMes(mes, anio))
 //los parametros los toma de los selects en pantalla
 const incomeMonth = () =>{
+  event.preventDefault()
   let infoMonthContainer = document.getElementById('infoMonthContainer')
   infoMonthContainer.innerHTML = ''
   let monthSelect = document.getElementById('monthSelect')
@@ -239,6 +242,7 @@ const incomeMonth = () =>{
 //QUINTA FUNCION (ventasVendedora(nombre))
 //el parametro nombre lo toma del select de vendedoras
 const salesPerSeller = () =>{
+  event.preventDefault()
   let salesPerSellerData = document.getElementById('salesPerSellerData')
   salesPerSellerData.innerHTML = ''
   let sellersSelect = document.getElementById('sellersSelect')
@@ -308,6 +312,7 @@ const componentsDataConfirm = () =>{
 }
 
 const confirmSale = () =>{
+  event.preventDefault()
   let newSeller = document.getElementById('newSeller')
   let newBranch = document.getElementById('newBranch')
   let date = new Date()
@@ -338,6 +343,7 @@ const hideElement = (elementId) =>{
 //ventasSucursal(sucursal)
 //FALTA QUE ESTA FUNCION Y LA DE VENTAS POR VENDEDORA COMPARTAN FUNCION
 const totalSalesBranch = () =>{
+  event.preventDefault()
   let branchSelect = document.getElementById('branchSelect')
   let infoBranchContainer = document.getElementById('infoBranchContainer')
   infoBranchContainer.innerHTML = ''
@@ -354,6 +360,7 @@ const totalSalesBranch = () =>{
 //SucursalDelMes(mes, anio)
 //los parametros los toma de los selects
 const bestSellingBranch = () =>{
+  event.preventDefault()
   let monthSelect = document.getElementById('monthSelectBranch')
   let yearSelect = document.getElementById('yearSelectBranch')
   let totalSold = 0 //acumulador
@@ -377,6 +384,30 @@ const bestSellingBranch = () =>{
   print('bestBranchContainer', 'Ventas totales', `$${maxTotalSold}`)
 }
 
+//renderPorMes()
+const renderPerMonth = () =>{
+  let totalSalesPerMonth = document.getElementById('totalSalesPerMonth')
+  totalSalesPerMonth.innerHTML = ''
+  let totalSales0 = 0 //ventas de enero
+  let totalSales1 = 0 //ventas de febrero
+  let totalSales2 = 0 //ventas de marzo
+  shop.soldItems.forEach(function(e){
+    switch(e.date.getMonth()){
+    case 0:
+      totalSales0 = totalSales0 + totalPrice(componentsPrices(e))
+      break
+    case 1:
+      totalSales1 = totalSales1 + totalPrice(componentsPrices(e))
+      break
+    case 2:
+      totalSales2 = totalSales2 + totalPrice(componentsPrices(e))
+      break
+    }
+  })
+  print('totalSalesPerMonth', 'Ventas de enero', `$${totalSales0}`)
+  print('totalSalesPerMonth', 'Ventas de febrero', `$${totalSales1}`)
+  print('totalSalesPerMonth', 'Ventas de marzo', `$${totalSales2}`)
+}
 
 
 
