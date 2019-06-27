@@ -58,6 +58,7 @@ const onloadFunction = () =>{
   setSelectsFunction ('monthSelectBranch', 'un mes', [1,2,3,4,5,6,7,8,9,10,11,12])
   setSelectsFunction ('yearSelectBranch', 'un año', [2018, 2019])
   renderPerMonth()
+  render()
 }
 
 const createTable = (container) =>{
@@ -123,7 +124,7 @@ const setComponentsSelect = (idSelect) =>{
   let firstOption = document.createElement('option')
   firstOption.innerText = 'Elija un componente'
   componentsSelect.appendChild(firstOption)
-  shop.prices.map(function(e){
+  shop.prices.forEach(function(e){
     let componentsOption = document.createElement('option')
     componentsOption.innerText = e.component
     componentsSelect.appendChild(componentsOption)
@@ -384,7 +385,7 @@ const bestSellingBranch = () =>{
   print('bestBranchContainer', 'Ventas totales', `$${maxTotalSold}`)
 }
 
-//renderPorMes()
+//renderPorMes() con switch que no me gusta mucho
 const renderPerMonth = () =>{
   let totalSalesPerMonth = document.getElementById('totalSalesPerMonth')
   totalSalesPerMonth.innerHTML = ''
@@ -409,7 +410,86 @@ const renderPerMonth = () =>{
   print('totalSalesPerMonth', 'Ventas de marzo', `$${totalSales2}`)
 }
 
+//RENDER DESDE CERO PARA QUE APAREZCA EN PANTALLA, SIN SELECTS
+const render = () =>{
+  salesPerMonth()
+  salesPerBranch()
+  bestSellingProduct()
+  bestSellingClerk()
+}
 
+const salesPerMonth = () =>{
+  let monthFull = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+  let monthNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  let totalSales
+  monthNumber.forEach(function(month){
+    totalSales = 0
+    shop.soldItems.forEach(function(item){
+      if(item.date.getMonth() === month){
+        totalSales = totalSales + totalPrice(componentsPrices(item))
+      }
+    })
+    if(totalSales!==0){
+      print('salesPerMonth', `Total de ${monthFull[month]}`, `$${totalSales}`)
+    }
+  })
+}
+
+const salesPerBranch = () =>{
+  let totalSales
+  shop.branches.forEach(function(branch){
+    totalSales = 0
+    shop.soldItems.forEach(function(item){
+      if(item.branch === branch){
+        totalSales = totalSales + totalPrice(componentsPrices(item))
+      }
+    })
+    print('salesPerBranch', `Total de ${branch}`, `$${totalSales}`)
+  })
+}
+
+const bestSellingProduct = () =>{
+  printSimple('bestSellingProduct', maxSalesProduct())
+}
+
+//devuelve el producto mas vendido
+const maxSalesProduct = () =>{
+  let totalSales = 0
+  let maxSales = 0
+  let maxComponent = ''
+  shop.prices.forEach(function(e){
+    totalSales = quantitySoldItems(e.component)
+    if(totalSales>maxSales){
+      maxSales = totalSales
+      maxComponent = e.component
+    }
+  })
+  return maxComponent
+}
+
+const bestSellingClerk = () =>{
+  printSimple('bestSellingClerk', maxSalesClerk())
+}
+
+//devuelve la vendedora que mas ingresos genero
+const maxSalesClerk = () =>{
+  let totalSold = 0
+  let maxTotalSold = 0
+  let maxClerk = ''
+  shop.sellers.map(function(employee){
+    totalSold = 0
+    shop.soldItems.map(function(e){
+      if(e.nameSeller === employee){
+        totalSold = totalSold + totalPrice(componentsPrices(e))
+      }
+    })
+    if(totalSold > maxTotalSold){
+      maxTotalSold = totalSold
+      maxClerk = employee
+    }
+  })
+  return maxClerk
+}
 
 
 
