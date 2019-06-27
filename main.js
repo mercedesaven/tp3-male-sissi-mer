@@ -23,7 +23,7 @@ var shop = {
    
   };
 
-
+console.log(shop.sales[0].components[1])
 
 
   const listPrices = () => {shop.prices.forEach ( e => {
@@ -32,10 +32,6 @@ var shop = {
     option.innerText = e.component
     select.appendChild(option)
     })
-
-    
-
-
   }
    
   let salesList = []
@@ -79,7 +75,16 @@ const confirm = function (){
 } 
 
 // sumarle un boton mas para que me de el resultado total de la suma de los elementos dentro del array.   
-
-
+let saleComponent = [1,2,3,4,5]   
+const componetsNum = function(){
+ shop.sales.map(function(e){
+   components.map(function(c){
+     if (e.sales === c.components)
+     saleComponent.push(components[c])
+   })
+  
+    })
+    console.log(saleComponent)
+}
   
  
