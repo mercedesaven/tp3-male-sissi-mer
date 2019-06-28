@@ -61,31 +61,40 @@ const onloadFunction = () =>{
   render()
 }
 
-const createTable = (container) =>{
+const createTable = (container) => {
   container.innerHTML = ''
-  shop.soldItems.map(function(e){
+  shop.soldItems.forEach(soldItem => {
     let row = document.createElement('tr')
-    let tableDate = document.createElement('td')
-    tableDate.innerText = `${e.date.getMonth() + 1}/${e.date.getFullYear()}`
-    row.appendChild(tableDate)
-    let tableSeller = document.createElement('td')
-    tableSeller.innerText = e.nameSeller
-    row.appendChild(tableSeller)
-    let tableComponents = document.createElement('td')
-    let tableComponentsUl = document.createElement('ul')
-    e.components.map(function(item){
-      let tableComponentsLi = document.createElement('li')
-      tableComponentsLi.innerText = item
-      tableComponentsUl.appendChild(tableComponentsLi)
+    Object.keys(soldItem).forEach(function (key) {
+      let slot = document.createElement('td')
+      switch (key){
+        case 'date':
+          slot.innerText = `${soldItem[key].getDate()}/${soldItem[key].getMonth() + 1}/${soldItem[key].getFullYear()}`
+          break;
+        case 'components':
+          let ul = document.createElement('ul')
+          soldItem[key].forEach(component => {
+          let li = document.createElement('li')
+          li.innerText = component
+          ul.appendChild(li)
+          })
+          slot.appendChild(ul)
+          break;
+        default:
+          slot.innerText = soldItem[key]
+          break;
+      }
+      row.appendChild(slot)
     })
-    tableComponents.appendChild(tableComponentsUl)
-    row.appendChild(tableComponents)
-    componentsPrices(e)
-    let tablePrice = document.createElement('td')
-    tablePrice.innerText = `$${totalPrice(priceArray)}`
-    row.appendChild(tablePrice)
+    newTableSlot(row, `$${totalPrice(componentsPrices(soldItem))}`)
     container.appendChild(row)
   })
+}
+
+const newTableSlot = (container, text) => {
+  let slot = document.createElement('td')
+  slot.innerText = text
+  container.appendChild(slot)
 }
 
 //pone los nodos adentro de "Mas Info"
