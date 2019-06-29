@@ -53,20 +53,29 @@ const onloadFunctionComponents = () =>{
   //setComponentsSelect('componentsSelect')
   newSale()
   bestSellingComponent("componentsDataContainer")
-  createStandardTable("componentsTable", shop.prices)
+  let componentsArray = []
+  let quantityArray = []
+  shop.prices.map( e => {
+    componentsArray.push(e.component)
+    quantityArray.push(quantitySoldItems(e.component))
+  })
+  createStandardTable("componentsTable", componentsArray, quantityArray)
 }
 
-const createStandardTable = (containerId, array) =>{
+
+const createStandardTable = (containerId, firstColumn, secondColumn) =>{
   let container = document.getElementById(containerId)
   container.innerHTML = ""
-  array.forEach( e =>{
+  firstColumn.forEach( (e, index) =>{
     let row = document.createElement('tr')
-    Object.keys(array).forEach( key =>{
-      console.log(key)
-    })
+    let slot = document.createElement('td')
+    slot.innerText = e
+    row.appendChild(slot)
+    let secondSlot = document.createElement('td')
+    secondSlot.innerText = secondColumn[index]
+    row.appendChild(secondSlot)
+    container.appendChild(row)
   })
-
-
 }
 
 /*const onloadFunction = () =>{
