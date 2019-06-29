@@ -1,0 +1,114 @@
+a {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  margin: 0px;
+  color: #1A282F;
+}
+
+ul {
+  list-style: none;
+}
+
+header {
+  position: relative;
+  float: left;
+  width: 100%;
+  padding: 0px 5%;
+  box-sizing: border-box;
+  background-color: #006585;
+  color: #FFFFFF;
+}
+header h1 {
+  font-size: 20px;
+}
+
+.page-container {
+  padding: 20px 5%;
+}
+.page-container .breadcrumbs {
+  color: #1A282F;
+  font-size: 14px;
+  position: relative;
+  float: left;
+  width: 100%;
+  margin: 20px 0;
+}
+.page-container .modals {
+  width: 100%;
+  position: relative;
+  float: left;
+}
+.page-container .modals h1 {
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  float: left;
+}
+.page-container .modals .page-buttons-container {
+  float: right;
+}
+.page-container .modals .page-buttons-container .new-sale {
+  background-color: #006585;
+  border: 1px solid #006585;
+  border-radius: 3px;
+  color: #FFFFFF;
+  padding: 10px 28px;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+}
+.page-container .modals .page-buttons-container .new-sale:hover {
+  background-color: #FFFFFF;
+  color: #006585;
+  transition: 0.5s;
+}
+
+.stores {
+  float: left;
+  position: relative;
+  width: 100%;
+  margin: 20px 0 0px;
+}
+.stores button {
+  border: 1px solid #00B5C7;
+  border-radius: 3px;
+  color: #00B5C7;
+  padding: 10px 30px;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  margin-right: 10px;
+}
+.stores button:hover {
+  background-color: #00B5C7;
+  color: #FFFFFF;
+  transition: 0.5s;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 16px;
+}
+table td {
+  border-bottom: 1px solid #C4C4C4;
+  text-align: center;
+  padding: 5px;
+}
+table th {
+  padding: 20px 0 0 5px;
+  text-align: center;
+}
+
+/*# sourceMappingURL=table.css.map */
