@@ -48,46 +48,42 @@ const onloadFunction = () =>{
   createTable(table)
  }
 
-const onloadFunctionComponents= () =>{ 
+//FUNCION ONLOAD DEL HTML "COMPONENTES"
+const onloadFunctionComponents = () =>{ 
+  //setComponentsSelect('componentsSelect')
+  newSale()
+  bestSellingComponent("componentsDataContainer")
+  createStandardTable("componentsTable", shop.prices)
+}
+
+const createStandardTable = (containerId, array) =>{
+  let container = document.getElementById(containerId)
+  container.innerHTML = ""
+  array.forEach( e =>{
+    let row = document.createElement('tr')
+    Object.keys(array).forEach( key =>{
+      console.log(key)
+    })
+  })
+
+
+}
+
+/*const onloadFunction = () =>{
+  let table = document.getElementById('table')
+  createTable(table)
   setComponentsSelect('componentsSelect')
-  newSale()
- }
-
-const onloadFunctionSellers= () =>{ 
-
-  setSelectsFunction ('sellersSelect', 'una vendedora', shop.sellers)
-  newSale()
-
-}
-
-const onloadFunctionShop= () =>{ 
-  newSale()
-  setSelectsFunction('branchSelect', 'una sucursal', shop.branches)
-  setSelectsFunction ('monthSelectBranch', 'un mes', [1,2,3,4,5,6,7,8,9,10,11,12])
-  setSelectsFunction ('yearSelectBranch', 'un año', [2018, 2019])
- 
-}
-
-const onloadFunctionReport= () =>{ 
+  bestSellerMonth(1, 2019)
   setSelectsFunction ('monthSelect', 'un mes', [1,2,3,4,5,6,7,8,9,10,11,12])
   setSelectsFunction ('yearSelect', 'un año', [2018, 2019])
   setSelectsFunction ('sellersSelect', 'una vendedora', shop.sellers)
   bestSellingComponent()
   newSale()
-  setComponentsSelect('componentsSelect')
-  bestSellerMonth(1, 2019)
   setSelectsFunction('branchSelect', 'una sucursal', shop.branches)
   setSelectsFunction ('monthSelectBranch', 'un mes', [1,2,3,4,5,6,7,8,9,10,11,12])
   setSelectsFunction ('yearSelectBranch', 'un año', [2018, 2019])
-  renderPerMonth()
   render()
-}
-
-
-
-
-
-
+}*/
 
 const createTable = (container) => {
   container.innerHTML = ''
@@ -125,19 +121,12 @@ const newTableSlot = (container, text) => {
   container.appendChild(slot)
 }
 
-//pone los nodos adentro de "Mas Info"
-const moreInfo = (child) =>{
-  let adminInfo = document.getElementById('adminInfo')
-  console.log(adminInfo)
-  adminInfo.appendChild(child)
-}
-
-//toma una venta y pone los precios de los componentes en un array
+//toma una venta y pone los precios de los componentes en priceArray
 const componentsPrices = (soldPC) => {
   priceArray = []
-  soldPC.components.map(function(item){
-    shop.prices.map(function(e){
-      if(e.component === item){
+  soldPC.components.forEach( component => {
+    shop.prices.forEach( e => {
+      if(e.component === component){
         priceArray.push(e.price)
       }
     })
@@ -148,13 +137,13 @@ const componentsPrices = (soldPC) => {
 //toma un array de precios y calcula la suma total
 const totalPrice = (array) =>{
   let sumPrice = 0
-  array.map(function(e){
+  array.forEach( e => {
     sumPrice = sumPrice + e
   })
   return sumPrice
 } 
 
-//SELECT DE COMPONENTES PARA CUALQUIER SELECT
+//SELECT DE COMPONENTES
 const setComponentsSelect = (idSelect) =>{
   let componentsSelect = document.getElementById(idSelect)
   componentsSelect.innerHTML = ''
@@ -174,7 +163,7 @@ const componentsSelectBtn = () =>{
   event.preventDefault()
   let componentsInfo = document.getElementById('componentsInfo')
   componentsInfo.innerHTML = ''
-  print('componentsInfo', 'Componente', componentsSelect.value)
+  showOnScreen('componentsInfo', `Componente: ${componentsSelect.value}`)
   let quantity = quantitySoldItems(componentsSelect.value)
   let printQuantity
   if( quantity === 1){
@@ -183,34 +172,24 @@ const componentsSelectBtn = () =>{
   else{
     printQuantity = `${quantity} unidades`
   }
-  print('componentsInfo', 'Cantidad vendida', printQuantity)
+  showOnScreen('componentsInfo', `Cantidad vendida: ${printQuantity}`)
   setComponentsSelect('componentsSelect')
 }
 
 //imprime en pantalla
-//parametros: id del padre y texto que se quiere imprimir como dos variables distintas
-const print = (container, title, data) =>{
+const showOnScreen = (container, data) =>{
   let father = document.getElementById(container)
   let child = document.createElement('div')
-  child.innerText = `${title}: ${data}`
+  child.innerText = data
   father.appendChild(child)
-}
-
-//imprime en pantalla
-//parametros: nodo del padre y un unico texto del hijo
-const printSimple = (idContainer, text) =>{
-  let container = document.getElementById(idContainer)
-  let child = document.createElement('span')
-  child.innerText = text
-  container.appendChild(child)
 }
 
 //SEGUNDA FUNCION (cantidadVentasComponente)
 //devuelve la cantidad de veces que se vendio un componente
-const quantitySoldItems = (comp) =>{
+const quantitySoldItems = comp =>{
   counter = 0
-  shop.soldItems.map(function(e){
-    e.components.map(function(item){
+  shop.soldItems.forEach( e => {
+    e.components.forEach( item => {
       if(item === comp){
         counter = counter + 1
       }
@@ -236,8 +215,8 @@ const bestSellerMonth = (month, year) =>{
       maxSeller = employee
     }
   })
-  printSimple('bestSellerMonth', maxSeller)
-  printSimple('bestSellerMoney', maxTotalSold)
+  showOnScreen('bestSellerMonth', maxSeller)
+  showOnScreen('bestSellerMoney', maxTotalSold)
 }
 
 //funcion que genera selects de un array
@@ -268,12 +247,11 @@ const incomeMonth = () =>{
         totalIncome = totalIncome + totalPrice(componentsPrices(e))
       }
   })
-  let printIncome = `$${totalIncome}`
-  print('infoMonthContainer', 'Mes', monthSelect.value)
-  print('infoMonthContainer', 'Año', yearSelect.value)
-  printSimple('infoMonthContainer', isIncomeNull(totalIncome))
+  showOnScreen('infoMonthContainer', `Mes: ${monthSelect.value}`)
+  showOnScreen('infoMonthContainer', `Año: ${yearSelect.value}`)
+  showOnScreen('infoMonthContainer', isIncomeNull(totalIncome))
   if(totalIncome !==0){
-    print('infoMonthContainer', 'Monto total', printIncome)
+    showOnScreen('infoMonthContainer', `Monto total: $${totalIncome}`)
   }
 }
 
@@ -290,14 +268,13 @@ const salesPerSeller = () =>{
       totalSales = totalSales + totalPrice(componentsPrices(e))
     }
   })
-  let printTotalSales = `$${totalSales}`
-  print('salesPerSellerData', 'Vendedora seleccionada', sellersSelect.value)
-  print('salesPerSellerData', 'Ventas totales', printTotalSales)
+  showOnScreen('salesPerSellerData', `Vendedora seleccionada: ${sellersSelect.value}`)
+  showOnScreen('salesPerSellerData', `Ventas totales: $${totalSales}`)
 }
 
 //SEXTA FUNCION (componenteMasVendido())
-const bestSellingComponent = () =>{
-  let bestSellingContainer = document.getElementById('bestSellingContainer')
+const bestSellingComponent = (containerId) =>{
+  let bestSellingContainer = document.getElementById(containerId)
   bestSellingContainer.innerHTML = ''
   let totalSales = 0
   let maxSales = 0
@@ -309,8 +286,8 @@ const bestSellingComponent = () =>{
       maxComponent = e.component
     }
   })
-  print('bestSellingContainer', 'Componente más vendido', maxComponent)
-  print('bestSellingContainer', 'Cantidad', maxSales)
+  showOnScreen(containerId, `Componente más vendido: ${maxComponent}`)
+  showOnScreen(containerId, `Cantidad: ${maxSales}`)
 }
 
 //SEPTIMA FUNCION (huboVentas(mes,anio))
@@ -332,21 +309,10 @@ const newSale = () =>{
   setComponentsSelect('newComponent')
 }
 
-const shopDataConfirm = () =>{
-  let newSeller = document.getElementById('newSeller')
-  let showNewSeller = document.getElementById('showNewSeller')
-  showNewSeller.innerHTML = ''
-  print('showNewSeller', 'Vendedora', newSeller.value)
-  let newBranch = document.getElementById('newBranch')
-  let showNewBranch = document.getElementById('showNewBranch')
-  showNewBranch.innerHTML = ''
-  print('showNewBranch', 'Sucursal', newBranch.value)
-}
-
 const componentsDataConfirm = () =>{
   let newComponent = document.getElementById('newComponent')
   newComponentsArray.push(newComponent.value)
-  printSimple('showNewComponent', newComponent.value)
+  showOnScreen('showNewComponent', newComponent.value)
 }
 
 const confirmSale = () =>{
@@ -391,8 +357,8 @@ const totalSalesBranch = () =>{
       totalSales = totalSales + totalPrice(componentsPrices(e))
     }
   })
-  print('infoBranchContainer', 'Sucursal', branchSelect.value)
-  print('infoBranchContainer', 'Ventas totales', `$${totalSales}`)
+  showOnScreen('infoBranchContainer', `Sucursal: ${branchSelect.value}`)
+  showOnScreen('infoBranchContainer', `Ventas totales: $${totalSales}`)
 }
 
 //SucursalDelMes(mes, anio)
@@ -418,33 +384,8 @@ const bestSellingBranch = () =>{
   })
   let bestBranchContainer = document.getElementById('bestBranchContainer')
   bestBranchContainer.innerHTML = ''
-  print('bestBranchContainer', 'Sucursal', maxBranch)
-  print('bestBranchContainer', 'Ventas totales', `$${maxTotalSold}`)
-}
-
-//renderPorMes() con switch que no me gusta mucho
-const renderPerMonth = () =>{
-  let totalSalesPerMonth = document.getElementById('totalSalesPerMonth')
-  totalSalesPerMonth.innerHTML = ''
-  let totalSales0 = 0 //ventas de enero
-  let totalSales1 = 0 //ventas de febrero
-  let totalSales2 = 0 //ventas de marzo
-  shop.soldItems.forEach(function(e){
-    switch(e.date.getMonth()){
-    case 0:
-      totalSales0 = totalSales0 + totalPrice(componentsPrices(e))
-      break
-    case 1:
-      totalSales1 = totalSales1 + totalPrice(componentsPrices(e))
-      break
-    case 2:
-      totalSales2 = totalSales2 + totalPrice(componentsPrices(e))
-      break
-    }
-  })
-  print('totalSalesPerMonth', 'Ventas de enero', `$${totalSales0}`)
-  print('totalSalesPerMonth', 'Ventas de febrero', `$${totalSales1}`)
-  print('totalSalesPerMonth', 'Ventas de marzo', `$${totalSales2}`)
+  showOnScreen('bestBranchContainer', `Sucursal: ${maxBranch}`)
+  showOnScreen('bestBranchContainer', `Ventas totales: $${maxTotalSold}`)
 }
 
 //RENDER DESDE CERO PARA QUE APAREZCA EN PANTALLA, SIN SELECTS
@@ -467,7 +408,7 @@ const salesPerMonth = () =>{
       }
     })
     if(totalSales!==0){
-      print('salesPerMonth', `Total de ${monthFull[month]}`, `$${totalSales}`)
+      showOnScreen('salesPerMonth', `Total de ${monthFull[month]}: $${totalSales}`)
     }
   })
 }
@@ -481,12 +422,12 @@ const salesPerBranch = () =>{
         totalSales = totalSales + totalPrice(componentsPrices(item))
       }
     })
-    print('salesPerBranch', `Total de ${branch}`, `$${totalSales}`)
+    showOnScreen('salesPerBranch', `Total de ${branch}: $${totalSales}`)
   })
 }
 
 const bestSellingProduct = () =>{
-  printSimple('bestSellingProduct', maxSalesProduct())
+  showOnScreen('bestSellingProduct', `Producto estrella: ${maxSalesProduct()}`)
 }
 
 //devuelve el producto mas vendido
@@ -505,7 +446,7 @@ const maxSalesProduct = () =>{
 }
 
 const bestSellingClerk = () =>{
-  printSimple('bestSellingClerk', maxSalesClerk())
+  showOnScreen('bestSellingClerk', `Vendedora que más ingresos generó: ${maxSalesClerk()}`)
 }
 
 //devuelve la vendedora que mas ingresos genero
@@ -527,6 +468,3 @@ const maxSalesClerk = () =>{
   })
   return maxClerk
 }
-
-
-

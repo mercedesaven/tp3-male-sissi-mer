@@ -27,15 +27,18 @@
     </div>
 
     <div class="adminInfo" id="adminInfo">
-        <h2>Mas info</h2>
+        <h2>Información de los componentes</h2>
         <div class="infoContainer">
             <div class="infoComponents">
-                <h3>Datos de los componentes:</h3>
-                <select id="componentsSelect"></select>
-                <a href="#" id="componentsSelectBtn" onclick="componentsSelectBtn()">Confirmar</a>
-                <div class="dataContainer" id="componentsInfo">
-                    
-                </div>
+                <div id="componentsDataContainer"></div>
+                <table>
+                    <thead>
+                        <th>Componente</th>
+                        <th>Cantidad vendida</th>
+                    </thead>
+                    <tbody id="componentsTable">
+                    </tbody>
+                </table>
             </div>
     </div>            
                 
