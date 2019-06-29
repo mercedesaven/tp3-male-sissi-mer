@@ -46,20 +46,48 @@ let newComponentsArray = []
 const onloadFunction = () =>{
   let table = document.getElementById('table')
   createTable(table)
-  //moreInfo()
+ }
+
+const onloadFunctionComponents= () =>{ 
   setComponentsSelect('componentsSelect')
-  bestSellerMonth(1, 2019)
+  newSale()
+ }
+
+const onloadFunctionSellers= () =>{ 
+
+  setSelectsFunction ('sellersSelect', 'una vendedora', shop.sellers)
+  newSale()
+
+}
+
+const onloadFunctionShop= () =>{ 
+  newSale()
+  setSelectsFunction('branchSelect', 'una sucursal', shop.branches)
+  setSelectsFunction ('monthSelectBranch', 'un mes', [1,2,3,4,5,6,7,8,9,10,11,12])
+  setSelectsFunction ('yearSelectBranch', 'un año', [2018, 2019])
+ 
+}
+
+const onloadFunctionReport= () =>{ 
   setSelectsFunction ('monthSelect', 'un mes', [1,2,3,4,5,6,7,8,9,10,11,12])
   setSelectsFunction ('yearSelect', 'un año', [2018, 2019])
   setSelectsFunction ('sellersSelect', 'una vendedora', shop.sellers)
   bestSellingComponent()
   newSale()
+  setComponentsSelect('componentsSelect')
+  bestSellerMonth(1, 2019)
   setSelectsFunction('branchSelect', 'una sucursal', shop.branches)
   setSelectsFunction ('monthSelectBranch', 'un mes', [1,2,3,4,5,6,7,8,9,10,11,12])
   setSelectsFunction ('yearSelectBranch', 'un año', [2018, 2019])
   renderPerMonth()
   render()
 }
+
+
+
+
+
+
 
 const createTable = (container) => {
   container.innerHTML = ''
