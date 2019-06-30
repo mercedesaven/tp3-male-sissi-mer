@@ -46,10 +46,14 @@
                 <a href="list-ventas.html">Ver ventas</a>
             </div>
 
-            <div class="parts-sold">
-                <h3>Componentes vendidos</h3>
-                <h1>530</h1>
-                <a href="list-componentes.html">Ver componentes vendidos</a>
+                <select id="branchSelect"></select>
+                <a href="#" id="branchSelectBtn" onclick="totalSalesBranch()">Confirmar</a>
+                <div id="infoBranchContainer"></div>
+                
+            </div>
+            <div>
+                <h3>Ventas totales:</h3>
+                <ul id="totalSalesPerMonth"></ul>
             </div>
         </div>
     </div>
