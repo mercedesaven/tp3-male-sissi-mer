@@ -1,0 +1,158 @@
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  margin: 0px;
+  color: #1A282F;
+}
+
+header {
+  position: relative;
+  float: left;
+  width: 100%;
+  padding: 0px 5%;
+  box-sizing: border-box;
+  background-color: #006585;
+  color: #FFFFFF;
+}
+header h1 {
+  font-size: 20px;
+}
+
+.page-container {
+  padding: 20px 5%;
+}
+.page-container .breadcrumbs {
+  color: #1A282F;
+  font-size: 14px;
+  position: relative;
+  float: left;
+  width: 100%;
+  margin: 20px 0;
+}
+.page-container .modals {
+  width: 100%;
+  position: relative;
+  float: left;
+}
+.page-container .modals h1 {
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  float: left;
+}
+.page-container .modals .page-buttons-container {
+  float: right;
+}
+.page-container .modals .page-buttons-container .components {
+  box-sizing: border-box;
+  border-style: solid;
+  border: 1px solid #006585;
+  color: #006585;
+  border-radius: 3px;
+  padding: 10px 28px;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  margin-right: 10px;
+}
+.page-container .modals .page-buttons-container .components:hover {
+  background-color: #006585;
+  color: #FFFFFF;
+  transition: 0.5s;
+}
+.page-container .modals .page-buttons-container .new-sale {
+  background-color: #006585;
+  border: 1px solid #006585;
+  border-radius: 3px;
+  color: #FFFFFF;
+  padding: 10px 28px;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+}
+.page-container .modals .page-buttons-container .new-sale:hover {
+  background-color: #FFFFFF;
+  color: #006585;
+  transition: 0.5s;
+}
+
+.stores {
+  float: left;
+  position: relative;
+  width: 100%;
+  margin: 20px 0 0px;
+}
+.stores button {
+  border: 1px solid #00B5C7;
+  border-radius: 3px;
+  color: #00B5C7;
+  padding: 10px 30px;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  margin-right: 10px;
+}
+.stores button:hover {
+  background-color: #00B5C7;
+  color: #FFFFFF;
+  transition: 0.5s;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  float: left;
+  position: relative;
+  width: calc(100% + 80px);
+  margin-left: -40px;
+}
+.dashboard .seller-month {
+  box-sizing: border-box;
+  text-align: center;
+  margin: 40px;
+  padding: 50px;
+  border-radius: 5px;
+  flex: 1;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+.dashboard .seller-month h1 {
+  color: #C70082;
+}
+.dashboard .seller-month a {
+  color: #C70082;
+}
+.dashboard .month-sales {
+  box-sizing: border-box;
+  text-align: center;
+  margin: 40px;
+  padding: 50px;
+  border-radius: 5px;
+  flex: 1;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+.dashboard .month-sales h1 {
+  color: #EA90F2;
+}
+.dashboard .month-sales a {
+  color: #EA90F2;
+}
+.dashboard .parts-sold {
+  box-sizing: border-box;
+  text-align: center;
+  margin: 40px;
+  padding: 50px;
+  border-radius: 5px;
+  flex: 1;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+.dashboard .parts-sold h1 {
+  color: #9094F2;
+}
+.dashboard .parts-sold a {
+  color: #9094F2;
+}
+
+/*# sourceMappingURL=index.css.map */
