@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Local de PC</title>
+    <script src="main.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+<body onload="onloadFunctionShop()">
+    <h1>Local de venta de PCs</h1>
+    <a class="newSoldItem" href="#" onclick="showElement()">Nueva venta</a>
+    <div class="createNewSoldItem hide" id="createNewSoldItem">
+        <div>
+            <select id="newSeller"> </select>
+            <select id="newBranch"></select>
+            <p id="showNewSeller"></p>
+            <p id="showNewBranch"></p>
+        </div>
+        <div>
+           <select id="newComponent"></select> 
+           <a href="#" id="componentsDataConfirm" onclick="componentsDataConfirm()">Agregar componente</a>
+           <p id="showNewComponent"></p>
+        </div>
+        <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
+    </div>
+    
+    <div class="adminInfo" id="adminInfo">
+        <h2>Mas info</h2>
+        <div class="infoContainer">
+            
+            <div class="infoBranch">
+                <h3>Datos de las sucursales</h3>
+                <p>Sucursal del mes:</p>
+                <select id="monthSelectBranch"></select>
+                <select id="yearSelectBranch"></select>
+                <a href="#" onclick="bestSellingBranch()">Confirmar</a>
+                <div id="bestBranchContainer"></div>
+
+                <select id="branchSelect"></select>
+                <a href="#" id="branchSelectBtn" onclick="totalSalesBranch()">Confirmar</a>
+                <div id="infoBranchContainer"></div>
+                
+            </div>
+        </div>  
+    </div>
+</body>
+</html>
