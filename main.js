@@ -62,6 +62,11 @@ const onloadFunctionComponents = () =>{
   createStandardTable("componentsTable", components, quantityPerComponent)
 }
 
+//Onload de "reporte"
+const onloadFunctionReport = () =>{ 
+  render()
+}
+
 const createSoldItemsTable = (container) => {
   container.innerHTML = ''
   shop.soldItems.forEach(soldItem => {
@@ -175,6 +180,86 @@ const createStandardTable = (containerId, firstColumn, secondColumn) =>{
       container.appendChild(row)
     }
   })
+}
+
+const render = () =>{
+  salesPerMonth()
+  salesPerBranch()
+  bestSellingProduct()
+  bestSellingClerk()
+}
+
+const salesPerMonth = () =>{
+  let monthFull = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+  let monthNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  let totalSales
+  monthNumber.forEach(month =>{
+    totalSales = 0
+    shop.soldItems.forEach(item =>{
+      if(item.date.getMonth() === month){
+        totalSales = totalSales + totalPrice(componentsPrices(item))
+      }
+    })
+    if(totalSales!==0){
+      showOnScreen('salesPerMonth', `Total de ${monthFull[month]}: $${totalSales}`)
+    }
+  })
+}
+
+const salesPerBranch = () =>{
+  let totalSales
+  shop.branches.forEach(branch =>{
+    totalSales = 0
+    shop.soldItems.forEach(item =>{
+      if(item.branch === branch){
+        totalSales = totalSales + totalPrice(componentsPrices(item))
+      }
+    })
+    showOnScreen('salesPerBranch', `Total de ${branch}: $${totalSales}`)
+  })
+}
+
+const bestSellingProduct = () =>{
+  showOnScreen('bestSellingProduct', `Producto estrella: ${maxSalesProduct()}`)
+}
+
+//devuelve el producto mas vendido
+const maxSalesProduct = () =>{
+  let totalSales = 0
+  let maxSales = 0
+  let maxComponent = ''
+  shop.prices.forEach(e=>{
+    totalSales = quantitySoldItems(e.component)
+    if(totalSales>maxSales){
+      maxSales = totalSales
+      maxComponent = e.component
+    }
+  })
+  return maxComponent
+}
+
+const bestSellingClerk = () =>{
+  showOnScreen('bestSellingClerk', `Vendedora que más ingresos generó: ${maxSalesClerk()}`)
+}
+
+//devuelve la vendedora que mas ingresos genero
+const maxSalesClerk = () =>{
+  let totalSold = 0
+  let maxTotalSold = 0
+  let maxClerk = ''
+  shop.sellers.map(employee =>{
+    totalSold = 0
+    shop.soldItems.map(e=>{
+      if(e.nameSeller === employee){
+        totalSold = totalSold + totalPrice(componentsPrices(e))
+      }
+    })
+    if(totalSold > maxTotalSold){
+      maxTotalSold = totalSold
+      maxClerk = employee
+    }
+  })
+  return maxClerk
 }
 
 /*
