@@ -44,15 +44,74 @@ let priceArray = []
 let newComponentsArray = []
 let monthsInLetters = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 let monthsInCapitalLetters = monthsInLetters.map(e =>{
-return e.charAt(0).toUpperCase() + e.slice(1)
+  return e.charAt(0).toUpperCase() + e.slice(1)
 })
 let monthsInNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-const onloadFunction = () =>{
-let table = document.getElementById('table')
-createTable(table)
+const onloadFunctionSales = () =>{
+  let table = document.getElementById('soldItemsTable')
+  createSoldItemsTable(table)
 }
 
+const createSoldItemsTable = (container) => {
+  container.innerHTML = ''
+  shop.soldItems.forEach(soldItem => {
+    let row = document.createElement('tr')
+    Object.keys(soldItem).forEach( key => {
+      let slot = document.createElement('td')
+      switch (key){
+        case 'date':
+          slot.innerText = `${soldItem[key].getDate()}/${soldItem[key].getMonth() + 1}/${soldItem[key].getFullYear()}`
+          break;
+        case 'components':
+          let ul = document.createElement('ul')
+          soldItem[key].forEach(component => {
+          let li = document.createElement('li')
+          li.innerText = component
+          ul.appendChild(li)
+          })
+          slot.appendChild(ul)
+          break;
+        default:
+          slot.innerText = soldItem[key]
+          break;
+      }
+      row.appendChild(slot)
+    })
+    newTableSlot(row, `$${totalPrice(componentsPrices(soldItem))}`)
+    container.appendChild(row)
+  })
+}
+
+const newTableSlot = (container, text) => {
+  let slot = document.createElement('td')
+  slot.innerText = text
+  container.appendChild(slot)
+}
+
+//toma una venta y pone los precios de los componentes en un array
+const componentsPrices = soldPC => {
+  priceArray = []
+  soldPC.components.forEach(item => {
+    shop.prices.forEach( e => {
+      if(e.component === item){
+        priceArray.push(e.price)
+      }
+    })
+  })
+  return priceArray
+}
+  
+//toma un array de precios y calcula la suma total
+const totalPrice = array =>{
+  let sumPrice = 0
+  array.forEach( e => {
+    sumPrice = sumPrice + e
+  })
+  return sumPrice
+} 
+
+/*
 const onloadFunctionComponents= () =>{ 
 setComponentsSelect('componentsSelect')
 newSale()
@@ -94,41 +153,9 @@ render()
 
 
 
-const createTable = (container) => {
-container.innerHTML = ''
-shop.soldItems.forEach(soldItem => {
-  let row = document.createElement('tr')
-  Object.keys(soldItem).forEach(function (key) {
-    let slot = document.createElement('td')
-    switch (key){
-      case 'date':
-        slot.innerText = `${soldItem[key].getDate()}/${soldItem[key].getMonth() + 1}/${soldItem[key].getFullYear()}`
-        break;
-      case 'components':
-        let ul = document.createElement('ul')
-        soldItem[key].forEach(component => {
-        let li = document.createElement('li')
-        li.innerText = component
-        ul.appendChild(li)
-        })
-        slot.appendChild(ul)
-        break;
-      default:
-        slot.innerText = soldItem[key]
-        break;
-    }
-    row.appendChild(slot)
-  })
-  newTableSlot(row, `$${totalPrice(componentsPrices(soldItem))}`)
-  container.appendChild(row)
-})
-}
 
-const newTableSlot = (container, text) => {
-let slot = document.createElement('td')
-slot.innerText = text
-container.appendChild(slot)
-}
+
+
 
 //pone los nodos adentro de "Mas Info"
 const moreInfo = (child) =>{
@@ -137,27 +164,7 @@ console.log(adminInfo)
 adminInfo.appendChild(child)
 }
 
-//toma una venta y pone los precios de los componentes en un array
-const componentsPrices = (soldPC) => {
-priceArray = []
-soldPC.components.map(function(item){
-  shop.prices.map(function(e){
-    if(e.component === item){
-      priceArray.push(e.price)
-    }
-  })
-})
-return priceArray
-}
 
-//toma un array de precios y calcula la suma total
-const totalPrice = (array) =>{
-let sumPrice = 0
-array.map(function(e){
-  sumPrice = sumPrice + e
-})
-return sumPrice
-} 
 
 //SELECT DE COMPONENTES PARA CUALQUIER SELECT
 const setComponentsSelect = (idSelect) =>{
@@ -421,6 +428,7 @@ shop.branches.map(function(branch){
     maxBranch = branch
   }
 })
+
 let bestBranchContainer = document.getElementById('bestBranchContainer')
 bestBranchContainer.innerHTML = ''
 print('bestBranchContainer', 'Sucursal', maxBranch)
@@ -534,15 +542,15 @@ return maxClerk
 }
 
 const onloadFunctionBranch = () =>{ 
-let bestBranchOfMonth = monthsInNumbers.map( e => {
-  return bestSellingBranch(e, 2019)
-})
-createStandardTable('branchOfMonthTable', monthsInCapitalLetters, bestBranchOfMonth)
+  let bestBranchOfMonth = monthsInNumbers.map( e => {
+    return bestSellingBranch(e, 2019)
+  })
+  createStandardTable('branchOfMonthTable', monthsInCapitalLetters, bestBranchOfMonth)
 
-let totalSalesPerBranch = shop.branches.map(e =>{
-  return `$${totalSalesBranch(e)}`
-})
-createStandardTable('totalSalesBranchTable', shop.branches, totalSalesPerBranch)
+  let totalSalesPerBranch = shop.branches.map(e =>{
+    return `$${totalSalesBranch(e)}`
+  })
+  createStandardTable('totalSalesBranchTable', shop.branches, totalSalesPerBranch)
 }
 
 const createStandardTable = (containerId, firstColumn, secondColumn) =>{
@@ -617,5 +625,5 @@ shop.soldItems.map(e => {
   }
 })
 return totalSales
-}
+}*/
 
