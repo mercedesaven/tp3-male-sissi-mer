@@ -1,5 +1,10 @@
 @import "variables.scss";
 
+
+ul{
+  list-style: none;
+  padding: 0;
+}
 button {
   border: none;
   background: transparent;
@@ -67,6 +72,10 @@ header {
   display: none;
 }
 
+.show {
+  display: block;
+}
+
 .page-info-container {
   color: $aqua;
   font-size: 16px;
@@ -92,7 +101,7 @@ header {
     border-bottom: 2px solid $grey;
   }
   .table-content {
-    height: 300px;
+    height: 500px;
     overflow-x: auto;
     margin-top: 0px;
   }

@@ -1,3 +1,8 @@
+ul {
+  list-style: none;
+  padding: 0;
+}
+
 button {
   border: none;
   background: transparent;
@@ -69,6 +74,10 @@ header h1 {
   display: none;
 }
 
+.show {
+  display: block;
+}
+
 .page-info-container {
   color: #00B5C7;
   font-size: 16px;
@@ -94,7 +103,7 @@ header h1 {
   border-bottom: 2px solid #c4c4c4;
 }
 .table-container .table-content {
-  height: 300px;
+  height: 500px;
   overflow-x: auto;
   margin-top: 0px;
 }
