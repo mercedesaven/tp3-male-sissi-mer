@@ -1,0 +1,27 @@
+$blue: #006585;
+$black: #1A282F;
+$white:#FFFFFF;
+$purple: #C70082;
+$pink: #EA90F2;
+$lilac: #9094F2;
+$aqua: #00B5C7;
+$grey: #c4c4c4;
+$font: "Raleway", sans-serif;
+$shadow: 3px 3px 6px rgba($color: #000000, $alpha: 0.3);
+
+@mixin relative($float) {
+  position: relative;
+  float: $float;
+  width: 100%;
+}
+
+@mixin card {
+    box-sizing: border-box;
+    text-align: center;
+    margin: 40px;
+    padding: 50px;
+    border-radius: 5px;
+    flex: 1;
+    box-shadow: $shadow;
+
+}
