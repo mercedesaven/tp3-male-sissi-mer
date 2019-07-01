@@ -48,6 +48,11 @@ let monthsInCapitalLetters = monthsInLetters.map(e =>{
 })
 let monthsInNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
+//Onload de "index"
+const onloadIndex = () =>{
+  newSale()
+}
+
 //Onload de "ventas"
 const onloadFunctionSales = () =>{
   let table = document.getElementById('soldItemsTable')
@@ -346,4 +351,72 @@ const salesPerSeller = (seller) =>{
     }
   })
   return totalSales
+}
+
+//Nueva venta
+const newSale = () =>{
+  setSelectsFunction('newSeller', 'una vendedora', shop.sellers)
+  setSelectsFunction('newBranch', 'una sucursal', shop.branches)
+  setComponentsSelect('newComponent')
+}
+
+const setSelectsFunction = (idSelect, type, array) =>{
+  let select = document.getElementById(idSelect)
+  select.innerHTML = ''
+  let firstOption = document.createElement('option')
+  firstOption.innerText = `Elija ${type}`
+  select.appendChild(firstOption)
+  array.map(function(e){
+    let componentsOption = document.createElement('option')
+    componentsOption.innerText = e
+    select.appendChild(componentsOption)
+  })
+}
+
+const setComponentsSelect = (idSelect) =>{
+  let componentsSelect = document.getElementById(idSelect)
+  componentsSelect.innerHTML = ''
+  let firstOption = document.createElement('option')
+  firstOption.innerText = 'Elija un componente'
+  componentsSelect.appendChild(firstOption)
+  shop.prices.forEach(function(e){
+    let componentsOption = document.createElement('option')
+    componentsOption.innerText = e.component
+    componentsSelect.appendChild(componentsOption)
+  })
+}
+
+//Muestra elementos cambiando la clase .hide por .show
+const showElement = () =>{
+  let createNewSoldItem = document.getElementById('createNewSoldItem')
+  createNewSoldItem.classList.replace('hide','show')
+}
+
+//Esconde elementos cambiando .show por .hide
+const hideElement = (elementId) =>{
+  let element = document.getElementById(elementId)
+  element.classList.replace('show','hide')
+}
+
+const componentsDataConfirm = () =>{
+  let newComponent = document.getElementById('newComponent')
+  newComponentsArray.push(newComponent.value)
+  showOnScreen('showNewComponent', newComponent.value)
+}
+
+const confirmSale = () =>{
+  event.preventDefault()
+  let newSeller = document.getElementById('newSeller')
+  let newBranch = document.getElementById('newBranch')
+  let date = new Date()
+  let newSoldItem = {
+    date: date,
+    nameSeller: newSeller.value,
+    components: newComponentsArray,
+    branch: newBranch.value
+  }
+  shop.soldItems.unshift(newSoldItem)
+  //createSoldItemsTable(table)
+  hideElement('createNewSoldItem')
+  bestSellingComponent()
 }
