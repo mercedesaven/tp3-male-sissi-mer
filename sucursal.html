@@ -27,23 +27,31 @@
     </div>
     
     <div class="adminInfo" id="adminInfo">
-        <h2>Mas info</h2>
-        <div class="infoContainer">
-            
-            <div class="infoBranch">
-                <h3>Datos de las sucursales</h3>
-                <p>Sucursal del mes:</p>
-                <select id="monthSelectBranch"></select>
-                <select id="yearSelectBranch"></select>
-                <a href="#" onclick="bestSellingBranch()">Confirmar</a>
-                <div id="bestBranchContainer"></div>
-
-                <select id="branchSelect"></select>
-                <a href="#" id="branchSelectBtn" onclick="totalSalesBranch()">Confirmar</a>
-                <div id="infoBranchContainer"></div>
-                
+        <div class="infoBranch">
+            <h3>Datos de las sucursales</h3>
+            <div>
+                <h4>Sucursal del mes:</h4>
+                <table>
+                    <thead>
+                        <th>Mes</th>
+                        <th>Sucursal</th>
+                    </thead>
+                    <tbody id='branchOfMonthTable'>
+                    </tbody>
+                </table>
             </div>
-        </div>  
+            <div>
+                <h4>Ventas totales por sucursal:</h4>
+                <table>
+                    <thead>
+                        <th>Sucursal</th>
+                        <th>Ventas totales</th>
+                    </thead>
+                    <tbody id='totalSalesBranchTable'>
+                    </tbody>
+                </table>
+            </div>   
+        </div> 
     </div>
 </body>
 </html>
