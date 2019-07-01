@@ -48,9 +48,18 @@ let monthsInCapitalLetters = monthsInLetters.map(e =>{
 })
 let monthsInNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
+//Onload de "ventas"
 const onloadFunctionSales = () =>{
   let table = document.getElementById('soldItemsTable')
   createSoldItemsTable(table)
+}
+
+//Onload de "componentes"
+const onloadFunctionComponents = () =>{ 
+  bestSellingComponent("componentsDataContainer")
+  let components = shop.prices.map(e=>{return e.component})
+  let quantityPerComponent = shop.prices.map(e=>{return quantitySoldItems(e.component)})
+  createStandardTable("componentsTable", components, quantityPerComponent)
 }
 
 const createSoldItemsTable = (container) => {
@@ -110,6 +119,63 @@ const totalPrice = array =>{
   })
   return sumPrice
 } 
+
+//SEXTA FUNCION (componenteMasVendido())
+const bestSellingComponent = (containerId) =>{
+  let bestSellingContainer = document.getElementById(containerId)
+  bestSellingContainer.innerHTML = ''
+  let totalSales = 0
+  let maxSales = 0
+  let maxComponent
+  shop.prices.map(function(e){
+    totalSales = quantitySoldItems(e.component)
+    if(totalSales>maxSales){
+      maxSales = totalSales
+      maxComponent = e.component
+    }
+  })
+  showOnScreen(containerId, `Componente más vendido: ${maxComponent}`)
+  showOnScreen(containerId, `Cantidad: ${maxSales}`)
+}
+
+//SEGUNDA FUNCION (cantidadVentasComponente)
+//devuelve la cantidad de veces que se vendio un componente
+const quantitySoldItems = comp =>{
+  counter = 0
+  shop.soldItems.forEach( e => {
+    e.components.forEach( item => {
+      if(item === comp){
+        counter = counter + 1
+      }
+    })
+  })
+  return counter
+}
+
+//imprime en pantalla
+const showOnScreen = (container, data) =>{
+  let father = document.getElementById(container)
+  let child = document.createElement('div')
+  child.innerText = data
+  father.appendChild(child)
+}
+
+const createStandardTable = (containerId, firstColumn, secondColumn) =>{
+  let container = document.getElementById(containerId)
+  container.innerHTML = ""
+  firstColumn.forEach( (e, index) =>{
+    if (e !== '' && secondColumn[index] !== ''){
+      let row = document.createElement('tr')
+      let slot = document.createElement('td')
+      slot.innerText = e
+      row.appendChild(slot)
+      let secondSlot = document.createElement('td')
+      secondSlot.innerText = secondColumn[index]
+      row.appendChild(secondSlot)
+      container.appendChild(row)
+    }
+  })
+}
 
 /*
 const onloadFunctionComponents= () =>{ 
