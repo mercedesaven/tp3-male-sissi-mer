@@ -24,36 +24,35 @@
                 <a class="newSoldItem" href="#" onclick="showElement()">Nueva venta</a>
             </div>
         </div>
-        <!-- <div class="createNewSoldItem hide" id="createNewSoldItem">
+        <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
+    </div>
+    
+    <div class="adminInfo" id="adminInfo">
+        <div class="infoBranch">
+            <h3>Datos de las sucursales</h3>
             <div>
-                <select id="newSeller"> </select>
-                <select id="newBranch"></select>
-                <p id="showNewSeller"></p>
-                <p id="showNewBranch"></p>
+                <h4>Sucursal del mes:</h4>
+                <table>
+                    <thead>
+                        <th>Mes</th>
+                        <th>Sucursal</th>
+                    </thead>
+                    <tbody id='branchOfMonthTable'>
+                    </tbody>
+                </table>
             </div>
             <div>
-                <select id="newComponent"></select>
-                <a href="#" id="componentsDataConfirm" onclick="componentsDataConfirm()">Agregar componente</a>
-                <p id="showNewComponent"></p>
-            </div>
-            <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a> -->
-        <div class="adminInfo" id="adminInfo">
-            <div class="infoContainer">
-
-                <div class="infoBranch">
-                    <p>Sucursal del mes:</p>
-                    <select id="monthSelectBranch"></select>
-                    <select id="yearSelectBranch"></select>
-                    <a href="#" onclick="bestSellingBranch()">Confirmar</a>
-                    <div id="bestBranchContainer"></div>
-
-                    <select id="branchSelect"></select>
-                    <a href="#" id="branchSelectBtn" onclick="totalSalesBranch()">Confirmar</a>
-                    <div id="infoBranchContainer"></div>
-
-                </div>
-            </div>
-        </div>
+                <h4>Ventas totales por sucursal:</h4>
+                <table>
+                    <thead>
+                        <th>Sucursal</th>
+                        <th>Ventas totales</th>
+                    </thead>
+                    <tbody id='totalSalesBranchTable'>
+                    </tbody>
+                </table>
+            </div>   
+        </div> 
     </div>
 
 

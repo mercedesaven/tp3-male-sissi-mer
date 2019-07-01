@@ -19,11 +19,22 @@
     <div class="page-container">
         <div class="page-header">
             <h2>Dashboard</h2>
-            <div class="modals">
-                <!---hacer modal-->
-                <a class="newSoldItem" href="#" onclick="showElement()">Nueva venta</a>
+     <div class="modals">
+            <!---hacer modal-->
+            <button class="new-sale" type='button' onclick="showElement()">Nueva venta</button>
+            <div class="createNewSoldItem hide" id="createNewSoldItem">
+                <div>
+                    <select id="newSeller"> </select>
+                    <select id="newBranch"></select>
+                </div>
+                <div>
+                   <select id="newComponent"></select> 
+                   <a href="#" id="componentsDataConfirm" onclick="componentsDataConfirm()">Agregar componente</a>
+                   <p id="showNewComponent"></p>
+                </div>
+                <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
             </div>
-        </div>
+     </div>
         <div class="dashboard">
             <div class="dashboard-box">
                 <a href="vendedoras.html">

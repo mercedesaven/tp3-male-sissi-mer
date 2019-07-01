@@ -235,6 +235,7 @@ const salesPerMonth = () =>{
       showOnScreen('salesPerMonth', `Total de ${monthFull[month]}: $${totalSales}`)
     }
   })
+<<<<<<< HEAD
 }
 
 const salesPerBranch = () =>{
@@ -302,6 +303,93 @@ const bestSellingBranch = (month, year) =>{
     totalSold = 0
     shop.soldItems.map(function(e){
       if(e.date.getMonth() == month && e.date.getFullYear() == year && e.branch === branch){
+=======
+}
+
+const salesPerBranch = () =>{
+  let totalSales
+  shop.branches.forEach(branch =>{
+    totalSales = 0
+    shop.soldItems.forEach(item =>{
+      if(item.branch === branch){
+        totalSales = totalSales + totalPrice(componentsPrices(item))
+      }
+    })
+    showOnScreen('salesPerBranch', `Total de ${branch}: $${totalSales}`)
+  })
+}
+
+const bestSellingProduct = () =>{
+  showOnScreen('bestSellingProduct', `Producto estrella: ${maxSalesProduct()}`)
+}
+
+//devuelve el producto mas vendido
+const maxSalesProduct = () =>{
+  let totalSales = 0
+  let maxSales = 0
+  let maxComponent = ''
+  shop.prices.forEach(e=>{
+    totalSales = quantitySoldItems(e.component)
+    if(totalSales>maxSales){
+      maxSales = totalSales
+      maxComponent = e.component
+    }
+  })
+  return maxComponent
+}
+
+const bestSellingClerk = () =>{
+  showOnScreen('bestSellingClerk', `Vendedora que más ingresos generó: ${maxSalesClerk()}`)
+}
+
+//devuelve la vendedora que mas ingresos genero
+const maxSalesClerk = () =>{
+  let totalSold = 0
+  let maxTotalSold = 0
+  let maxClerk = ''
+  shop.sellers.map(employee =>{
+    totalSold = 0
+    shop.soldItems.map(e=>{
+      if(e.nameSeller === employee){
+>>>>>>> master
+        totalSold = totalSold + totalPrice(componentsPrices(e))
+      }
+    })
+    if(totalSold > maxTotalSold){
+      maxTotalSold = totalSold
+<<<<<<< HEAD
+      maxBranch = branch
+    }
+  })
+  return maxBranch
+}
+
+const totalSalesBranch = (branch) =>{
+  let totalSales = 0
+  shop.soldItems.map(e => {
+    if(branch === e.branch){
+      totalSales = totalSales + totalPrice(componentsPrices(e))
+    }
+  })
+  return totalSales
+}
+
+=======
+      maxClerk = employee
+    }
+  })
+  return maxClerk
+}
+
+//SucursalDelMes(mes, anio)
+const bestSellingBranch = (month, year) =>{
+  let totalSold = 0 //acumulador
+  let maxTotalSold = 0 //mayor de los acumuladores
+  let maxBranch = ''
+  shop.branches.map(function(branch){
+    totalSold = 0
+    shop.soldItems.map(function(e){
+      if(e.date.getMonth() == month && e.date.getFullYear() == year && e.branch === branch){
         totalSold = totalSold + totalPrice(componentsPrices(e))
       }
     })
@@ -323,6 +411,7 @@ const totalSalesBranch = (branch) =>{
   return totalSales
 }
 
+>>>>>>> master
 //TERCERA FUNCION (VendedoraDelMes(mes,anio))
 const bestSellingSeller = (month, year) =>{
   let totalSold = 0 //acumulador
@@ -419,4 +508,8 @@ const confirmSale = () =>{
   //createSoldItemsTable(table)
   hideElement('createNewSoldItem')
   bestSellingComponent()
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

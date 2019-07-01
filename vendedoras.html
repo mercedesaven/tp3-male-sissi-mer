@@ -40,22 +40,33 @@
                 </div>
             </div>
         </div>
-
-        <div class="adminInfo" id="adminInfo">
-
-            <div class="infoSellers">
-                <div class="dataContainer">
-                    <div class='page-info-container'>
-                        <p>Vendedora del mes (enero): <span id="bestSellerMonth"></span></p>
-                        <p>Cantidad vendida: $<span id="bestSellerMoney"></span></p>
-                    </div>
-                    <select class="sellersSelect" id="sellersSelect"></select>
-                    <a href="#" id="sellersSelectBtn()" onclick="salesPerSeller()">Confirmar</a>
-                    <div id="salesPerSellerData">
-                    </div>
-                </div>
-            </div>
-
+        <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
+    </div>
+    <div class="adminInfo">
+        <h3>Datos de las vendedoras:</h3>
+        <div>
+            <h4>Vendedora del mes:</h4>
+            <table>
+                <thead>
+                    <th>Mes</th>
+                    <th>Vendedora</th>
+                </thead>
+                <tbody id='sellerOfMonthTable'>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4>Ventas totales por vendedora:</h4>
+            <table>
+                <thead>
+                    <th>Vendedora</th>
+                    <th>Ventas totales</th>
+                </thead>
+                <tbody id='totalSalesSellerTable'>
+                </tbody>
+            </table>
+        </div> 
+    </div>
 </body>
 
 </html>
