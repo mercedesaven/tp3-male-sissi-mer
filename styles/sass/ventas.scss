@@ -95,18 +95,3 @@ header {
 .show {
   display: block;
 }
-table {
-  border-collapse: collapse;
-  width: 100%;
-  font-size: 16px;
-
-  td {
-    border-bottom: 1px solid $grey;
-    text-align: center;
-    padding: 5px
-  }
-  th {
-    padding: 20px 0 0 5px;
-    text-align: center;
-  }
-}

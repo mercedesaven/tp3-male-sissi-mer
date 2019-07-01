@@ -96,19 +96,4 @@ header h1 {
   display: block;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-  font-size: 16px;
-}
-table td {
-  border-bottom: 1px solid #c4c4c4;
-  text-align: center;
-  padding: 5px;
-}
-table th {
-  padding: 20px 0 0 5px;
-  text-align: center;
-}
-
 /*# sourceMappingURL=ventas.css.map */

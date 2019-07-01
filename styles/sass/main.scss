@@ -27,9 +27,9 @@ header {
 .page-container {
   padding: 20px 5%;
   box-sizing: border-box;
-  @include relative(left) ;
+  @include relative(left);
   .page-header {
-    @include relative(left) ;
+    @include relative(left);
     h2 {
       font-size: 20px;
       font-weight: 700;
@@ -60,5 +60,50 @@ header {
         }
       }
     }
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.page-info-container {
+  color: $aqua;
+  font-size: 16px;
+  margin: 5px 0;
+  @include relative(left);
+  div {
+    margin: 15px 0;
+  }
+}
+
+.table-container {
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  th {
+    padding: 20px 0;
+    text-align: left;
+    font-weight: 500;
+    font-size: 14px;
+    color: $black;
+    border-bottom: 2px solid $grey;
+  }
+  .table-content {
+    height: 300px;
+    overflow-x: auto;
+    margin-top: 0px;
+  }
+
+  td {
+    padding: 15px 0;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: 300;
+    font-size: 12px;
+    color: $black;
+    border-bottom: solid 1px $grey;
   }
 }

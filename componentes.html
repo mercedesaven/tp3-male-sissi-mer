@@ -1,47 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Local de PC</title>
+    <title>PC Store - Componentes</title>
     <script src="componentes.js" type="text/javascript"></script>
     <script src="main.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="styles/css/index.css">
 </head>
-<body onload="onloadFunctionComponents()">
-    <h1>Local de venta de PCs</h1>
-    <a class="newSoldItem" href="#" onclick="showElement()">Nueva venta</a>
-    <div class="createNewSoldItem hide" id="createNewSoldItem">
-        <div>
-            <select id="newSeller"> </select>
-            <select id="newBranch"></select>
-            <p id="showNewSeller"></p>
-            <p id="showNewBranch"></p>
-        </div>
-        <div>
-           <select id="newComponent"></select> 
-           <a href="#" id="componentsDataConfirm" onclick="componentsDataConfirm()">Agregar componente</a>
-           <p id="showNewComponent"></p>
-        </div>
-        <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
-    </div>
 
-    <div class="adminInfo" id="adminInfo">
-        <h2>Información de los componentes</h2>
-        <div class="infoContainer">
-            <div class="infoComponents">
-                <div id="componentsDataContainer"></div>
-                <table>
-                    <thead>
-                        <th>Componente</th>
-                        <th>Cantidad vendida</th>
-                    </thead>
-                    <tbody id="componentsTable">
-                    </tbody>
-                </table>
+<body onload="onloadFunctionComponents()">
+    <header class="header">
+        <h1>Pc store</h1>
+    </header>
+    <div class="page-container">
+        <div class="page-header">
+            <h2>Componentes vendidos</h2>
+            <div class="modals">
+                <!---hacer modal-->
+                <a class="newSoldItem" href="#" onclick="showElement()">Nueva venta</a>
             </div>
-    </div>            
-                
+        </div>
+        <div class="createNewSoldItem hide" id="createNewSoldItem">
+            <div>
+                <select id="newSeller"> </select>
+                <select id="newBranch"></select>
+                <p id="showNewSeller"></p>
+                <p id="showNewBranch"></p>
+            </div>
+            <div>
+                <select id="newComponent"></select>
+                <a href="#" id="componentsDataConfirm" onclick="componentsDataConfirm()">Agregar componente</a>
+                <p id="showNewComponent"></p>
+            </div>
+            <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
+        </div>
+
+        <div class="adminInfo" id="adminInfo">
+            <div class="infoContainer">
+                <div class="infoComponents">
+                    <div class='page-info-container' id="componentsDataContainer"></div>
+                    <div class="table-container">
+
+                        <div class="table-header">
+                            <table cellpadding="0" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Componente</th>
+                                        <th>Cantidad vendida</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="table-content">
+                            <table cellpadding="0" cellspacing="0">
+                                <tbody id="componentsTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
