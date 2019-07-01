@@ -67,6 +67,19 @@ const onloadFunctionReport = () =>{
   render()
 }
 
+//Onload de "sucursales"
+const onloadFunctionBranch = () =>{ 
+  let bestBranchOfMonth = monthsInNumbers.map( e => {
+    return bestSellingBranch(e, 2019)
+  })
+  createStandardTable('branchOfMonthTable', monthsInCapitalLetters, bestBranchOfMonth)
+
+  let totalSalesPerBranch = shop.branches.map(e =>{
+    return `$${totalSalesBranch(e)}`
+  })
+  createStandardTable('totalSalesBranchTable', shop.branches, totalSalesPerBranch)
+}
+
 const createSoldItemsTable = (container) => {
   container.innerHTML = ''
   shop.soldItems.forEach(soldItem => {
@@ -260,6 +273,36 @@ const maxSalesClerk = () =>{
     }
   })
   return maxClerk
+}
+
+//SucursalDelMes(mes, anio)
+const bestSellingBranch = (month, year) =>{
+  let totalSold = 0 //acumulador
+  let maxTotalSold = 0 //mayor de los acumuladores
+  let maxBranch = ''
+  shop.branches.map(function(branch){
+    totalSold = 0
+    shop.soldItems.map(function(e){
+      if(e.date.getMonth() == month && e.date.getFullYear() == year && e.branch === branch){
+        totalSold = totalSold + totalPrice(componentsPrices(e))
+      }
+    })
+    if(totalSold > maxTotalSold){
+      maxTotalSold = totalSold
+      maxBranch = branch
+    }
+  })
+  return maxBranch
+}
+
+const totalSalesBranch = (branch) =>{
+  let totalSales = 0
+  shop.soldItems.map(e => {
+    if(branch === e.branch){
+      totalSales = totalSales + totalPrice(componentsPrices(e))
+    }
+  })
+  return totalSales
 }
 
 /*
