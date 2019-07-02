@@ -35,14 +35,6 @@ header h1 {
   float: left;
   width: 100%;
 }
-.page-container .breadcrumbs {
-  color: #1a282f;
-  font-size: 14px;
-  position: relative;
-  float: left;
-  width: 100%;
-  margin: 20px 0;
-}
 .page-container .page-header {
   position: relative;
   float: left;
@@ -53,7 +45,7 @@ header h1 {
   font-weight: 700;
   position: relative;
   float: left;
-  margin: 8px 0 0 0;
+  margin: 13px 0 0 0;
 }
 .page-container .page-header .modals {
   position: relative;
@@ -246,80 +238,4 @@ header h1 {
   transition: 0.5s;
 }
 
-.stores {
-  float: left;
-  position: relative;
-  width: 100%;
-  margin: 20px 0 0px;
-}
-.stores button {
-  border: 1px solid #00b5c7;
-  border-radius: 3px;
-  color: #00b5c7;
-  padding: 10px 30px;
-  font-family: "Raleway", sans-serif;
-  font-size: 14px;
-  margin-right: 10px;
-}
-.stores button:hover {
-  background-color: #00b5c7;
-  color: #ffffff;
-  transition: 0.5s;
-}
-
-.dashboard {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  float: left;
-  position: relative;
-  width: calc(100% + 80px);
-  margin-left: -40px;
-}
-.dashboard .dashboard-box {
-  box-sizing: border-box;
-  text-align: center;
-  margin: 40px;
-  padding: 30px 50px;
-  border-radius: 5px;
-  flex: 1;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-}
-.dashboard .dashboard-box a {
-  text-decoration: none;
-}
-.dashboard .dashboard-box a h3 {
-  color: #c70082;
-  text-align: left;
-  font-size: 16px;
-  float: left;
-  margin: 12px 0 0 10px;
-}
-.dashboard .dashboard-box a img {
-  width: 40px;
-  float: left;
-}
-.dashboard .dashboard-box:hover {
-  transform: scale(1.1, 1.1);
-  transition-duration: 0.5s;
-}
-
-.report {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  float: left;
-  position: relative;
-  width: calc(100% + 80px);
-  margin-left: -40px;
-}
-.report .report-item {
-  margin: 10px 40px;
-  flex: 1;
-  font-size: 14px;
-}
-.report .report-item h3 {
-  color: #9094f2;
-}
-
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=ventas.css.map */

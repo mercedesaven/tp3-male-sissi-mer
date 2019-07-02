@@ -32,12 +32,10 @@ header {
   padding: 20px 5%;
   box-sizing: border-box;
   @include relative(left);
-  .breadcrumbs {
-    color: $black;
-    font-size: 14px;
-    @include relative(left);
-    margin: 20px 0;
-  }
+  .returnToHome {
+  //    @include button-secondary;
+  
+}
   .page-header {
     @include relative(left);
     h2 {
@@ -45,7 +43,7 @@ header {
       font-weight: 700;
       position: relative;
       float: left;
-      margin: 8px 0 0 0;
+      margin: 13px 0 0 0;
     }
 
     .modals {

@@ -1,6 +1,6 @@
-@import "variables.scss";
-@import "main.scss";
-
+@import "_variables.scss";
+@import "_main.scss";
+  
 
 .stores {
   float: left;
@@ -52,7 +52,8 @@
     }
     &:hover {
       transform: scale(1.1, 1.1);
-      transition-duration: 0.5s;
+      transition: 0.5s;
+      
     }
   }
 }
