@@ -87,6 +87,7 @@ const onloadFunctionBranch = () =>{
 
 //Onload de "vendedoras"
 const onloadFunctionSellers = () =>{
+  newSale()
   let bestSellerOfMonth = monthsInNumbers.map( e => {
     return bestSellingSeller(e, 2019)
   })
@@ -96,6 +97,7 @@ const onloadFunctionSellers = () =>{
     return `$${salesPerSeller(e)}`
   })
   createStandardTable('totalSalesSellerTable', shop.sellers, totalSalesPerSeller)
+
 }
 
 const createSoldItemsTable = (container) => {
