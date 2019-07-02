@@ -409,7 +409,7 @@ const createComponentsList = (text, btnId) =>{
   let componentLi = document.createElement('li')
   componentLi.innerText = text
   let deleteBtn = document.createElement('img')
-  deleteBtn.src = 'styles/images/delete.png'
+  deleteBtn.src = 'styles/images/Icon-Delete.png'
   deleteBtn.id = btnId
   deleteBtn.onclick = function(){ deleteItem(this) }
   componentLi.appendChild(deleteBtn)
@@ -426,6 +426,8 @@ const deleteItem = btn => {
 }
 
 const confirmSale = () =>{
+  let sellerOrBranchError = document.getElementById('sellerOrBranchError')
+  sellerOrBranchError.innerHTML = ''
   event.preventDefault()
   let newSeller = document.getElementById('newSeller')
   let newBranch = document.getElementById('newBranch')
@@ -436,7 +438,10 @@ const confirmSale = () =>{
     components: newComponentsArray,
     branch: newBranch.value
   }
-  shop.soldItems.unshift(newSoldItem)
+  if(newSoldItem.nameSeller !== 'Elija una vendedora' && newSoldItem.branch !== 'Elija una sucursal'){
+    shop.soldItems.unshift(newSoldItem)
+  }else{
+    showOnScreen('sellerOrBranchError', 'Verifique que ingresó una vendedora y una sucursal válida')
+  }
   console.log(shop.soldItems)
-  newComponentsArray = []
 }
