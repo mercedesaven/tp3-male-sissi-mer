@@ -398,10 +398,31 @@ const hideElement = (elementId) =>{
   element.classList.replace('show','hide')
 }
 
-const componentsDataConfirm = () =>{
+const addComponentToList = () =>{
   let newComponent = document.getElementById('newComponent')
   newComponentsArray.push(newComponent.value)
-  showOnScreen('showNewComponent', newComponent.value)
+  createComponentsList(newComponent.value, newComponentsArray.length-1)
+}
+
+const createComponentsList = (text, btnId) =>{
+  let componentUl = document.getElementById('showNewComponent')
+  let componentLi = document.createElement('li')
+  componentLi.innerText = text
+  let deleteBtn = document.createElement('img')
+  deleteBtn.src = 'styles/images/delete.png'
+  deleteBtn.id = btnId
+  deleteBtn.onclick = function(){ deleteItem(this) }
+  componentLi.appendChild(deleteBtn)
+  componentUl.appendChild(componentLi)
+}
+
+const deleteItem = btn => {
+  newComponentsArray.splice(btn.id, 1)
+  let componentUl = document.getElementById('showNewComponent')
+  componentUl.innerHTML = ''
+  newComponentsArray.forEach((e, index)=>{
+    createComponentsList(e, index)
+  })
 }
 
 const confirmSale = () =>{
@@ -416,7 +437,6 @@ const confirmSale = () =>{
     branch: newBranch.value
   }
   shop.soldItems.unshift(newSoldItem)
-  //createSoldItemsTable(table)
-  hideElement('createNewSoldItem')
-  bestSellingComponent()
+  console.log(shop.soldItems)
+  newComponentsArray = []
 }
