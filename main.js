@@ -55,12 +55,14 @@ const onloadIndex = () =>{
 
 //Onload de "ventas"
 const onloadFunctionSales = () =>{
+  newSale()
   let table = document.getElementById('soldItemsTable')
   createSoldItemsTable(table)
 }
 
 //Onload de "componentes"
 const onloadFunctionComponents = () =>{ 
+  newSale()
   bestSellingComponent("componentsDataContainer")
   let components = shop.prices.map(e=>{return e.component})
   let quantityPerComponent = shop.prices.map(e=>{return quantitySoldItems(e.component)})
@@ -74,6 +76,7 @@ const onloadFunctionReport = () =>{
 
 //Onload de "sucursales"
 const onloadFunctionBranch = () =>{ 
+  newSale()
   let bestBranchOfMonth = monthsInNumbers.map( e => {
     return bestSellingBranch(e, 2019)
   })
