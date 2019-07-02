@@ -22,8 +22,8 @@ $shadow: 3px 3px 6px
 @mixin card {
   box-sizing: border-box;
   text-align: center;
-  margin: 40px;
-  padding: 50px;
+  margin: 40px; 
+  padding: 30px 50px;
   border-radius: 5px;
   flex: 1;
   box-shadow: $shadow;
@@ -37,13 +37,31 @@ $shadow: 3px 3px 6px
   padding: 10px 28px;
   font-family: $font;
   font-size: 14px;
-  margin: 0;
   text-decoration: none;
-  position: relative;
-  float: right;
+  text-align: center;
+  box-sizing: border-box;
   &:hover {
     background-color: $white;
     color: $blue;
     transition: 0.5s;
   }
+}
+
+@mixin button-secondary {
+  background-color: $white;
+  border: 1px solid $blue;
+  color: $blue;
+  border-radius: 3px;
+  padding: 10px 28px;
+  font-family: $font;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
+  &:hover {
+    background-color: $blue;
+    color: $white;
+    transition: 0.5s;
+  }
+  
 }

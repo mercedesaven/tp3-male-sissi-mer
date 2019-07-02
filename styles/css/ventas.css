@@ -35,6 +35,14 @@ header h1 {
   float: left;
   width: 100%;
 }
+.page-container .breadcrumbs {
+  color: #1a282f;
+  font-size: 14px;
+  position: relative;
+  float: left;
+  width: 100%;
+  margin: 20px 0;
+}
 .page-container .page-header {
   position: relative;
   float: left;
@@ -59,10 +67,16 @@ header h1 {
   padding: 10px 28px;
   font-family: "Raleway", sans-serif;
   font-size: 14px;
-  margin: 0;
   text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
   position: relative;
   float: right;
+}
+.page-container .page-header .modals .newSoldItem:hover {
+  background-color: #ffffff;
+  color: #006585;
+  transition: 0.5s;
 }
 .page-container .page-header .modals .newSoldItem:hover {
   background-color: #ffffff;
@@ -90,9 +104,18 @@ header h1 {
   margin: 15px 0;
 }
 
+.table-container {
+  position: relative;
+  float: left;
+  width: 100%;
+}
 .table-container table {
   width: 100%;
   table-layout: fixed;
+}
+.table-container h4 {
+  margin: 40px 0 5px 0;
+  color: #006585;
 }
 .table-container th {
   padding: 20px 0;
@@ -103,7 +126,7 @@ header h1 {
   border-bottom: 2px solid #c4c4c4;
 }
 .table-container .table-content {
-  height: 500px;
+  max-height: 500px;
   overflow-x: auto;
   margin-top: 0px;
 }
@@ -133,16 +156,91 @@ header h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 60px 50px;
+  width: 50%;
 }
-.createNewSoldItem .modal-container a {
+.createNewSoldItem .modal-container .modal-header {
+  position: relative;
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid #006585;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+}
+.createNewSoldItem .modal-container .modal-header h3 {
+  margin: 0px;
+  padding: 0;
+  font-size: 16px;
+  color: #006585;
+  position: relative;
+  float: left;
+}
+.createNewSoldItem .modal-container .modal-header button {
+  position: relative;
+  float: right;
+  color: #c70082;
+  font-weight: 400;
+}
+.createNewSoldItem .modal-container .selects-container {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.createNewSoldItem .modal-container select {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin: 10px 0;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+  height: 40px;
+  border: 1px solid #006585;
+  color: #1a282f;
+  background-color: #ffffff;
+}
+.createNewSoldItem .modal-container .modal-buttons {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.createNewSoldItem .modal-container .modal-buttons #componentsDataConfirm {
+  background-color: #ffffff;
+  border: 1px solid #006585;
+  color: #006585;
+  border-radius: 3px;
+  padding: 10px 28px;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  width: 100%;
+  margin: 30px 0 20px 0;
+}
+.createNewSoldItem .modal-container .modal-buttons #componentsDataConfirm:hover {
+  background-color: #006585;
+  color: #ffffff;
+  transition: 0.5s;
+}
+.createNewSoldItem .modal-container .modal-buttons #confirmSale {
   background-color: #006585;
   border: 1px solid #006585;
   border-radius: 3px;
   color: #ffffff;
+  padding: 10px 28px;
   font-family: "Raleway", sans-serif;
   font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  width: 100%;
 }
-.createNewSoldItem .modal-container a:hover {
+.createNewSoldItem .modal-container .modal-buttons #confirmSale:hover {
   background-color: #ffffff;
   color: #006585;
   transition: 0.5s;

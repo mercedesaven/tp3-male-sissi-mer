@@ -17,42 +17,85 @@
         <h1>Pc store</h1>
     </header>
     <div class="page-container">
+        <div class="breadcrumbs">
+            <a class="breadcrumb-link" href="index.html">Inicio</a>
+            <span class="breadcrumb-current">
+                / Sucursales
+            </span>
+        </div>
         <div class="page-header">
             <h2>Sucursales</h2>
             <div class="modals">
-                <!---hacer modal-->
                 <a class="newSoldItem" href="#" onclick="showElement()">Nueva venta</a>
+                <div class="createNewSoldItem hide" id="createNewSoldItem">
+                    <div class="modal-container">
+                        <div class="modal-header">
+                            <h3>Nueva Venta</h3>
+                            <button>Cerrar</button>
+                        </div>
+                        <div class="selects-container">
+                            <select id="newSeller">
+                                <option value="1">sdfsdf</option>
+                            </select>
+                            <select id="newBranch"></select>
+                            <p id="showNewSeller"></p>
+                            <p id="showNewBranch"></p>
+                            <select id="newComponent"></select>
+                        </div>
+                        <div class="modal-buttons">
+                            <a href="#" id="componentsDataConfirm" onclick="componentsDataConfirm()">Agregar
+                                componente</a>
+                            <p id="showNewComponent"></p>
+                            <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
-        <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
-    </div>
-    
-    <div class="adminInfo" id="adminInfo">
-        <div class="infoBranch">
-            <h3>Datos de las sucursales</h3>
-            <div>
-                <h4>Sucursal del mes:</h4>
-                <table>
-                    <thead>
-                        <th>Mes</th>
-                        <th>Sucursal</th>
-                    </thead>
-                    <tbody id='branchOfMonthTable'>
-                    </tbody>
-                </table>
+        <div class="adminInfo"><div class="table-container">
+                <h4>Sucursal del mes</h4>
+                <div class="table-header">
+                    <table cellpadding="0" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Mes</th>
+                                <th>Sucursal</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="table-content">
+                    <table cellpadding="0" cellspacing="0">
+                        <tbody id="branchOfMonthTable">
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-                <h4>Ventas totales por sucursal:</h4>
-                <table>
-                    <thead>
-                        <th>Sucursal</th>
-                        <th>Ventas totales</th>
-                    </thead>
-                    <tbody id='totalSalesBranchTable'>
-                    </tbody>
-                </table>
-            </div>   
-        </div> 
+
+            <div class="table-container">
+
+                <h4>Ventas totales por sucursal</h4>
+                <div class="table-header">
+                    <table cellpadding="0" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Sucursal</th>
+                                <th>Ventas totales</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="table-content">
+                    <table cellpadding="0" cellspacing="0">
+                        <tbody id="totalSalesBranchTable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 

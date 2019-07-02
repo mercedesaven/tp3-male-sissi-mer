@@ -251,7 +251,7 @@ const salesPerBranch = () =>{
 }
 
 const bestSellingProduct = () =>{
-  showOnScreen('bestSellingProduct', `Producto estrella: ${maxSalesProduct()}`)
+  showOnScreen('bestSellingProduct', `${maxSalesProduct()}`)
 }
 
 //devuelve el producto mas vendido
@@ -270,7 +270,7 @@ const maxSalesProduct = () =>{
 }
 
 const bestSellingClerk = () =>{
-  showOnScreen('bestSellingClerk', `Vendedora que más ingresos generó: ${maxSalesClerk()}`)
+  showOnScreen('bestSellingClerk', `${maxSalesClerk()}`)
 }
 
 //devuelve la vendedora que mas ingresos genero

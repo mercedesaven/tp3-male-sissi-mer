@@ -12,29 +12,46 @@
     <link rel="stylesheet" type="text/css" href="styles/css/index.css">
 </head>
 
-<body onload="onloadIndex()">
+<body onload="onloadIndex(); onloadFunctionReport()">
     <header class="header">
         <h1>Pc store</h1>
     </header>
     <div class="page-container">
+        <div class="breadcrumbs">
+            <span class="breadcrumb-current">
+                Inicio
+            </span>
+        </div>
         <div class="page-header">
             <h2>Dashboard</h2>
-     <div class="modals">
-            <!---hacer modal-->
-            <button class="new-sale" type='button' onclick="showElement()">Nueva venta</button>
-            <div class="createNewSoldItem hide" id="createNewSoldItem">
-                <div>
-                    <select id="newSeller"> </select>
-                    <select id="newBranch"></select>
+            <div class="modals">
+                <a class="newSoldItem" href="#" onclick="showElement()">Nueva venta</a>
+                <div class="createNewSoldItem hide" id="createNewSoldItem">
+                    <div class="modal-container">
+                        <div class="modal-header">
+                            <h3>Nueva Venta</h3>
+                            <button>Cerrar</button>
+                        </div>
+                        <div class="selects-container">
+                            <select id="newSeller">
+                                <option value="1">sdfsdf</option>
+                            </select>
+                            <select id="newBranch"></select>
+                            <p id="showNewSeller"></p>
+                            <p id="showNewBranch"></p>
+                            <select id="newComponent"></select>
+                        </div>
+                        <div class="modal-buttons">
+                            <a href="#" id="componentsDataConfirm" onclick="componentsDataConfirm()">Agregar
+                                componente</a>
+                            <p id="showNewComponent"></p>
+                            <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
+                        </div>
+
+                    </div>
                 </div>
-                <div>
-                   <select id="newComponent"></select> 
-                   <a href="#" id="componentsDataConfirm" onclick="componentsDataConfirm()">Agregar componente</a>
-                   <p id="showNewComponent"></p>
-                </div>
-                <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
             </div>
-     </div>
+        </div>
         <div class="dashboard">
             <div class="dashboard-box">
                 <a href="vendedoras.html">
@@ -61,6 +78,32 @@
                     <img src="styles/images/shop-med.png" alt='sucursal'>
                     <h3>Sucursales</h3>
                 </a>
+            </div>
+
+        </div>
+        <div class="page-header">
+            <h2>Reporte del mes</h2>
+        </div>
+        <div class="report">
+            <div class="report-item">
+                <div id="bestSellingClerk">
+                        <h3>Vendedora del mes</h3>
+                </div>
+            </div>
+            <div class="report-item">
+                <div id="salesPerMonth">
+                    <h3>Ventas por mes</h3>
+                </div>
+            </div>
+            <div class="report-item">
+                <div id="bestSellingProduct">
+                    <h3>Producto estrella</h3>
+                </div>
+            </div>
+            <div class="report-item">
+                <div id="salesPerBranch">
+                        <h3>Ventas por sucursal</h3>
+                </div>
             </div>
         </div>
     </div>

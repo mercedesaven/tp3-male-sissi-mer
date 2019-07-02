@@ -9,23 +9,8 @@
     <link rel="stylesheet" type="text/css" href="styles/css/index.css">
 </head>
 <body onload="onloadFunctionReport()">
-    <h1>Local de venta de PCs</h1>
-    <a class="newSoldItem" href="#" onclick="showElement()">Nueva venta</a>
-    <div class="createNewSoldItem hide" id="createNewSoldItem">
-        <div>
-            <select id="newSeller"> </select>
-            <select id="newBranch"></select>
-        </div>
-        <div>
-           <select id="newComponent"></select> 
-           <a href="#" id="componentsDataConfirm" onclick="componentsDataConfirm()">Agregar componente</a>
-           <p id="showNewComponent"></p>
-        </div>
-        <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
-    </div>
-    
     <div class="adminInfo" id="adminInfo">
-        <h3 id="renderContainer">Reporte:</h3>
+        <h3 id="">Reporte:</h3>
         <div id="salesPerMonth">Ventas por mes:</div>
         <div id="salesPerBranch">Ventas por sucursal:</div>
         <div id="bestSellingProduct"></div>
