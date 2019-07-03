@@ -41,6 +41,7 @@ var shop = {
 }
 
 let priceArray = []
+let componentsArray = shop.prices.map(e=>{return e.component})
 let newComponentsArray = []
 let monthsInLetters = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 let monthsInCapitalLetters = monthsInLetters.map(e =>{
@@ -362,7 +363,7 @@ const salesPerSeller = (seller) =>{
 const newSale = () =>{
   setSelectsFunction('newSeller', 'una vendedora', shop.sellers)
   setSelectsFunction('newBranch', 'una sucursal', shop.branches)
-  setComponentsSelect('newComponent')
+  setSelectsFunction('newComponent', 'un componente', componentsArray)
 }
 
 const setSelectsFunction = (idSelect, type, array) =>{
@@ -375,19 +376,6 @@ const setSelectsFunction = (idSelect, type, array) =>{
     let componentsOption = document.createElement('option')
     componentsOption.innerText = e
     select.appendChild(componentsOption)
-  })
-}
-
-const setComponentsSelect = (idSelect) =>{
-  let componentsSelect = document.getElementById(idSelect)
-  componentsSelect.innerHTML = ''
-  let firstOption = document.createElement('option')
-  firstOption.innerText = 'Elija un componente'
-  componentsSelect.appendChild(firstOption)
-  shop.prices.forEach(function(e){
-    let componentsOption = document.createElement('option')
-    componentsOption.innerText = e.component
-    componentsSelect.appendChild(componentsOption)
   })
 }
 
