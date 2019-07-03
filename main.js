@@ -58,6 +58,7 @@ const onloadFunctionSales = () =>{
   newSale()
   let table = document.getElementById('soldItemsTable')
   createSoldItemsTable(table)
+  console.log(shop.soldItems)
 }
 
 //Onload de "componentes"
@@ -455,6 +456,8 @@ const confirmSale = () =>{
     showOnScreen('sellerOrBranchError', 'Verifique que ingresó una vendedora y una sucursal válida')
   }
   console.log(shop.soldItems)
+  //let table = document.getElementById('soldItemsTable')
+  //createSoldItemsTable(table)
 }
 
 const closeWindow = () =>{
