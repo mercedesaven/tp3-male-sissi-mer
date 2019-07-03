@@ -35,6 +35,11 @@ header h1 {
   float: left;
   width: 100%;
 }
+.page-container .returnToHome {
+  text-decoration: none;
+  font-size: 10px;
+  color: #006585;
+}
 .page-container .page-header {
   position: relative;
   float: left;

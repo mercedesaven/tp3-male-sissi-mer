@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import "_variables.scss";
 
 ul {
   list-style: none;
@@ -32,10 +32,12 @@ header {
   padding: 20px 5%;
   box-sizing: border-box;
   @include relative(left);
-  .returnToHome {
-  //    @include button-secondary;
   
-}
+.returnToHome {
+    text-decoration: none;
+    font-size: 10px;
+    color:$blue;
+  }
   .page-header {
     @include relative(left);
     h2 {
