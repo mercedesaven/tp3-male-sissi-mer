@@ -267,7 +267,7 @@ header h1 {
 .dashboard {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   float: left;
   position: relative;
   width: calc(100% + 80px);
@@ -276,11 +276,13 @@ header h1 {
 .dashboard .dashboard-box {
   box-sizing: border-box;
   text-align: center;
-  margin: 40px;
-  padding: 30px 50px;
+  margin-top: 20px;
+  padding: 15px 35px;
   border-radius: 5px;
   flex: 1;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
 }
 .dashboard .dashboard-box a {
   text-decoration: none;

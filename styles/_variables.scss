@@ -22,11 +22,14 @@ $shadow: 3px 3px 6px
 @mixin card {
   box-sizing: border-box;
   text-align: center;
-  margin: 40px; 
-  padding: 30px 50px;
+  margin-top: 20px; 
+  padding: 15px 35px;
   border-radius: 5px;
   flex: 1;
   box-shadow: $shadow;
+   display: flex;
+  flex-direction: column;
+  
 }
 
 @mixin button-primary {
