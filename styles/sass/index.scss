@@ -3,9 +3,7 @@
 
 
 .stores {
-  float: left;
-  position: relative;
-  width: 100%;
+  @include relative(left);
   margin: 20px 0 0px;
 
   button {
@@ -32,6 +30,7 @@
   position: relative;
   width: calc(100% + 80px);
   margin-left: -40px;
+  flex-wrap: wrap;
   .dashboard-box { 
     @include card;
 
@@ -59,17 +58,18 @@
 
 .report{
   display: flex;
-  flex-direction: row;
+  flex-direction: row; 
   justify-content: space-between;
   float: left;
   position: relative;
   width: calc(100% + 80px);
   margin-left: -40px;
+  flex-wrap: wrap;
   .report-item{
     margin: 10px 40px; 
     flex: 1;
     font-size: 14px;
-
+  
 
     h3{
       color: $lilac;
@@ -77,5 +77,5 @@
     }
   }
 
-
+ 
 }

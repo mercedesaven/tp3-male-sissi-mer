@@ -247,8 +247,8 @@ header h1 {
 }
 
 .stores {
-  float: left;
   position: relative;
+  float: left;
   width: 100%;
   margin: 20px 0 0px;
 }
@@ -275,6 +275,7 @@ header h1 {
   position: relative;
   width: calc(100% + 80px);
   margin-left: -40px;
+  flex-wrap: wrap;
 }
 .dashboard .dashboard-box {
   box-sizing: border-box;
@@ -312,6 +313,7 @@ header h1 {
   position: relative;
   width: calc(100% + 80px);
   margin-left: -40px;
+  flex-wrap: wrap;
 }
 .report .report-item {
   margin: 10px 40px;

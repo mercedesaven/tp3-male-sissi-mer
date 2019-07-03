@@ -230,7 +230,7 @@ const salesPerMonth = () =>{
   let monthNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
   let totalSales
   monthNumber.forEach(month =>{
-    totalSales = 0
+    totalSales = 0, 
     shop.soldItems.forEach(item =>{
       if(item.date.getMonth() === month){
         totalSales = totalSales + totalPrice(componentsPrices(item))
@@ -449,4 +449,4 @@ const confirmSale = () =>{
     showOnScreen('sellerOrBranchError', 'Verifique que ingresó una vendedora y una sucursal válida')
   }
   console.log(shop.soldItems)
-}
+} 
