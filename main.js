@@ -440,10 +440,10 @@ const confirmSale = () =>{
     components: newComponentsArray,
     branch: newBranch.value
   }
-  if(newSoldItem.nameSeller !== 'Elija una vendedora' && newSoldItem.branch !== 'Elija una sucursal'){
+  if(newSoldItem.nameSeller !== 'Elija una vendedora' && newSoldItem.branch !== 'Elija una sucursal' && newSoldItem.components.length !== 0){
     shop.soldItems.unshift(newSoldItem)
   }else{
-    showOnScreen('sellerOrBranchError', 'Verifique que ingresó una vendedora y una sucursal válida')
+    showOnScreen('sellerOrBranchError', 'Verifique que los datos ingresados sean válidos')
   }
   console.log(shop.soldItems)
   newSale()

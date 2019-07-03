@@ -51,18 +51,29 @@
             </div>
         </div>
         <div class="createNewSoldItem hide" id="createNewSoldItem">
-            <div>
-                <select id="newSeller"> </select>
-                <select id="newBranch"></select>
-                <p id="showNewSeller"></p>
-                <p id="showNewBranch"></p>
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h3>Nueva Venta</h3>
+                    <button type="button" onclick="closeWindow()">Cerrar</button>
+                </div>
+                <div class="selects-container">
+                    <select id="newSeller">
+                        <option value="1">sdfsdf</option>
+                    </select>
+                    <select id="newBranch"></select>
+                    <p id="showNewSeller"></p>
+                    <p id="showNewBranch"></p>
+                    <select id="newComponent"></select>
+                </div>
+                <div class="modal-buttons">
+                    <a href="#" id="componentsDataConfirm" onclick="addComponentToList()">Agregar
+                        componente</a>
+                    <p id="chosenComponentError" id="chosenComponentError"></p>
+                    <p id="showNewComponent"></p>
+                    <a href='#' id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
+                    <p class="sellerOrBranchError" id="sellerOrBranchError"></p>
+                </div>
             </div>
-            <div>
-                <select id="newComponent"></select>
-                <a href="#" id="componentsDataConfirm" onclick="componentsDataConfirm()">Agregar componente</a>
-                <p id="showNewComponent"></p>
-            </div>
-            <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
         </div>
 
         <div class="adminInfo" id="adminInfo">
