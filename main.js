@@ -456,3 +456,7 @@ const confirmSale = () =>{
   }
   console.log(shop.soldItems)
 }
+
+const closeWindow = () =>{
+  hideElement('createNewSoldItem')
+}
