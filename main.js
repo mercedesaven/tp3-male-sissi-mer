@@ -55,12 +55,14 @@ const onloadIndex = () =>{
 
 //Onload de "ventas"
 const onloadFunctionSales = () =>{
+  newSale()
   let table = document.getElementById('soldItemsTable')
   createSoldItemsTable(table)
 }
 
 //Onload de "componentes"
 const onloadFunctionComponents = () =>{ 
+  newSale()
   bestSellingComponent("componentsDataContainer")
   let components = shop.prices.map(e=>{return e.component})
   let quantityPerComponent = shop.prices.map(e=>{return quantitySoldItems(e.component)})
@@ -74,6 +76,7 @@ const onloadFunctionReport = () =>{
 
 //Onload de "sucursales"
 const onloadFunctionBranch = () =>{ 
+  newSale()
   let bestBranchOfMonth = monthsInNumbers.map( e => {
     return bestSellingBranch(e, 2019)
   })
@@ -87,6 +90,7 @@ const onloadFunctionBranch = () =>{
 
 //Onload de "vendedoras"
 const onloadFunctionSellers = () =>{
+  newSale()
   let bestSellerOfMonth = monthsInNumbers.map( e => {
     return bestSellingSeller(e, 2019)
   })
@@ -96,6 +100,7 @@ const onloadFunctionSellers = () =>{
     return `$${salesPerSeller(e)}`
   })
   createStandardTable('totalSalesSellerTable', shop.sellers, totalSalesPerSeller)
+
 }
 
 const createSoldItemsTable = (container) => {
@@ -399,9 +404,15 @@ const hideElement = (elementId) =>{
 }
 
 const addComponentToList = () =>{
+  let chosenComponentError = document.getElementById('chosenComponentError')
+  chosenComponentError.innerHTML = ''
   let newComponent = document.getElementById('newComponent')
-  newComponentsArray.push(newComponent.value)
-  createComponentsList(newComponent.value, newComponentsArray.length-1)
+  if(newComponent.value === 'Elija un componente'){
+    showOnScreen('chosenComponentError', 'Elija un componente válido')
+  }else{
+    newComponentsArray.push(newComponent.value)
+    createComponentsList(newComponent.value, newComponentsArray.length-1)
+  }
 }
 
 const createComponentsList = (text, btnId) =>{
@@ -409,7 +420,7 @@ const createComponentsList = (text, btnId) =>{
   let componentLi = document.createElement('li')
   componentLi.innerText = text
   let deleteBtn = document.createElement('img')
-  deleteBtn.src = 'styles/images/delete.png'
+  deleteBtn.src = 'styles/images/Icon-Delete.png'
   deleteBtn.id = btnId
   deleteBtn.onclick = function(){ deleteItem(this) }
   componentLi.appendChild(deleteBtn)
@@ -426,6 +437,8 @@ const deleteItem = btn => {
 }
 
 const confirmSale = () =>{
+  let sellerOrBranchError = document.getElementById('sellerOrBranchError')
+  sellerOrBranchError.innerHTML = ''
   event.preventDefault()
   let newSeller = document.getElementById('newSeller')
   let newBranch = document.getElementById('newBranch')
@@ -436,7 +449,14 @@ const confirmSale = () =>{
     components: newComponentsArray,
     branch: newBranch.value
   }
-  shop.soldItems.unshift(newSoldItem)
+  if(newSoldItem.nameSeller !== 'Elija una vendedora' && newSoldItem.branch !== 'Elija una sucursal'){
+    shop.soldItems.unshift(newSoldItem)
+  }else{
+    showOnScreen('sellerOrBranchError', 'Verifique que ingresó una vendedora y una sucursal válida')
+  }
   console.log(shop.soldItems)
-  newComponentsArray = []
+}
+
+const closeWindow = () =>{
+  hideElement('createNewSoldItem')
 }
