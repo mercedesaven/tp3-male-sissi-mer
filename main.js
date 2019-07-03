@@ -361,6 +361,9 @@ const salesPerSeller = (seller) =>{
 
 //Nueva venta
 const newSale = () =>{
+  newComponentsArray = []
+  let showNewComponent = document.getElementById('showNewComponent')
+  showNewComponent.innerHTML = ''
   setSelectsFunction('newSeller', 'una vendedora', shop.sellers)
   setSelectsFunction('newBranch', 'una sucursal', shop.branches)
   setSelectsFunction('newComponent', 'un componente', componentsArray)
@@ -443,6 +446,7 @@ const confirmSale = () =>{
     showOnScreen('sellerOrBranchError', 'Verifique que ingresó una vendedora y una sucursal válida')
   }
   console.log(shop.soldItems)
+  newSale()
 }
 
 const closeWindow = () =>{
