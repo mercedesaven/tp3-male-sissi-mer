@@ -41,6 +41,7 @@ var shop = {
 }
 
 let priceArray = []
+let componentsArray = shop.prices.map(e=>{return e.component})
 let newComponentsArray = []
 let monthsInLetters = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 let monthsInCapitalLetters = monthsInLetters.map(e =>{
@@ -360,9 +361,12 @@ const salesPerSeller = (seller) =>{
 
 //Nueva venta
 const newSale = () =>{
+  newComponentsArray = []
+  let showNewComponent = document.getElementById('showNewComponent')
+  showNewComponent.innerHTML = ''
   setSelectsFunction('newSeller', 'una vendedora', shop.sellers)
   setSelectsFunction('newBranch', 'una sucursal', shop.branches)
-  setComponentsSelect('newComponent')
+  setSelectsFunction('newComponent', 'un componente', componentsArray)
 }
 
 const setSelectsFunction = (idSelect, type, array) =>{
@@ -375,19 +379,6 @@ const setSelectsFunction = (idSelect, type, array) =>{
     let componentsOption = document.createElement('option')
     componentsOption.innerText = e
     select.appendChild(componentsOption)
-  })
-}
-
-const setComponentsSelect = (idSelect) =>{
-  let componentsSelect = document.getElementById(idSelect)
-  componentsSelect.innerHTML = ''
-  let firstOption = document.createElement('option')
-  firstOption.innerText = 'Elija un componente'
-  componentsSelect.appendChild(firstOption)
-  shop.prices.forEach(function(e){
-    let componentsOption = document.createElement('option')
-    componentsOption.innerText = e.component
-    componentsSelect.appendChild(componentsOption)
   })
 }
 
@@ -449,12 +440,13 @@ const confirmSale = () =>{
     components: newComponentsArray,
     branch: newBranch.value
   }
-  if(newSoldItem.nameSeller !== 'Elija una vendedora' && newSoldItem.branch !== 'Elija una sucursal'){
+  if(newSoldItem.nameSeller !== 'Elija una vendedora' && newSoldItem.branch !== 'Elija una sucursal' && newSoldItem.components.length !== 0){
     shop.soldItems.unshift(newSoldItem)
   }else{
-    showOnScreen('sellerOrBranchError', 'Verifique que ingresó una vendedora y una sucursal válida')
+    showOnScreen('sellerOrBranchError', 'Verifique que los datos ingresados sean válidos')
   }
   console.log(shop.soldItems)
+  newSale()
 }
 
 const closeWindow = () =>{
