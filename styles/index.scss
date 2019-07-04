@@ -80,3 +80,11 @@
 
 
 }
+
+.sellerOrBranchError, .chosenComponentError{
+  color: red;
+  font-weight:bold;
+  display: block;
+  clear: both;
+}
+
