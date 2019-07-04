@@ -35,13 +35,10 @@ header h1 {
   float: left;
   width: 100%;
 }
-.page-container .breadcrumbs {
-  color: #1a282f;
-  font-size: 14px;
-  position: relative;
-  float: left;
-  width: 100%;
-  margin: 20px 0;
+.page-container .returnToHome {
+  text-decoration: none;
+  font-size: 10px;
+  color: #006585;
 }
 .page-container .page-header {
   position: relative;
@@ -53,7 +50,7 @@ header h1 {
   font-weight: 700;
   position: relative;
   float: left;
-  margin: 8px 0 0 0;
+  margin: 13px 0 0 0;
 }
 .page-container .page-header .modals {
   position: relative;
@@ -302,7 +299,7 @@ header h1 {
 }
 .dashboard .dashboard-box:hover {
   transform: scale(1.1, 1.1);
-  transition-duration: 0.5s;
+  transition: 0.5s;
 }
 
 .report {

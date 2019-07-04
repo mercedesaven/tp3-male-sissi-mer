@@ -1,6 +1,6 @@
 var shop = {
   branches: ["Centro", "Caballito"],
-
+ 
   sellers: ["Ada", "Grace", "Hedy", "Sheryl"],
 
   soldItems: [
@@ -404,9 +404,15 @@ const hideElement = (elementId) =>{
 }
 
 const addComponentToList = () =>{
+  let chosenComponentError = document.getElementById('chosenComponentError')
+  chosenComponentError.innerHTML = ''
   let newComponent = document.getElementById('newComponent')
-  newComponentsArray.push(newComponent.value)
-  createComponentsList(newComponent.value, newComponentsArray.length-1)
+  if(newComponent.value === 'Elija un componente'){
+    showOnScreen('chosenComponentError', 'Elija un componente válido')
+  }else{
+    newComponentsArray.push(newComponent.value)
+    createComponentsList(newComponent.value, newComponentsArray.length-1)
+  }
 }
 
 const createComponentsList = (text, btnId) =>{
@@ -449,4 +455,8 @@ const confirmSale = () =>{
     showOnScreen('sellerOrBranchError', 'Verifique que ingresó una vendedora y una sucursal válida')
   }
   console.log(shop.soldItems)
-} 
+}
+
+const closeWindow = () =>{
+  hideElement('createNewSoldItem')
+}

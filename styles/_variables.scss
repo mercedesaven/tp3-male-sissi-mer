@@ -18,7 +18,7 @@ $shadow: 3px 3px 6px
   float: $float;
   width: 100%;
 }
-
+ 
 @mixin card {
   box-sizing: border-box;
   text-align: center;
@@ -43,7 +43,7 @@ $shadow: 3px 3px 6px
   &:hover {
     background-color: $white;
     color: $blue;
-    transition: 0.5s;
+    transition: 0.5s;  
   }
 }
 

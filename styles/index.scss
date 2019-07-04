@@ -1,6 +1,6 @@
-@import "variables.scss";
-@import "main.scss";
-
+@import "_variables.scss";
+@import "_main.scss";
+  
 
 .stores {
   @include relative(left);
@@ -24,10 +24,6 @@
 
 .dashboard {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  float: left;
-  position: relative;
   width: calc(100% + 80px);
   margin-left: -40px;
   flex-wrap: wrap;
@@ -51,17 +47,14 @@
     }
     &:hover {
       transform: scale(1.1, 1.1);
-      transition-duration: 0.5s;
+      transition: 0.5s;
+      
     }
   }
 }
 
 .report{
   display: flex;
-  flex-direction: row; 
-  justify-content: space-between;
-  float: left;
-  position: relative;
   width: calc(100% + 80px);
   margin-left: -40px;
   flex-wrap: wrap;
@@ -77,5 +70,5 @@
     }
   }
 
- 
+  
 }
