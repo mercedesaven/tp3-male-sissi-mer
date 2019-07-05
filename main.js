@@ -78,28 +78,20 @@ const onloadFunctionReport = () =>{
 //Onload de "sucursales"
 const onloadFunctionBranch = () =>{ 
   newSale()
-  let bestBranchOfMonth = monthsInNumbers.map( e => {
-    return bestSellingBranch(e, 2019)
-  })
+  let bestBranchOfMonth = monthsInNumbers.map( e => {return bestSellingBranch(e, 2019)})
   createStandardTable('branchOfMonthTable', monthsInCapitalLetters, bestBranchOfMonth)
 
-  let totalSalesPerBranch = shop.branches.map(e =>{
-    return `$${totalSalesBranch(e)}`
-  })
+  let totalSalesPerBranch = shop.branches.map(e =>{return `$${totalSalesBranch(e)}`})
   createStandardTable('totalSalesBranchTable', shop.branches, totalSalesPerBranch)
 }
 
 //Onload de "vendedoras"
 const onloadFunctionSellers = () =>{
   newSale()
-  let bestSellerOfMonth = monthsInNumbers.map( e => {
-    return bestSellingSeller(e, 2019)
-  })
+  let bestSellerOfMonth = monthsInNumbers.map( e => {return bestSellingSeller(e, 2019)})
   createStandardTable('sellerOfMonthTable', monthsInCapitalLetters, bestSellerOfMonth)
 
-  let totalSalesPerSeller = shop.sellers.map(e =>{
-    return `$${salesPerSeller(e)}`
-  })
+  let totalSalesPerSeller = shop.sellers.map(e =>{return `$${salesPerSeller(e)}`})
   createStandardTable('totalSalesSellerTable', shop.sellers, totalSalesPerSeller)
 
 }
@@ -161,7 +153,7 @@ const totalPrice = array =>{
   return sumPrice
 } 
 
-//SEXTA FUNCION (componenteMasVendido())
+//componenteMasVendido()
 const bestSellingComponent = (containerId) =>{
   let bestSellingContainer = document.getElementById(containerId)
   bestSellingContainer.innerHTML = ''
@@ -179,7 +171,7 @@ const bestSellingComponent = (containerId) =>{
   showOnScreen(containerId, `Cantidad: ${maxSales}`)
 }
 
-//SEGUNDA FUNCION (cantidadVentasComponente)
+//cantidadVentasComponente()
 //devuelve la cantidad de veces que se vendio un componente
 const quantitySoldItems = comp =>{
   counter = 0
@@ -304,9 +296,9 @@ const bestSellingBranch = (month, year) =>{
   let totalSold = 0 //acumulador
   let maxTotalSold = 0 //mayor de los acumuladores
   let maxBranch = ''
-  shop.branches.map(function(branch){
+  shop.branches.map(branch =>{
     totalSold = 0
-    shop.soldItems.map(function(e){
+    shop.soldItems.map(e=>{
       if(e.date.getMonth() == month && e.date.getFullYear() == year && e.branch === branch){
         totalSold = totalSold + totalPrice(componentsPrices(e))
       }
@@ -334,9 +326,9 @@ const bestSellingSeller = (month, year) =>{
   let totalSold = 0 //acumulador
   let maxTotalSold = 0 //mayor de los acumuladores
   let maxSeller = ''
-  shop.sellers.map(function(employee){
+  shop.sellers.map(employee =>{
     totalSold = 0
-    shop.soldItems.map(function(e){
+    shop.soldItems.map(e =>{
       if(e.date.getMonth() === month && e.date.getFullYear() === year && e.nameSeller === employee){
         totalSold = totalSold + totalPrice(componentsPrices(e))
       }
@@ -351,7 +343,7 @@ const bestSellingSeller = (month, year) =>{
 
 const salesPerSeller = (seller) =>{
   let totalSales = 0
-  shop.soldItems.map(function(e){
+  shop.soldItems.map(e=>{
     if(e.nameSeller === seller){
       totalSales = totalSales + totalPrice(componentsPrices(e))
     }
