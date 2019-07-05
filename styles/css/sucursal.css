@@ -3,6 +3,10 @@ ul {
   padding: 0;
 }
 
+a {
+  cursor: pointer;
+}
+
 ::selection {
   color: #ea90f2;
 }
@@ -40,6 +44,7 @@ header a h1 {
   padding: 20px 5%;
   box-sizing: border-box;
   overflow: hidden;
+  width: 100%;
 }
 .page-container .returnToHome {
   text-decoration: none;
