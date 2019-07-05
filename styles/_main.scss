@@ -5,6 +5,9 @@ ul {
   padding: 0;
 }
 
+a{
+  cursor: pointer;
+}
 
 ::selection {
   color: $pink;
@@ -29,6 +32,7 @@ header {
   box-sizing: border-box;
   background-color: $blue;
   a {
+    text-decoration: none;
     h1 {
       font-size: 20px;
       color: $white;
@@ -40,6 +44,8 @@ header {
   float: left;
   padding: 20px 5%;
   box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
   .returnToHome {
     text-decoration: none;
     font-size: 10px;
@@ -156,6 +162,7 @@ header {
         float: right;
         color: $purple;
         font-weight: 400;
+        font-family: $font;
       }
     }
     .selects-container {
@@ -191,7 +198,7 @@ header {
       }
     }
   }
-}
+} 
 
 @media screen and (max-width: 768px) {
   .table-header {

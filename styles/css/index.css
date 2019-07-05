@@ -3,6 +3,10 @@ ul {
   padding: 0;
 }
 
+a {
+  cursor: pointer;
+}
+
 ::selection {
   color: #ea90f2;
 }
@@ -27,6 +31,9 @@ header {
   box-sizing: border-box;
   background-color: #006585;
 }
+header a {
+  text-decoration: none;
+}
 header a h1 {
   font-size: 20px;
   color: #ffffff;
@@ -36,6 +43,8 @@ header a h1 {
   float: left;
   padding: 20px 5%;
   box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
 }
 .page-container .returnToHome {
   text-decoration: none;
@@ -179,6 +188,7 @@ header a h1 {
   float: right;
   color: #c70082;
   font-weight: 400;
+  font-family: "Raleway", sans-serif;
 }
 .createNewSoldItem .modal-container .selects-container {
   position: relative;
@@ -279,14 +289,16 @@ header a h1 {
 
 .dashboard {
   display: flex;
-  width: calc(100% + 80px);
-  margin-left: -40px;
+  position: relative;
+  float: left;
+  width: calc(100% + 40px);
   flex-wrap: wrap;
+  margin: 10px 0 10px -20px;
 }
 .dashboard .dashboard-box {
   box-sizing: border-box;
   text-align: center;
-  margin: 40px;
+  margin: 20px;
   padding: 30px 50px;
   border-radius: 5px;
   flex: 1;
@@ -321,9 +333,22 @@ header a h1 {
   margin: 10px 40px;
   flex: 1;
   font-size: 14px;
+  min-width: 200px;
 }
 .report .report-item h3 {
   color: #9094f2;
+}
+
+@media screen and (max-width: 1420px) and (min-width: 428px) {
+  .dashboard .dashboard-box a img {
+    float: none;
+    margin: 0 auto;
+  }
+  .dashboard .dashboard-box a h3 {
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

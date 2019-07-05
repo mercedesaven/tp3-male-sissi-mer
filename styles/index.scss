@@ -22,9 +22,11 @@
 
 .dashboard {
   display: flex;
-  width: calc(100% + 80px);
-  margin-left: -40px;
+  position: relative;
+  float: left;
+  width: calc(100% + 40px);
   flex-wrap: wrap;
+  margin: 10px 0 10px -20px;
   .dashboard-box {
     @include card;
     a {
@@ -57,9 +59,30 @@
     margin: 10px 40px;
     flex: 1;
     font-size: 14px;
+    min-width: 200px;
     h3 {
       color: $lilac;
     }
   }  
+}
+
+ 
+
+@media screen and (max-width: 1420px) and (min-width: 428px) {
+  .dashboard{
+    .dashboard-box{
+      a{
+        img{
+          float: none;
+          margin: 0 auto;
+        }
+        h3{
+          width: 100%;
+          text-align: center;
+          margin: 1rem 0;
+        }
+      }
+    }
+  }
 }
 

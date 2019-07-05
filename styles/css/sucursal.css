@@ -27,6 +27,9 @@ header {
   box-sizing: border-box;
   background-color: #006585;
 }
+header a {
+  text-decoration: none;
+}
 header a h1 {
   font-size: 20px;
   color: #ffffff;
@@ -36,6 +39,7 @@ header a h1 {
   float: left;
   padding: 20px 5%;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .page-container .returnToHome {
   text-decoration: none;
@@ -179,6 +183,7 @@ header a h1 {
   float: right;
   color: #c70082;
   font-weight: 400;
+  font-family: "Raleway", sans-serif;
 }
 .createNewSoldItem .modal-container .selects-container {
   position: relative;
