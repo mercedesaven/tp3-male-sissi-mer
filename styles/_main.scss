@@ -4,6 +4,14 @@ ul {
   list-style: none;
   padding: 0;
 }
+
+a{
+  cursor: pointer;
+}
+
+::selection {
+  color: $pink;
+}
 button {
   border: none;
   background: transparent;
@@ -23,20 +31,25 @@ header {
   padding: 0px 5%;
   box-sizing: border-box;
   background-color: $blue;
-  color: $white;
-  h1 {
-    font-size: 20px;
+  a {
+    text-decoration: none;
+    h1 {
+      font-size: 20px;
+      color: $white;
+    }
   }
 }
+
 .page-container {
+  float: left;
   padding: 20px 5%;
   box-sizing: border-box;
-  @include relative(left);
-  
-.returnToHome {
+  overflow: hidden;
+  width: 100%;
+  .returnToHome {
     text-decoration: none;
     font-size: 10px;
-    color:$blue;
+    color: $blue;
   }
   .page-header {
     @include relative(left);
@@ -47,7 +60,6 @@ header {
       float: left;
       margin: 13px 0 0 0;
     }
-
     .modals {
       position: relative;
       float: right;
@@ -68,11 +80,9 @@ header {
 .hide {
   display: none;
 }
-
 .show {
   display: block;
 }
-
 .page-info-container {
   color: $aqua;
   font-size: 16px;
@@ -85,16 +95,14 @@ header {
 
 .table-container {
   @include relative(left);
-
   table {
     width: 100%;
     table-layout: fixed;
   }
-  h4{
+  h4 {
     margin: 40px 0 5px 0;
     color: $blue;
   }
-
   th {
     padding: 20px 0;
     text-align: left;
@@ -108,7 +116,6 @@ header {
     overflow-x: auto;
     margin-top: 0px;
   }
-
   td {
     padding: 15px 0;
     text-align: left;
@@ -128,7 +135,6 @@ header {
   left: 0;
   top: 0;
   z-index: 99;
-
   .modal-container {
     box-sizing: border-box;
     background-color: $white;
@@ -138,7 +144,6 @@ header {
     transform: translate(-50%, -50%);
     padding: 60px 50px;
     width: 50%;
-
     .modal-header {
       @include relative(left);
       border-bottom: 1px solid $blue;
@@ -157,16 +162,16 @@ header {
         float: right;
         color: $purple;
         font-weight: 400;
+        font-family: $font;
       }
     }
-.selects-container{
-  
-  @include relative(left);
-}
+    .selects-container {
+      @include relative(left);
+    }
     select {
       @include relative(left);
       margin: 10px 0;
-      font-family: 'Raleway', sans-serif;
+      font-family: "Raleway", sans-serif;
       font-size: 14px;
       box-sizing: border-box;
       height: 40px;
@@ -174,18 +179,32 @@ header {
       color: $black;
       background-color: $white;
     }
-
     .modal-buttons {
       @include relative(left);
       #componentsDataConfirm {
         @include button-secondary;
         @include relative(left);
         margin: 30px 0 20px 0;
-        
       }
       #confirmSale {
         @include button-primary;
         @include relative(left);
+      }
+      .error {
+        color: $purple;
+        font-weight: bold;
+        display: block;
+        clear: both;
+      }
+    }
+  }
+} 
+
+@media screen and (max-width: 768px) { 
+  .table-header {
+    thead {
+      th {
+        font-size: 11px !important;
       }
     }
   }

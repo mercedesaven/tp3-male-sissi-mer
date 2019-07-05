@@ -8,16 +8,18 @@
     <title>PC Stores - Vendedoras</title>
     <link rel="icon" type="png" href="styles/images/computer.png" />
     <script src="main.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <link rel="stylesheet" type="text/css" href="styles/css/index.css">
 </head>
 
 <body onload="onloadFunctionSellers()">
     <header class="header">
-        <h1>Pc store</h1>
+            <a href="index.html">
+                <h1>Pc store</h1>
+            </a>
     </header>
     <div class="page-container">
             <a class="returnToHome" href="index.html">
-                    <img src="styles/images/home-icon.png"> <span> Volver </span>
+                    <img src="images/home-icon.png"> <span> Volver </span>
                </a>
         <div class="page-header">
             <h2>Vendedoras</h2>
@@ -38,11 +40,11 @@
                             <select id="newComponent"></select>
                         </div>
                         <div class="modal-buttons">
+                            <p class="error" id="chosenComponentError"></p>
+                            <p class="error" id="sellerOrBranchError"></p>
                             <a href="#" id="componentsDataConfirm" onclick="addComponentToList()">Agregar componente</a>
-                            <p id="chosenComponentError" id="chosenComponentError"></p>
                             <p id="showNewComponent"></p>
                             <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
-                            <p class="sellerOrBranchError" id="sellerOrBranchError"></p>
                         </div>
 
                     </div>

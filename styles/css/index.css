@@ -3,6 +3,14 @@ ul {
   padding: 0;
 }
 
+a {
+  cursor: pointer;
+}
+
+::selection {
+  color: #ea90f2;
+}
+
 button {
   border: none;
   background: transparent;
@@ -22,17 +30,20 @@ header {
   padding: 0px 5%;
   box-sizing: border-box;
   background-color: #006585;
-  color: #ffffff;
 }
-header h1 {
+header a {
+  text-decoration: none;
+}
+header a h1 {
   font-size: 20px;
+  color: #ffffff;
 }
 
 .page-container {
+  float: left;
   padding: 20px 5%;
   box-sizing: border-box;
-  position: relative;
-  float: left;
+  overflow: hidden;
   width: 100%;
 }
 .page-container .returnToHome {
@@ -177,6 +188,7 @@ header h1 {
   float: right;
   color: #c70082;
   font-weight: 400;
+  font-family: "Raleway", sans-serif;
 }
 .createNewSoldItem .modal-container .selects-container {
   position: relative;
@@ -242,10 +254,21 @@ header h1 {
   color: #006585;
   transition: 0.5s;
 }
+.createNewSoldItem .modal-container .modal-buttons .error {
+  color: #c70082;
+  font-weight: bold;
+  display: block;
+  clear: both;
+}
 
+@media screen and (max-width: 768px) {
+  .table-header thead th {
+    font-size: 11px !important;
+  }
+}
 .stores {
-  float: left;
   position: relative;
+  float: left;
   width: 100%;
   margin: 20px 0 0px;
 }
@@ -266,23 +289,20 @@ header h1 {
 
 .dashboard {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  float: left;
   position: relative;
-  width: calc(100% + 80px);
-  margin-left: -40px;
+  float: left;
+  width: calc(100% + 40px);
+  flex-wrap: wrap;
+  margin: 10px 0 10px -20px;
 }
 .dashboard .dashboard-box {
   box-sizing: border-box;
   text-align: center;
-  margin-top: 20px;
-  padding: 15px 35px;
+  margin: 20px;
+  padding: 30px 50px;
   border-radius: 5px;
   flex: 1;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
 }
 .dashboard .dashboard-box a {
   text-decoration: none;
@@ -298,27 +318,37 @@ header h1 {
   width: 40px;
   float: left;
 }
-.dashboard .dashboard-box:hover {
+.dashboard .dashboard-box a:hover {
   transform: scale(1.1, 1.1);
   transition: 0.5s;
 }
 
 .report {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  float: left;
-  position: relative;
   width: calc(100% + 80px);
   margin-left: -40px;
+  flex-wrap: wrap;
 }
 .report .report-item {
   margin: 10px 40px;
   flex: 1;
   font-size: 14px;
+  min-width: 200px;
 }
 .report .report-item h3 {
   color: #9094f2;
+}
+
+@media screen and (max-width: 1420px) and (min-width: 428px) {
+  .dashboard .dashboard-box a img {
+    float: none;
+    margin: 0 auto;
+  }
+  .dashboard .dashboard-box a h3 {
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

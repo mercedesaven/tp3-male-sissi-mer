@@ -1,35 +1,32 @@
 $blue: #006585;
 $black: #1a282f;
 $white: #ffffff;
-$purple: #c70082;
+$purple: #c70082; //no se si cuenta como purple, pero bueno, deal with it
 $pink: #ea90f2;
 $lilac: #9094f2;
 $aqua: #00b5c7;
 $grey: #c4c4c4;
 $font: "Raleway", sans-serif;
 $shadow: 3px 3px 6px
-  rgba(
+  rgba( 
     $color: #000000,
     $alpha: 0.3
-  );
-
+  ); 
+  
 @mixin relative($float) {
   position: relative;
   float: $float;
   width: 100%;
 }
-
+ 
 @mixin card {
   box-sizing: border-box;
   text-align: center;
-  margin-top: 20px; 
-  padding: 15px 35px;
+  margin: 20px; 
+  padding: 30px 50px;
   border-radius: 5px;
   flex: 1;
   box-shadow: $shadow;
-   display: flex;
-  flex-direction: column;
-  
 }
 
 @mixin button-primary {
@@ -65,6 +62,8 @@ $shadow: 3px 3px 6px
     background-color: $blue;
     color: $white;
     transition: 0.5s;
-  }
-  
+  } 
 }
+
+// @media 
+// sacar el margen o poner solo margin left

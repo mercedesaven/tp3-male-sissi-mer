@@ -1,41 +1,34 @@
 @import "_variables.scss";
 @import "_main.scss";
-  
 
 .stores {
-  float: left;
-  position: relative;
-  width: 100%;
+  @include relative(left);
   margin: 20px 0 0px;
-
   button {
     border: 1px solid $aqua;
     border-radius: 3px;
-    color: $aqua; 
+    color: $aqua;
     padding: 10px 30px;
     font-family: $font;
     font-size: 14px;
     margin-right: 10px;
-    &:hover {
+    &:hover { 
       background-color: $aqua;
       color: $white;
-      transition: 0.5s; 
+      transition: 0.5s;  
     }
-  }  
+  }
 }
 
 .dashboard {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  float: left;
   position: relative;
-  width: calc(100% + 80px);
-  margin-left: -40px;
-  .dashboard-box { 
+  float: left;
+  width: calc(100% + 40px);
+  flex-wrap: wrap;
+  margin: 10px 0 10px -20px;
+  .dashboard-box {
     @include card;
-
-
     a {
       text-decoration: none;
       h3 {
@@ -45,38 +38,51 @@
         float: left;
         margin: 12px 0 0 10px;
       }
-    img{
-      width: 40px;
-      float: left;
-    }  
-    }
-    &:hover {
-      transform: scale(1.1, 1.1);
-      transition: 0.5s;
-      
+      img {
+        width: 40px;
+        float: left;
+      }
+      &:hover {
+        transform: scale(1.1, 1.1);
+        transition: 0.5s;
+      }
     }
   }
-}
+} 
 
-.report{
+.report {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  float: left;
-  position: relative;
   width: calc(100% + 80px);
   margin-left: -40px;
-  .report-item{
-    margin: 10px 40px; 
+  flex-wrap: wrap;
+  .report-item {
+    margin: 10px 40px;
     flex: 1;
     font-size: 14px;
-
-
-    h3{
+    min-width: 200px;
+    h3 {
       color: $lilac;
+    }
+  }  
+}
 
+ 
+
+@media screen and (max-width: 1420px) and (min-width: 428px) {
+  .dashboard{
+    .dashboard-box{
+      a{
+        img{
+          float: none;
+          margin: 0 auto;
+        }
+        h3{
+          width: 100%;
+          text-align: center;
+          margin: 1rem 0;
+        }
+      }
     }
   }
-
-
 }
+

@@ -3,6 +3,14 @@ ul {
   padding: 0;
 }
 
+a {
+  cursor: pointer;
+}
+
+::selection {
+  color: #ea90f2;
+}
+
 button {
   border: none;
   background: transparent;
@@ -22,17 +30,20 @@ header {
   padding: 0px 5%;
   box-sizing: border-box;
   background-color: #006585;
-  color: #ffffff;
 }
-header h1 {
+header a {
+  text-decoration: none;
+}
+header a h1 {
   font-size: 20px;
+  color: #ffffff;
 }
 
 .page-container {
+  float: left;
   padding: 20px 5%;
   box-sizing: border-box;
-  position: relative;
-  float: left;
+  overflow: hidden;
   width: 100%;
 }
 .page-container .returnToHome {
@@ -177,6 +188,7 @@ header h1 {
   float: right;
   color: #c70082;
   font-weight: 400;
+  font-family: "Raleway", sans-serif;
 }
 .createNewSoldItem .modal-container .selects-container {
   position: relative;
@@ -241,6 +253,18 @@ header h1 {
   background-color: #ffffff;
   color: #006585;
   transition: 0.5s;
+}
+.createNewSoldItem .modal-container .modal-buttons .error {
+  color: #c70082;
+  font-weight: bold;
+  display: block;
+  clear: both;
+}
+
+@media screen and (max-width: 768px) {
+  .table-header thead th {
+    font-size: 11px !important;
+  }
 }
 
 /*# sourceMappingURL=ventas.css.map */

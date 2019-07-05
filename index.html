@@ -9,12 +9,14 @@
     <link rel="icon" type="png" href="styles/images/computer.png" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet">
     <script src="main.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <link rel="stylesheet" type="text/css" href="styles/css/index.css">
 </head>
 
 <body onload="onloadIndex(); onloadFunctionReport()">
-    <header class="header">
-        <h1>Pc store</h1>
+    <header class="header"> 
+        <a href="index.html">
+            <h1>Pc store</h1>
+        </a>
     </header>
     <div class="page-container">
 
@@ -30,7 +32,6 @@
                         </div>
                         <div class="selects-container">
                             <select id="newSeller">
-                                <option value="1">sdfsdf</option>
                             </select>
                             <select id="newBranch"></select>
                             <p id="showNewSeller"></p>
@@ -38,42 +39,45 @@
                             <select id="newComponent"></select>
                         </div>
                         <div class="modal-buttons">
+                            <p class="error" id="chosenComponentError"></p>
+                            <p class="error" id="sellerOrBranchError"></p>
                             <a href="#" id="componentsDataConfirm" onclick="addComponentToList()">Agregar
                                 componente</a>
-                            <p id="chosenComponentError" id="chosenComponentError"></p>
                             <p id="showNewComponent"></p>
-                            <a href='#' id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
-                            <p class="sellerOrBranchError" id="sellerOrBranchError"></p>
+                            <a href='#' id="confirmSale" onclick="confirmSale(); hrefList();">Confirmar venta</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="dashboard">
-            <a href="vendedoras.html">
-                <div class="dashboard-box">
-                   <img src="styles/images/seller-med.png" alt='Vendedora'>
+            <div class="dashboard-box">
+                <a href="vendedoras.html">
+                    <img src="images/seller-med.png" alt='Vendedora'>
                     <h3>Vendedoras</h3>
-                </div>
-            </a>
-            <a href="ventas.html">
-                <div class="dashboard-box">                
-                    <img src="styles/images/sales-med.png" alt='ventas'>
-                    <h3>Ventas</h3>                
-                </div>
-            </a>
-            <a href="componentes.html">
-                <div class="dashboard-box">
-                    <img src="styles/images/component-med.png" alt='componentes'>
+                </a>
+            </div>
+
+            <div class="dashboard-box">
+                <a href="ventas.html">
+                    <img src="images/sales-med.png" alt='ventas'>
+                    <h3>Ventas</h3>
+                </a>
+            </div>
+
+            <div class="dashboard-box">
+                <a href="componentes.html">
+                    <img src="images/component-med.png" alt='componentes'>
                     <h3>Componentes</h3>
-                </div>
-            </a>
-            <a href="sucursal.html">
-                <div class="dashboard-box">
-                    <img src="styles/images/shop-med.png" alt='sucursal'>
+                </a>
+            </div>
+            <div class="dashboard-box">
+                <a href="sucursal.html">
+                    <img src="images/shop-med.png" alt='sucursal'>
                     <h3>Sucursales</h3>
-                </div>
-            </a>
+                </a>
+            </div>
+
         </div>
         <div class="page-header">
             <h2>Reporte del mes</h2>
@@ -81,7 +85,7 @@
         <div class="report">
             <div class="report-item">
                 <div id="bestSellingClerk">
-                        <h3>Vendedora del mes</h3>
+                    <h3>Vendedora del mes</h3>
                 </div>
             </div>
             <div class="report-item">
@@ -96,7 +100,7 @@
             </div>
             <div class="report-item">
                 <div id="salesPerBranch">
-                        <h3>Ventas por sucursal</h3>
+                    <h3>Ventas por sucursal</h3>
                 </div>
             </div>
         </div>

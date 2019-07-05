@@ -1,7 +1,7 @@
 var shop = {
   branches: ["Centro", "Caballito"],
-
-  sellers: ["Ada", "Grace", "Hedy", "Sheryl"],
+ 
+  sellers: ["Ada", "Grace", "Hedy", "Sheryl"], 
 
   soldItems: [
     // tener en cuenta que Date guarda los meses del 0 (enero) al 11 (diciembre)
@@ -133,7 +133,6 @@ const createSoldItemsTable = (container) => {
     container.appendChild(row)
   })
 }
-
 const newTableSlot = (container, text) => {
   let slot = document.createElement('td')
   slot.innerText = text
@@ -231,7 +230,7 @@ const salesPerMonth = () =>{
   let monthNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
   let totalSales
   monthNumber.forEach(month =>{
-    totalSales = 0
+    totalSales = 0, 
     shop.soldItems.forEach(item =>{
       if(item.date.getMonth() === month){
         totalSales = totalSales + totalPrice(componentsPrices(item))
@@ -247,6 +246,7 @@ const salesPerBranch = () =>{
   let totalSales
   shop.branches.forEach(branch =>{
     totalSales = 0
+    // shop.soldItems.forEach(item => item.branch === branch ? totalSales =+ totalPrice(componentsPrices(item)) : null)
     shop.soldItems.forEach(item =>{
       if(item.branch === branch){
         totalSales = totalSales + totalPrice(componentsPrices(item))
@@ -411,7 +411,7 @@ const createComponentsList = (text, btnId) =>{
   let componentLi = document.createElement('li')
   componentLi.innerText = text
   let deleteBtn = document.createElement('img')
-  deleteBtn.src = 'styles/images/Icon-Delete.png'
+  deleteBtn.src = 'images/Icon-Delete.png'
   deleteBtn.id = btnId
   deleteBtn.onclick = function(){ deleteItem(this) }
   componentLi.appendChild(deleteBtn)
@@ -452,3 +452,7 @@ const confirmSale = () =>{
 const closeWindow = () =>{
   hideElement('createNewSoldItem')
 }
+
+ const hrefList = () => { 
+   location.href = 'ventas.html'
+ }
