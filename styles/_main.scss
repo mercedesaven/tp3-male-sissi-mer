@@ -157,16 +157,7 @@ header {
         color: $purple;
         font-weight: 400;
       }
-      .modal-buttons { //no me toma las cosas y no se porque >:(
-          .error {
-            color: $purple;
-            font-weight: bold;
-            display: block;
-            clear: both;
-          }
-        }
-      }
-    
+    }
     .selects-container {
       @include relative(left);
     }
@@ -191,6 +182,12 @@ header {
       #confirmSale {
         @include button-primary;
         @include relative(left);
+      }
+      .error {
+        color: $purple;
+        font-weight: bold;
+        display: block;
+        clear: both;
       }
     }
   }

@@ -180,12 +180,6 @@ header a h1 {
   color: #c70082;
   font-weight: 400;
 }
-.createNewSoldItem .modal-container .modal-header .modal-buttons .error {
-  color: #c70082;
-  font-weight: bold;
-  display: block;
-  clear: both;
-}
 .createNewSoldItem .modal-container .selects-container {
   position: relative;
   float: left;
@@ -249,6 +243,12 @@ header a h1 {
   background-color: #ffffff;
   color: #006585;
   transition: 0.5s;
+}
+.createNewSoldItem .modal-container .modal-buttons .error {
+  color: #c70082;
+  font-weight: bold;
+  display: block;
+  clear: both;
 }
 
 @media screen and (max-width: 768px) {
