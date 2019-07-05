@@ -132,7 +132,6 @@ const createSoldItemsTable = (container) => {
     container.appendChild(row)
   })
 }
-
 const newTableSlot = (container, text) => {
   let slot = document.createElement('td')
   slot.innerText = text
@@ -246,6 +245,7 @@ const salesPerBranch = () =>{
   let totalSales
   shop.branches.forEach(branch =>{
     totalSales = 0
+    // shop.soldItems.forEach(item => item.branch === branch ? totalSales =+ totalPrice(componentsPrices(item)) : null)
     shop.soldItems.forEach(item =>{
       if(item.branch === branch){
         totalSales = totalSales + totalPrice(componentsPrices(item))
@@ -460,3 +460,7 @@ const confirmSale = () =>{
 const closeWindow = () =>{
   hideElement('createNewSoldItem')
 }
+
+ const hrefList = () => { 
+   location.href = 'ventas.html'
+ }

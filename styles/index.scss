@@ -1,25 +1,23 @@
 @import "_variables.scss";
 @import "_main.scss";
-  
 
 .stores {
   @include relative(left);
   margin: 20px 0 0px;
-
   button {
     border: 1px solid $aqua;
     border-radius: 3px;
-    color: $aqua; 
+    color: $aqua;
     padding: 10px 30px;
     font-family: $font;
     font-size: 14px;
     margin-right: 10px;
-    &:hover {
+    &:hover { 
       background-color: $aqua;
       color: $white;
-      transition: 0.5s; 
+      transition: 0.5s;
     }
-  }  
+  }
 }
 
 .dashboard {
@@ -27,10 +25,8 @@
   width: calc(100% + 80px);
   margin-left: -40px;
   flex-wrap: wrap;
-  .dashboard-box { 
+  .dashboard-box {
     @include card;
-
-
     a {
       text-decoration: none;
       h3 {
@@ -40,35 +36,42 @@
         float: left;
         margin: 12px 0 0 10px;
       }
-    img{
-      width: 40px;
-      float: left;
-    }  
-    }
-    &:hover {
-      transform: scale(1.1, 1.1);
-      transition: 0.5s;
-      
+      img {
+        width: 40px;
+        float: left;
+      }
+      &:hover {
+        transform: scale(1.1, 1.1);
+        transition: 0.5s;
+      }
     }
   }
 }
 
-.report{
+.report {
   display: flex;
   width: calc(100% + 80px);
   margin-left: -40px;
   flex-wrap: wrap;
-  .report-item{
-    margin: 10px 40px; 
+  .report-item {
+    margin: 10px 40px;
     flex: 1;
     font-size: 14px;
-  
-
-    h3{
+    h3 {
       color: $lilac;
-
     }
   }
+}
 
+
+@media screen and (max-width:992px){
+  
+}
+
+@media screen and (max-width:768px){
+
+}
+
+@media screen and (max-width:768px){
   
 }

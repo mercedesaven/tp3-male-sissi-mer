@@ -9,12 +9,14 @@
     <link rel="icon" type="png" href="styles/images/computer.png" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet">
     <script src="main.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <link rel="stylesheet" type="text/css" href="styles/css/index.css">
 </head>
 
 <body onload="onloadIndex(); onloadFunctionReport()">
     <header class="header">
-        <h1>Pc store</h1>
+        <a href="index.html">
+            <h1>Pc store</h1>
+        </a>
     </header>
     <div class="page-container">
 
@@ -30,7 +32,6 @@
                         </div>
                         <div class="selects-container">
                             <select id="newSeller">
-                                <option value="1">sdfsdf</option>
                             </select>
                             <select id="newBranch"></select>
                             <p id="showNewSeller"></p>
@@ -42,7 +43,7 @@
                                 componente</a>
                             <p id="chosenComponentError" id="chosenComponentError"></p>
                             <p id="showNewComponent"></p>
-                            <a href='#' id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
+                            <a href='#' id="confirmSale" onclick="confirmSale(); hrefList();">Confirmar venta</a>
                             <p class="sellerOrBranchError" id="sellerOrBranchError"></p>
                         </div>
                     </div>
@@ -84,7 +85,7 @@
         <div class="report">
             <div class="report-item">
                 <div id="bestSellingClerk">
-                        <h3>Vendedora del mes</h3>
+                    <h3>Vendedora del mes</h3>
                 </div>
             </div>
             <div class="report-item">
@@ -99,7 +100,7 @@
             </div>
             <div class="report-item">
                 <div id="salesPerBranch">
-                        <h3>Ventas por sucursal</h3>
+                    <h3>Ventas por sucursal</h3>
                 </div>
             </div>
         </div>
