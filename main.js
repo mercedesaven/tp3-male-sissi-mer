@@ -453,6 +453,6 @@ const closeWindow = () =>{
   hideElement('createNewSoldItem')
 }
 
- const hrefList = () => { 
-   location.href = 'ventas.html'
- }
+const hrefList = () => { 
+  location.href = 'ventas.html'
+}
