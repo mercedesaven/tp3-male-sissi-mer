@@ -181,7 +181,7 @@ header a h1 {
   font-weight: 400;
 }
 .createNewSoldItem .modal-container .modal-header .modal-buttons .error {
-  color: red;
+  color: #c70082;
   font-weight: bold;
   display: block;
   clear: both;
