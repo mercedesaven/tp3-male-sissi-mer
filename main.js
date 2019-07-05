@@ -160,7 +160,7 @@ const bestSellingComponent = (containerId) =>{
   let totalSales = 0
   let maxSales = 0
   let maxComponent
-  shop.prices.map(function(e){
+  shop.prices.forEach(e=>{
     totalSales = quantitySoldItems(e.component)
     if(totalSales>maxSales){
       maxSales = totalSales
@@ -276,9 +276,9 @@ const maxSalesClerk = () =>{
   let totalSold = 0
   let maxTotalSold = 0
   let maxClerk = ''
-  shop.sellers.map(employee =>{
+  shop.sellers.forEach(employee =>{
     totalSold = 0
-    shop.soldItems.map(e=>{
+    shop.soldItems.forEach(e=>{
       if(e.nameSeller === employee){
         totalSold = totalSold + totalPrice(componentsPrices(e))
       }
@@ -296,9 +296,9 @@ const bestSellingBranch = (month, year) =>{
   let totalSold = 0 //acumulador
   let maxTotalSold = 0 //mayor de los acumuladores
   let maxBranch = ''
-  shop.branches.map(branch =>{
+  shop.branches.forEach(branch =>{
     totalSold = 0
-    shop.soldItems.map(e=>{
+    shop.soldItems.forEach(e=>{
       if(e.date.getMonth() == month && e.date.getFullYear() == year && e.branch === branch){
         totalSold = totalSold + totalPrice(componentsPrices(e))
       }
@@ -313,7 +313,7 @@ const bestSellingBranch = (month, year) =>{
 
 const totalSalesBranch = (branch) =>{
   let totalSales = 0
-  shop.soldItems.map(e => {
+  shop.soldItems.forEach(e => {
     if(branch === e.branch){
       totalSales = totalSales + totalPrice(componentsPrices(e))
     }
@@ -326,9 +326,9 @@ const bestSellingSeller = (month, year) =>{
   let totalSold = 0 //acumulador
   let maxTotalSold = 0 //mayor de los acumuladores
   let maxSeller = ''
-  shop.sellers.map(employee =>{
+  shop.sellers.forEach(employee =>{
     totalSold = 0
-    shop.soldItems.map(e =>{
+    shop.soldItems.forEach(e =>{
       if(e.date.getMonth() === month && e.date.getFullYear() === year && e.nameSeller === employee){
         totalSold = totalSold + totalPrice(componentsPrices(e))
       }
@@ -343,7 +343,7 @@ const bestSellingSeller = (month, year) =>{
 
 const salesPerSeller = (seller) =>{
   let totalSales = 0
-  shop.soldItems.map(e=>{
+  shop.soldItems.forEach(e=>{
     if(e.nameSeller === seller){
       totalSales = totalSales + totalPrice(componentsPrices(e))
     }
@@ -367,7 +367,7 @@ const setSelectsFunction = (idSelect, type, array) =>{
   let firstOption = document.createElement('option')
   firstOption.innerText = `Elija ${type}`
   select.appendChild(firstOption)
-  array.map(function(e){
+  array.forEach(e=>{
     let componentsOption = document.createElement('option')
     componentsOption.innerText = e
     select.appendChild(componentsOption)
