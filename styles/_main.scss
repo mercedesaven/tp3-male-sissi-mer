@@ -4,26 +4,21 @@ ul {
   list-style: none;
   padding: 0;
 }
+
+
+::selection {
+  color: $pink;
+}
 button {
   border: none;
   background: transparent;
   cursor: pointer;
-}
-a{
-  text-decoration: none;
-
-  &:visited{
-    color: inherti;
-  }
 }
 
 body {
   font-family: "Raleway", sans-serif;
   margin: 0px;
   color: $black;
-  &::selection {
-    color: $aqua;
-  }
 }
 
 header {
@@ -33,10 +28,10 @@ header {
   padding: 0px 5%;
   box-sizing: border-box;
   background-color: $blue;
-  color: $white;
   a {
     h1 {
       font-size: 20px;
+      color: $white;
     }
   }
 }
@@ -162,16 +157,16 @@ header {
         color: $purple;
         font-weight: 400;
       }
-      .modal-buttons {
-        #sellerOrBranchError,
-        #chosenComponentError {
-          color: red;
-          font-weight: bold;
-          display: block;
-          clear: both;
+      .modal-buttons { //no me toma las cosas y no se porque >:(
+          .error {
+            color: red;
+            font-weight: bold;
+            display: block;
+            clear: both;
+          }
         }
       }
-    }
+    
     .selects-container {
       @include relative(left);
     }
@@ -197,6 +192,16 @@ header {
         @include button-primary;
         @include relative(left);
       }
-    } 
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .table-header {
+    thead {
+      th {
+        font-size: 11px !important;
+      }
+    }
   }
 }

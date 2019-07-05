@@ -14,6 +14,9 @@ body {
   margin: 0px;
   color: #1a282f;
 }
+body::selection {
+  color: #00b5c7;
+}
 
 header {
   position: relative;
@@ -24,16 +27,14 @@ header {
   background-color: #006585;
   color: #ffffff;
 }
-header h1 {
+header a h1 {
   font-size: 20px;
 }
 
 .page-container {
+  float: left;
   padding: 20px 5%;
   box-sizing: border-box;
-  position: relative;
-  float: left;
-  width: 100%;
 }
 .page-container .returnToHome {
   text-decoration: none;
@@ -178,6 +179,13 @@ header h1 {
   color: #c70082;
   font-weight: 400;
 }
+.createNewSoldItem .modal-container .modal-header .modal-buttons #sellerOrBranchError,
+.createNewSoldItem .modal-container .modal-header .modal-buttons #chosenComponentError {
+  color: red;
+  font-weight: bold;
+  display: block;
+  clear: both;
+}
 .createNewSoldItem .modal-container .selects-container {
   position: relative;
   float: left;
@@ -241,6 +249,12 @@ header h1 {
   background-color: #ffffff;
   color: #006585;
   transition: 0.5s;
+}
+
+@media screen and (max-width: 768px) {
+  .table-header thead th {
+    font-size: 11px !important;
+  }
 }
 
 /*# sourceMappingURL=sucursal.css.map */

@@ -3,26 +3,20 @@ ul {
   padding: 0;
 }
 
+::selection {
+  color: #ea90f2;
+}
+
 button {
   border: none;
   background: transparent;
   cursor: pointer;
 }
 
-a {
-  text-decoration: none;
-}
-a:visited {
-  color: inherti;
-}
-
 body {
   font-family: "Raleway", sans-serif;
   margin: 0px;
   color: #1a282f;
-}
-body::selection {
-  color: #00b5c7;
 }
 
 header {
@@ -32,10 +26,10 @@ header {
   padding: 0px 5%;
   box-sizing: border-box;
   background-color: #006585;
-  color: #ffffff;
 }
 header a h1 {
   font-size: 20px;
+  color: #ffffff;
 }
 
 .page-container {
@@ -186,8 +180,7 @@ header a h1 {
   color: #c70082;
   font-weight: 400;
 }
-.createNewSoldItem .modal-container .modal-header .modal-buttons #sellerOrBranchError,
-.createNewSoldItem .modal-container .modal-header .modal-buttons #chosenComponentError {
+.createNewSoldItem .modal-container .modal-header .modal-buttons .error {
   color: red;
   font-weight: bold;
   display: block;
@@ -258,6 +251,11 @@ header a h1 {
   transition: 0.5s;
 }
 
+@media screen and (max-width: 768px) {
+  .table-header thead th {
+    font-size: 11px !important;
+  }
+}
 .stores {
   position: relative;
   float: left;
