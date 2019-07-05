@@ -227,7 +227,7 @@ header a h1 {
   position: relative;
   float: left;
   width: 100%;
-  margin: 30px 0 20px 0;
+  margin: 25px 0 15px;
 }
 .createNewSoldItem .modal-container .modal-buttons #componentsDataConfirm:hover {
   background-color: #006585;
@@ -248,6 +248,7 @@ header a h1 {
   position: relative;
   float: left;
   width: 100%;
+  margin: 15px 0 0;
 }
 .createNewSoldItem .modal-container .modal-buttons #confirmSale:hover {
   background-color: #ffffff;
@@ -259,6 +260,22 @@ header a h1 {
   font-weight: bold;
   display: block;
   clear: both;
+  font-size: 12px;
+}
+.createNewSoldItem .modal-container .modal-buttons #showNewComponent {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.createNewSoldItem .modal-container .modal-buttons #showNewComponent li {
+  list-style-type: none;
+  border-bottom: 1px solid #006585;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.createNewSoldItem .modal-container .modal-buttons #showNewComponent li img {
+  float: right;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
