@@ -24,6 +24,30 @@
         </a>
         <div class="page-header">
             <h2>Ventas</h2>
+            <div class="createNewSoldItem hide" id="createNewSoldItem">
+                    <div class="modal-container">
+                        <div class="modal-header">
+                            <h3>Nueva Venta</h3>
+                            <button type="button" onclick="closeWindow()">Cerrar</button>
+                        </div>
+                        <div class="selects-container">
+                            <select id="newSeller">
+                            </select>
+                            <select id="newBranch"></select>
+                            <p id="showNewSeller"></p>
+                            <p id="showNewBranch"></p>
+                            <select id="newComponent"></select>
+                        </div>
+                        <div class="modal-buttons">
+                            <span class="error" id="chosenComponentError"></span>
+                            <span class="error" id="sellerOrBranchError"></span>
+                            <a href="#" id="componentsDataConfirm" onclick="addComponentToList()">Agregar
+                                componente</a>
+                            <div id="showNewComponent"></div>
+                            <a href='#' id="confirmSale" onclick="confirmSale(); hrefList();">Confirmar venta</a>
+                        </div>
+                    </div>
+                </div>
             <div class="modals">
                 <a class="newSoldItem" href="#" onclick="showElement()">Nueva venta</a>
                 <div class="createNewSoldItem hide" id="createNewSoldItem">
@@ -45,7 +69,7 @@
                             <p class="error" id="sellerOrBranchError"></p>
                             <a href="#" id="componentsDataConfirm" onclick="addComponentToList()">Agregar componente</a>
                             <p id="showNewComponent"></p>
-                            <a href="#" id="confirmSale" onclick="confirmSale()">Confirmar venta</a>
+                            <a href="#" id="confirmSale" onclick="confirmSale(); hrefList();">Confirmar venta</a>
                         </div>
 
                     </div>
