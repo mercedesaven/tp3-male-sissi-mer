@@ -397,6 +397,8 @@ const hideElement = (elementId) =>{
 const addComponentToList = () =>{
   let chosenComponentError = document.getElementById('chosenComponentError')
   chosenComponentError.innerHTML = ''
+  let sellerOrBranchError = document.getElementById('sellerOrBranchError')
+  sellerOrBranchError.innerHTML = ''
   let newComponent = document.getElementById('newComponent')
   if(newComponent.value === 'Elija un componente'){
     showOnScreen('chosenComponentError', 'Elija un componente válido')
@@ -430,6 +432,8 @@ const deleteItem = btn => {
 const confirmSale = () =>{
   let sellerOrBranchError = document.getElementById('sellerOrBranchError')
   sellerOrBranchError.innerHTML = ''
+  let chosenComponentError = document.getElementById('chosenComponentError')
+  chosenComponentError.innerHTML = ''
   event.preventDefault()
   let newSeller = document.getElementById('newSeller')
   let newBranch = document.getElementById('newBranch')
@@ -442,6 +446,7 @@ const confirmSale = () =>{
   }
   if(newSoldItem.nameSeller !== 'Elija una vendedora' && newSoldItem.branch !== 'Elija una sucursal' && newSoldItem.components.length !== 0){
     shop.soldItems.unshift(newSoldItem)
+    hrefList()
   }else{
     showOnScreen('sellerOrBranchError', 'Verifique que los datos ingresados sean válidos')
   }
