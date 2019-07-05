@@ -1,4 +1,12 @@
 @import "_variables.scss";
 @import "_main.scss";
- 
 
+@media screen and (max-width: 768px) {
+  .table-header {
+    thead {
+      th {
+        font-size: 11px !important;
+      }
+    }
+  }
+}
