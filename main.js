@@ -76,15 +76,62 @@ const confirm = function (){
 
 // sumarle un boton mas para que me de el resultado total de la suma de los elementos dentro del array.   
 let saleComponent = [1,2,3,4,5]   
-const componetsNum = function(){
+/*const componetsNum = function(){
  shop.sales.map(function(e){
-   components.map(function(c){
+   component.map(function(c){
      if (e.sales === c.components)
      saleComponent.push(components[c])
    })
   
     })
     console.log(saleComponent)
+}*/
+
+function search(busquedaArray){ //["componente1","componente2"]
+  var total;
+  total = 0;
+  for (var i=0; i < busquedaArray.length; i++) {
+    for (var x=0; x < shop.prices.length; x++){
+      if (busquedaArray[i] === shop.prices[x].component) {
+          total = total + shop.prices[x].price;
+      }
+    }      
+  }
+  return total;
 }
-  
  
+
+function searchVentas(busquedaArray){ //["componente1","componente2"]
+  var total;
+  total = 0;
+  for (var i=0; i < busquedaArray.length; i++) {
+    for (var x=0; x < shop.sales.length; x++){
+      for (var k=0; k < shop.sales[x].components.length; k++){
+      if (busquedaArray[i] === shop.sales[x].components[k]) {
+          total++;
+          break;
+      }
+    }      
+  }
+}
+  return total;
+}
+
+
+function searchVendedora(busquedaArray, mes, anio){ //["componente1","componente2"]
+  var total;
+  total = 0;
+  //for (var i=0; i < busquedaArray.length; i++) {
+    for (var x=0; x < shop.sales.length; x++){
+      for (var k=0; k < shop.sales[x].components.length; k++){
+      if (busquedaArray === shop.sales[x].sellersName && mes === shop.sales[x].date.getMonth() && anio === shop.sales[x].date.getFullYear()) {
+          
+        total += search(shop.sales[x].components);
+
+          break;
+      }
+    }      
+  //}
+}
+  return total;
+}
