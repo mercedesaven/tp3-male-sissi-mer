@@ -438,13 +438,14 @@ const confirmSale = () =>{
   }
   if(newSoldItem.nameSeller !== 'Elija una vendedora' && newSoldItem.branch !== 'Elija una sucursal' && newSoldItem.components.length !== 0){
     shop.soldItems.unshift(newSoldItem)
+    console.log(newSoldItem)
     hrefList()
   }else{
     showOnScreen('sellerOrBranchError', 'Verifique que los datos ingresados sean válidos')
   }
   console.log(shop.soldItems)
   newSale()
-}
+}// se carga la última venta en el array pero no se renderiza en la tabla de ventas
 
 const closeWindow = () =>{
   hideElement('createNewSoldItem')
